@@ -1,734 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HPCL Vendor Self Service</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: Arial, sans-serif; font-size: 13px; background: #f5f5f5; color: #333; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - GeM Invoice Submission</title>
+    <style>
+        :root {
+            --hpcl-blue: #18488e;
+            --hpcl-red: #b91515;
+            --bg-color: #eaedf1;
+            --text-main: #333;
+            --border-color: #ced4da;
+            --readonly-bg: #e9ecef;
+            --btn-blue: #007bff;
+        }
 
-    /* ── TOP HEADER ── */
-    .top-header {
-      background: #1560a8;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 16px;
-      min-height: 56px;
-    }
-    .top-header .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .logo-box {
-      background: white;
-      border-radius: 4px;
-      padding: 4px 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-width: 90px;
-      min-height: 44px;
-    }
-    .logo-box .hpcl-logo-text {
-      font-size: 11px;
-      color: #1560a8;
-      font-weight: bold;
-      line-height: 1.1;
-      text-align: center;
-    }
-    .logo-box .hpcl-sub {
-      font-size: 8px;
-      color: #555;
-      text-align: center;
-    }
-    .top-header .site-title {
-      font-size: 22px;
-      font-weight: bold;
-      color: white;
-      flex: 1;
-      text-align: center;
-    }
-    .top-header .user-info {
-      text-align: right;
-      color: white;
-      font-size: 12px;
-    }
-    .top-header .user-info .vendor-kyv {
-      color: #ff4444;
-      font-weight: bold;
-    }
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      background: #cc0000;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      position: relative;
-      z-index: 1000;
-    }
-    .navbar .nav-item {
-      position: relative;
-      display: inline-block;
-    }
-    .navbar .nav-item > a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 10px 12px;
-      font-size: 13px;
-      white-space: nowrap;
-    }
-    .navbar .nav-item > a:hover,
-    .navbar .nav-item.active > a {
-      background: rgba(0,0,0,0.2);
-    }
-    /* Dropdown */
-    .dropdown-menu {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background: #1560a8;
-      min-width: 240px;
-      z-index: 9999;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-    }
-    .dropdown-menu a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 10px 16px;
-      font-size: 13px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-    .dropdown-menu a:hover {
-      background: rgba(255,255,255,0.15);
-    }
-    .nav-item:hover .dropdown-menu { display: block; }
-    .badge-new {
-      background: #1cb4e0;
-      color: white;
-      font-size: 9px;
-      padding: 1px 4px;
-      border-radius: 3px;
-      margin-left: 4px;
-      vertical-align: middle;
-    }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-size: 13px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
 
-    /* ── PAGE WRAPPER ── */
-    .page-wrapper {
-      max-width: 1000px;
-      margin: 20px auto;
-      background: white;
-      padding: 20px 24px 30px;
-      border: 1px solid #ddd;
-    }
+        /* --- Header --- */
+        header {
+            background-color: var(--hpcl-blue);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            border-top: 4px solid #0a2d5e;
+        }
 
-    /* ── PAGE TITLE ── */
-    .page-title {
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 20px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 10px;
-    }
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
 
-    /* ── SECTION LABELS ── */
-    label.field-label {
-      display: block;
-      font-size: 12px;
-      margin-bottom: 3px;
-      color: #333;
-    }
-    label.field-label.required::before {
-      content: '*';
-      color: red;
-      margin-right: 2px;
-    }
+        .logo-placeholder {
+            background-color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--hpcl-red);
+            border: 2px solid #fff;
+            position: relative;
+        }
+        
+        .logo-placeholder::after {
+             content: 'HP';
+             position: absolute;
+             font-size: 20px;
+        }
 
-    /* ── INPUTS / SELECTS ── */
-    input[type="text"], input[type="date"], select, textarea {
-      width: 100%;
-      border: 1px solid #ccc;
-      padding: 5px 8px;
-      font-size: 12px;
-      border-radius: 2px;
-      background: #fff;
-      color: #333;
-    }
-    input[type="text"]:disabled, input[type="date"]:disabled {
-      background: #f0f0f0;
-    }
-    select { cursor: pointer; }
+        .header-title-company {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header-title-company span:first-child {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .header-title-company span:last-child {
+            font-size: 13px;
+        }
 
-    /* ── SEARCH PO ROW ── */
-    .search-po-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-    .search-po-row .po-input-wrap { width: 180px; }
-    .gem-order-ids {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      font-size: 13px;
-    }
-    .gem-order-ids span { color: #007b00; font-weight: bold; margin-right: 6px; }
-    .gem-order-ids a { color: #007b00; font-weight: bold; text-decoration: none; }
-    .raise-po-btn {
-      margin-left: auto;
-    }
-    .btn-raise-po {
-      background: white;
-      border: 1px solid #aaa;
-      padding: 5px 12px;
-      font-size: 12px;
-      cursor: pointer;
-      border-radius: 2px;
-    }
-    .btn-raise-po:hover { background: #f0f0f0; }
+        .header-center h1 {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0;
+        }
 
-    /* ── GEM PO TABLE ── */
-    .gem-po-table {
-      border-collapse: collapse;
-      margin-bottom: 18px;
-      font-size: 12px;
-    }
-    .gem-po-table th {
-      background: #f0f0f0;
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-      text-align: left;
-    }
-    .gem-po-table td {
-      border: 1px solid #ccc;
-      padding: 5px 10px;
-    }
+        .header-right {
+            text-align: right;
+        }
 
-    /* ── SECTION HEADING ── */
-    .section-heading {
-      font-size: 13px;
-      font-weight: bold;
-      color: #1560a8;
-      margin: 18px 0 10px;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 4px;
-    }
+        .header-right .vendor-name {
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
 
-    /* ── GRID ROWS ── */
-    .form-row {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 12px;
-      align-items: flex-end;
-      flex-wrap: wrap;
-    }
-    .form-row .col { flex: 1; min-width: 180px; }
-    .form-row .col-sm { flex: 0 0 200px; }
+        .badge-kyv {
+            background-color: red;
+            color: white;
+            padding: 2px 6px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 2px;
+            display: inline-block;
+        }
 
-    /* ── SUBMIT BTN ── */
-    .submit-area {
-      text-align: center;
-      margin-top: 24px;
-    }
-    .btn-submit {
-      background: #1560a8;
-      color: white;
-      border: none;
-      padding: 8px 30px;
-      font-size: 14px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
-    .btn-submit:hover { background: #114d8a; }
+        /* --- Navbar --- */
+        nav {
+            background-color: var(--hpcl-red);
+            border-bottom: 2px solid #800000;
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 12px;
-      font-size: 12px;
-      color: #666;
-      border-top: 1px solid #ddd;
-      margin-top: 30px;
-    }
-    footer a { color: #1560a8; text-decoration: none; }
+        nav ul {
+            list-style: none;
+            display: flex;
+            padding: 0 20px;
+            margin: 0;
+        }
 
-    /* ── SECTION CARD (for PO Details page) ── */
-    .card-section {
-      border: 1px solid #ccc;
-      margin-bottom: 18px;
-      border-radius: 2px;
-    }
-    .card-section-header {
-      background: #1560a8;
-      color: white;
-      font-weight: bold;
-      font-size: 13px;
-      padding: 8px 14px;
-    }
-    .card-section-body { padding: 16px; }
+        nav ul li {
+            position: relative;
+        }
 
-    /* ── PO DETAILS TABLE ── */
-    .po-details-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 12px;
-      margin-top: 10px;
-    }
-    .po-details-table th {
-      background: #1560a8;
-      color: white;
-      border: 1px solid #aaa;
-      padding: 6px 10px;
-      text-align: center;
-    }
-    .po-details-table td {
-      border: 1px solid #ccc;
-      padding: 6px 10px;
-      text-align: center;
-    }
-    .po-details-table tr:nth-child(even) td { background: #f8f8f8; }
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 13px;
+        }
 
-    .datatable-controls {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-      font-size: 12px;
-    }
-    .datatable-controls select { width: auto; }
-    .datatable-controls input[type="text"] { width: 160px; }
+        nav ul li a:hover, nav ul li.active a {
+            background-color: rgba(0,0,0,0.1);
+        }
 
-    .datatable-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-      font-size: 12px;
-    }
-    .pagination-btn {
-      background: #1560a8;
-      color: white;
-      border: none;
-      padding: 4px 10px;
-      border-radius: 2px;
-      cursor: pointer;
-      font-size: 12px;
-    }
-    .pagination-btn.inactive { background: #ccc; color: #666; cursor: default; }
+        /* --- Main Content --- */
+        main {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-    /* Scroll-to-top button */
-    .scroll-to-top {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #1560a8;
-      color: white;
-      border: none;
-      border-radius: 50%;
-      width: 38px;
-      height: 38px;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    }
-    .scroll-to-top:hover { background: #114d8a; }
+        .card {
+            background-color: white;
+            width: 100%;
+            max-width: 1200px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
 
-    /* Tabs for pages */
-    .page { display: none; }
-    .page.active { display: block; }
+        .card-header {
+            text-align: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            background-color: #fcfcfc;
+        }
 
-    /* Invoice dropdown options highlight */
-    .gem-invoice-option-highlight { background: #1560a8; color: white; }
-  </style>
+        .card-header h2 {
+            font-size: 16px;
+            margin: 0;
+            color: #222;
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        /* Form Layout */
+        .section-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 10px;
+            margin-top: 25px;
+            color: #000;
+        }
+
+        .section-title:first-child {
+            margin-top: 0;
+        }
+
+        .row {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            align-items: flex-end;
+        }
+
+        .col {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col.auto {
+            flex: 0 1 auto;
+        }
+
+        label {
+            font-size: 12px;
+            margin-bottom: 5px;
+            color: #444;
+        }
+
+        .required {
+            color: red;
+        }
+
+        input[type="text"], select, input[type="file"] {
+            width: 100%;
+            padding: 7px 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            font-size: 13px;
+            color: #333;
+            outline: none;
+        }
+
+        input[type="text"]:focus, select:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+        }
+
+        .readonly {
+            background-color: var(--readonly-bg);
+            color: #6c757d;
+            pointer-events: none;
+        }
+
+        /* Specific Elements */
+        .gem-order-id {
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .gem-order-id strong {
+            color: #28a745; 
+        }
+        .gem-order-id a {
+            color: #0056b3;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .btn-default {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 6px 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .btn-default:hover {
+            background-color: #e2e6ea;
+        }
+
+        .btn-primary {
+            background-color: var(--btn-blue);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .btn-primary:hover {
+            background-color: #0069d9;
+        }
+
+        .text-center {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .warning-text {
+            color: red;
+            font-weight: bold;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;
+        }
+
+        table th {
+            background-color: #fff;
+            font-weight: bold;
+        }
+
+        .file-upload-wrapper {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            border-radius: 3px;
+            padding: 4px;
+            background: #fff;
+        }
+        .file-upload-wrapper input[type="file"] {
+            border: none;
+            padding: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a4f91;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+        }
+
+        .fab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0088cc;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        hr.divider {
+            border: 0;
+            border-top: 1px solid #eee;
+            margin: 25px 0;
+        }
+        
+    </style>
 </head>
 <body>
 
-<!-- ══════════════════ TOP HEADER ══════════════════ -->
-<header class="top-header">
-  <div class="logo-area">
-    <div class="logo-box">
-      <div class="hpcl-logo-text">हिन्दुस्तान पेट्रोलियम<br>कॉर्पोरेशन लिमिटेड</div>
-      <div class="hpcl-sub">Hindustan Petroleum<br>Corporation Limited</div>
-    </div>
-  </div>
-  <div class="site-title">HPCL Vendor Self Service</div>
-  <div class="user-info">
-    SHREE RAM TRAVELS AGENCY(50021528)<br>
-    <span class="vendor-kyv">Vendor KYV Pending</span>
-  </div>
-</header>
-
-<!-- ══════════════════ NAVBAR ══════════════════ -->
-<nav class="navbar">
-  <div class="nav-item"><a href="#" onclick="showPage('gem-invoice')">Home</a></div>
-
-  <div class="nav-item">
-    <a href="#">Invoices ▾</a>
-    <div class="dropdown-menu">
-      <a href="#" onclick="showPage('gem-invoice'); return false;">Submit Invoice</a>
-      <a href="#" onclick="showPage('gem-invoice'); return false;">Submit GeM Invoice</a>
-      <a href="#">Submit GeM Invoice through Auto-VIT <span class="badge-new">NEW</span></a>
-      <a href="#">Submit Credit Note</a>
-      <a href="#">Status Of Invoices</a>
-      <a href="#">Invoices On Hold</a>
-      <a href="#">Status Of Credit Notes</a>
-      <a href="#">GeM PO Exception Requests</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">Refund ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">Refund Requests</a>
-      <a href="#">Refund Status</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">Purchase Orders/Contracts ▾</a>
-    <div class="dropdown-menu">
-      <a href="#" onclick="showPage('po-details'); return false;">Purchase Orders</a>
-      <a href="#">Contracts</a>
-      <a href="#">Advance Requests</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">TDS ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">TDS Certificates</a>
-      <a href="#">Form 16A</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">e-Measurement Book ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">Submit MB</a>
-      <a href="#">MB Status</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">Reports ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">Payment Reports</a>
-      <a href="#">Invoice Reports</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">My Profile ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">Update Profile</a>
-      <a href="#">Change Password</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">Other Links ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">Useful Links</a>
-    </div>
-  </div>
-
-  <div class="nav-item">
-    <a href="#">Help &amp; Manuals ▾</a>
-    <div class="dropdown-menu">
-      <a href="#">User Manual</a>
-      <a href="#">FAQs</a>
-    </div>
-  </div>
-
-  <div class="nav-item"><a href="#">Logout</a></div>
-</nav>
-
-<!-- ══════════════════ PAGE: GeM Invoice Submission ══════════════════ -->
-<div id="page-gem-invoice" class="page active">
-  <div class="page-wrapper">
-    <div class="page-title">GeM Invoice Submission</div>
-
-    <!-- Search PO -->
-    <div class="search-po-row">
-      <div class="po-input-wrap">
-        <label class="field-label required">Search Purchase Order</label>
-        <input type="text" id="po-search" value="5400369100" />
-      </div>
-      <div class="gem-order-ids" id="gem-order-display">
-        <span>GeM Order Id(s):</span>
-        <a href="#">GEMC-511687726213281</a>
-      </div>
-      <div class="raise-po-btn">
-        <button class="btn-raise-po">Raise PO Exception</button>
-      </div>
-    </div>
-
-    <!-- GEM PO Table -->
-    <table class="gem-po-table">
-      <thead>
-        <tr>
-          <th>GEM PO No.</th>
-          <th>GEM PO date</th>
-          <th>Category</th>
-          <th>Billing Cycle</th>
-          <th>CDD</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>GEMC-511687726213281</td>
-          <td>12/06/2024</td>
-          <td>services</td>
-          <td>monthly</td>
-          <td>11/06/2027</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <!-- GEM Invoice Details -->
-    <div class="section-heading">GEM Invoice Details</div>
-
-    <div class="form-row">
-      <div class="col">
-        <label class="field-label required">GeM Invoices</label>
-        <select id="gem-invoices-select">
-          <option value="">Please Select Invoice</option>
-          <option>GEM-66840712</option>
-          <option>GEM-61816861</option>
-          <option>GEM-58483983</option>
-          <option>GEM-66262602</option>
-          <option>GEM-64344773</option>
-          <option>GEM-45999925</option>
-          <option>GEM-51555822</option>
-          <option>GEM-65882531</option>
-          <option>GEM-64500902</option>
-          <option>GEM-62392146</option>
-          <option>GEM-62151469</option>
-          <option>GEM-61613930</option>
-          <option style="background:#1560a8;color:white;">GEM-64344132</option>
-          <option>GEM-64349157</option>
-          <option>GEM-66075807</option>
-          <option>GEM-65139238</option>
-          <option>GEM-55666198</option>
-          <option>GEM-64344505</option>
-        </select>
-      </div>
-      <div class="col">
-        <label class="field-label">Tax Invoice No (GST)</label>
-        <input type="text" placeholder="Invoice Number" />
-      </div>
-      <div class="col">
-        <label class="field-label">Tax Invoice Date(DD/MM/YYYY)</label>
-        <input type="text" placeholder="Invoice Date" disabled />
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="col">
-        <label class="field-label">Tax Invoice Amount(GeM)</label>
-        <input type="text" placeholder="Invoice Amount" />
-      </div>
-      <div class="col">
-        <label class="field-label">Supplier GSTN Number(GeM)</label>
-        <input type="text" placeholder="GSTIN Number" disabled />
-      </div>
-      <div class="col"></div>
-    </div>
-
-    <!-- HPCL Location/Payment Details -->
-    <div class="section-heading">HPCL Location/Payment Details</div>
-
-    <div class="form-row">
-      <div class="col">
-        <label class="field-label required">Receiving Plant</label>
-        <select>
-          <option value="">Please Select</option>
-          <option>North West Retail Zone (7370)</option>
-        </select>
-      </div>
-      <div class="col">
-        <label class="field-label">Select Consignee <span style="color:red;">(Please select plant before selecting consignee.)</span></label>
-        <select disabled>
-          <option value=""></option>
-        </select>
-      </div>
-      <div class="col">
-        <label class="field-label required">Bank Account For Payment</label>
-        <select>
-          <option value="">Please Select</option>
-        </select>
-      </div>
-    </div>
-
-    <!-- Digital/e-Invoice Details -->
-    <div class="section-heading">Digital/e-Invoice Details</div>
-
-    <div class="form-row">
-      <div class="col">
-        <label class="field-label required">Type of Invoice</label>
-        <select>
-          <option value="">Select</option>
-          <option>Digital Invoice</option>
-          <option>e-Invoice</option>
-        </select>
-      </div>
-      <div class="col">
-        <label class="field-label">Upload Invoice</label>
-        <input type="file" style="display:inline;" /> 
-      </div>
-      <div class="col"></div>
-    </div>
-
-    <!-- Submit -->
-    <div class="submit-area">
-      <button class="btn-submit">Submit Invoice</button>
-    </div>
-  </div>
-
-  <footer>
-    <a href="#">Privacy Policy</a>
-  </footer>
-</div>
-
-<!-- ══════════════════ PAGE: Purchase Order Details ══════════════════ -->
-<div id="page-po-details" class="page">
-  <div class="page-wrapper">
-
-    <div class="card-section">
-      <div class="card-section-header">Purchase Order Details</div>
-      <div class="card-section-body">
-        <div class="form-row">
-          <div class="col">
-            <label class="field-label">PO Number</label>
-            <input type="text" value="5400369100" style="background:#dce8f7;" />
-          </div>
-          <div class="col">
-            <label class="field-label">PO Title</label>
-            <input type="text" value="TAXI FOR NWZ OFFICE" disabled />
-          </div>
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
         </div>
-        <div class="form-row">
-          <div class="col">
-            <label class="field-label">GeM(Government eMarketplace) PO</label>
-            <input type="text" placeholder="GeM Purchase Order" />
-          </div>
-          <div class="col">
-            <label class="field-label">Old PO Number</label>
-            <input type="text" disabled />
-          </div>
+        <div class="header-center">
+            <h1>HPCL Vendor Self Service</h1>
         </div>
-        <div>
-          <label class="field-label">PO Files Available for Download</label>
-          <ul style="margin-top:6px; margin-left:18px; font-size:12px;">
-            <li><a href="#" style="color:#1560a8;">5400369100_1.PDF</a></li>
-          </ul>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY(50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
         </div>
-      </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Invoices ▾</a></li>
+            <li><a href="#">Refund ▾</a></li>
+            <li><a href="#">Purchase Orders/Contracts ▾</a></li>
+            <li><a href="#">TDS ▾</a></li>
+            <li><a href="#">e-Measurement Book ▾</a></li>
+            <li><a href="#">Reports ▾</a></li>
+            <li><a href="#">My Profile ▾</a></li>
+            <li><a href="#">Other Links ▾</a></li>
+            <li><a href="#">Help & Manuals ▾</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>GeM Invoice Submission</h2>
+            </div>
+            <div class="card-body">
+                
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Search Purchase Order</label>
+                        <input type="text" value="5400369100">
+                    </div>
+                    <div class="col" style="justify-content: center; padding-top: 20px;">
+                        <div class="gem-order-id">
+                            <strong style="color: #28a745;">GeM Order Id(s):</strong> <a href="#">GEMC-511687726213281</a>
+                        </div>
+                    </div>
+                    <div class="col auto" style="justify-content: center; padding-top: 20px;">
+                        <button class="btn-default">Raise PO Exception</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>GEM PO No.</th>
+                            <th>GEM PO date</th>
+                            <th>Category</th>
+                            <th>Billing Cycle</th>
+                            <th>CDD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GEMC-511687726213281</td>
+                            <td>12/06/2024</td>
+                            <td>services</td>
+                            <td>monthly</td>
+                            <td>11/06/2027</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr class="divider">
+
+                <div class="section-title">GEM Invoice Details</div>
+                
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>GeM Invoices</label>
+                        <select>
+                            <option>Please Select Invoice</option>
+                            <option>GEM-69912288</option>
+                            <option>GEM-64344132</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Tax Invoice No (GST)</label>
+                        <input type="text" class="readonly" value="Invoice Number" readonly>
+                    </div>
+                    <div class="col">
+                        <label>Tax Invoice Date(DD/MM/YYYY)</label>
+                        <input type="text" class="readonly" value="Invoice Date" readonly>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Tax Invoice Amount(GeM)</label>
+                        <input type="text" class="readonly" value="Invoice Amount" readonly>
+                    </div>
+                    <div class="col">
+                        <label>Supplier GSTIN Number(GeM)</label>
+                        <input type="text" class="readonly" value="GSTIN Number" readonly>
+                    </div>
+                    <div class="col">
+                        </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">HPCL Location/Payment Details</div>
+
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Receiving Plant</label>
+                        <select>
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Select Consignee(<span class="warning-text">Please select plant before selecting consignee.</span>)</label>
+                        <select>
+                            <option></option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Bank Account For Payment</label>
+                        <select>
+                            <option>Please Select</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">Digital/e-Invoice Details</div>
+
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Type of Invoice</label>
+                        <select>
+                            <option>Select</option>
+                            <option>Digitally Signed Only</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Upload Invoice</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file">
+                        </div>
+                    </div>
+                    <div class="col">
+                        </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn-primary">Submit Invoice</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Privacy Policy
+    </footer>
+
+    <div class="fab">
+        &#9650;
     </div>
 
-    <div class="card-section">
-      <div class="card-section-header">Purchase Order Quantity Details</div>
-      <div class="card-section-body">
-        <div class="datatable-controls">
-          <div>
-            Show
-            <select style="width:60px; display:inline-block;">
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-            </select>
-            entries
-          </div>
-          <div>Search: <input type="text" style="width:160px; display:inline;" /></div>
-        </div>
-
-        <table class="po-details-table">
-          <thead>
-            <tr>
-              <th>Line Number ↕</th>
-              <th>Line Desc ↕</th>
-              <th>Rate ↕</th>
-              <th>Per Unit Rate ↕</th>
-              <th>Consignee ↕</th>
-              <th>Plant Name ↕</th>
-              <th>PO Quantity ↕</th>
-              <th>Quantity Received ↕</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>00010</td>
-              <td>HIRING OF CAR TOYOTA INNOVA CRYSTA 300</td>
-              <td>6397.14</td>
-              <td>1</td>
-              <td>SENGAR SAURABH SINGH</td>
-              <td>NORTH WEST RETAIL ZONE(7370)</td>
-              <td>2.0</td>
-              <td>0.0</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <div class="datatable-footer">
-          <div>Showing 1 to 1 of 1 entries</div>
-          <div>
-            <button class="pagination-btn inactive">Previous</button>
-            <button class="pagination-btn" style="background:#1560a8; margin:0 4px;">1</button>
-            <button class="pagination-btn inactive">Next</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <a href="#">Privacy Policy</a>
-  </footer>
-</div>
-
-<!-- Scroll to top -->
-<button class="scroll-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">▲</button>
-
-<script>
-  function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    var el = document.getElementById('page-' + name);
-    if (el) el.classList.add('active');
-  }
-
-  // Receiving Plant → enable Consignee
-  var plantSel = document.querySelector('.page#page-gem-invoice select');
-  // More specific: find receiving plant select
-  var allSelects = document.querySelectorAll('#page-gem-invoice select');
-  // allSelects[0]=gem-invoices, [1]=receiving plant, [2]=consignee, [3]=bank, [4]=type of invoice
-  var receivingPlant = allSelects[1];
-  var consigneeSel = allSelects[2];
-  if (receivingPlant && consigneeSel) {
-    receivingPlant.addEventListener('change', function() {
-      if (this.value) {
-        consigneeSel.disabled = false;
-        consigneeSel.innerHTML = '<option value="">Please Select</option><option>SENGAR SAURABH SINGH</option>';
-      } else {
-        consigneeSel.disabled = true;
-        consigneeSel.innerHTML = '<option value=""></option>';
-      }
-    });
-  }
-</script>
 </body>
 </html>
