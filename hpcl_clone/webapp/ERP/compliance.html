@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compliance Forms - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Tax & Compliance Forms</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Regulatory Export Formats</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-info">
+                    Select the required compliance module to generate standard CSV/PDF formats for your CA.
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Compliance Module</label>
+                        <select id="complianceModule">
+                            <option value="gst">GST Monthly Return (GSTR1 / 3B)</option>
+                            <option value="incomeTax">Income Tax Compliance Summary</option>
+                            <option value="itExpenses">Detailed Expenses for Income Tax</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Select Financial Quarter / Month</label>
+                        <input type="month">
+                    </div>
+                    <div class="col auto" style="flex-grow:0; display:flex; align-items:flex-end;">
+                        <button class="btn-success" style="margin-bottom:15px;"
+                            onclick="document.getElementById('complianceOutput').style.display='block'; return false;">Generate
+                            Export</button>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div id="complianceOutput" style="display:none;">
+                    <div class="section-title">GST Monthly Return - March 2026 Preview</div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Invoice Number</th>
+                                <th>Date</th>
+                                <th>Client Name</th>
+                                <th>GSTIN</th>
+                                <th>Taxable Value (₹)</th>
+                                <th>CGST (2.5%)</th>
+                                <th>SGST (2.5%)</th>
+                                <th>Total (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>INV-901</td>
+                                <td>20/02/2026</td>
+                                <td>Adani Group</td>
+                                <td>24AABCA5285Q1Z1</td>
+                                <td>4,000.00</td>
+                                <td>100.00</td>
+                                <td>100.00</td>
+                                <td>4,200.00</td>
+                            </tr>
+                            <tr>
+                                <td>INV-902</td>
+                                <td>26/02/2026</td>
+                                <td>Reliance Industries</td>
+                                <td>24AABCA5885Q1Z2</td>
+                                <td>8,095.24</td>
+                                <td>202.38</td>
+                                <td>202.38</td>
+                                <td>8,500.00</td>
+                            </tr>
+                            <tr>
+                                <td>INV-903</td>
+                                <td>01/03/2026</td>
+                                <td>TCS</td>
+                                <td>24AABCA5285Q1Z3</td>
+                                <td>2,910.00</td>
+                                <td>72.75</td>
+                                <td>72.75</td>
+                                <td>3,055.50</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-right fw-bold">Aggregate Summaries:</td>
+                                <td class="fw-bold">15,005.24</td>
+                                <td class="fw-bold">375.13</td>
+                                <td class="fw-bold">375.13</td>
+                                <td class="fw-bold text-success">15,755.50</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="text-center">
+                        <button class="btn-primary" onclick="alert('Downloading GST_Report_Mar2026.csv...');">Export CSV
+                            to CA</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

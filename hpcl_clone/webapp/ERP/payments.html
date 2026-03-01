@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Payments Tracker - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Payment Tracker</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Accounts Receivable</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-danger"
+                    style="display:flex; justify-content:space-between; align-items:center;">
+                    <span><strong>Nudge System:</strong> 1 Invoice is overdue by 15 days.</span>
+                    <button class="btn-danger btn-sm">Send Auto-Follow Up (WhatsApp)</button>
+                </div>
+
+                <div class="section-title">Post New Payment</div>
+                <div class="row">
+                    <div class="col">
+                        <label>Select Unpaid Invoice</label>
+                        <select>
+                            <option value="">-- Select Pending Invoice --</option>
+                            <option value="INV-902">INV-902 - Reliance Industries (₹8,500.00)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Payment Method</label>
+                        <select>
+                            <option value="NEFT">Bank Transfer (NEFT/RTGS)</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="Cash">Cash</option>
+                            <option value="UPI">UPI</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Transaction ID / Ref</label>
+                        <input type="text" placeholder="TXN...">
+                    </div>
+                    <div class="col auto" style="flex-grow:0; display:flex; align-items:flex-end;">
+                        <button class="btn-success" style="margin-bottom:15px;"
+                            onclick="alert('Payment Posted Successfully. Invoice marked as PAID.'); return false;">Post
+                            Payment</button>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">Payment Collection Tracker</div>
+                <div class="filter-bar">
+                    <div class="col">
+                        <label>Filter by Company</label>
+                        <select>
+                            <option value="All">All Companies</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Reliance">Reliance Industries</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Payment Status</label>
+                        <select>
+                            <option value="All">All Status</option>
+                            <option value="Pending">Pending Collection</option>
+                            <option value="Overdue">Overdue</option>
+                            <option value="Paid">Paid (Reconciled)</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0;">
+                        <button class="btn-primary" style="margin-bottom:0;">Search</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Inv No.</th>
+                            <th>Inv Date</th>
+                            <th>Company</th>
+                            <th>Amount (₹)</th>
+                            <th>Due Date</th>
+                            <th>Follow-up Setup</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>INV-902</td>
+                            <td>26/02/2026</td>
+                            <td>Reliance Industries</td>
+                            <td>8,500.00</td>
+                            <td>28/02/2026</td>
+                            <td>Every 3 Days</td>
+                            <td><span class="badge badge-danger">Overdue</span></td>
+                            <td><button class="btn-default btn-sm">Nudge Client</button></td>
+                        </tr>
+                        <tr>
+                            <td>INV-903</td>
+                            <td>01/03/2026</td>
+                            <td>TCS</td>
+                            <td>3,055.50</td>
+                            <td>05/03/2026</td>
+                            <td>Every 7 Days</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td><button class="btn-default btn-sm">Nudge Client</button></td>
+                        </tr>
+                        <tr>
+                            <td>INV-901</td>
+                            <td>20/02/2026</td>
+                            <td>Adani Group</td>
+                            <td>4,200.00</td>
+                            <td>25/02/2026</td>
+                            <td>Off (Paid)</td>
+                            <td><span class="badge badge-success">Paid</span></td>
+                            <td><a href="#" class="btn-default btn-sm">View Receipt</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

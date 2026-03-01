@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Duty Slip - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Enter Duty Slip</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Duty Slip Entry Form</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    Ensure all KM and Time entries match exactly with the physical duty slip submitted by the driver.
+                    This data controls Auto-Billing.
+                </div>
+
+                <div class="section-title">Link to Trip</div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Select Trip / Booking ID</label>
+                        <select>
+                            <option value="">-- Select Completed Trip --</option>
+                            <option value="TRP-1043">TRP-1043 - Adani Group (28/02/2026)</option>
+                            <option value="TRP-1042">TRP-1042 - TCS (27/02/2026)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Auto-filled Vehicle</label>
+                        <input type="text" class="readonly" value="GJ-01-CD-4567" readonly>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">Slip Details</div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Start Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Start Time</label>
+                        <input type="time">
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Starting KM</label>
+                        <input type="number" placeholder="0">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Drop Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Drop Time</label>
+                        <input type="time">
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Ending KM</label>
+                        <input type="number" placeholder="0">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Toll / Parking Charges (₹)</label>
+                        <input type="number" placeholder="Enter amount">
+                    </div>
+                    <div class="col">
+                        <label>Driver Allowance (₹)</label>
+                        <input type="number" placeholder="Enter amount">
+                    </div>
+                </div>
+
+                <hr class="divider">
+                <div class="section-title">Digital Copy</div>
+                <div class="row">
+                    <div class="col">
+                        <label>Upload Photo of Physical Slip (Optional but recommended)</label>
+                        <div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div>
+                    </div>
+                </div>
+
+
+                <div class="text-center">
+                    <button class="btn-primary"
+                        onclick="alert('Duty Slip Entered! Ready for Billing.'); window.location.href='duty_slips.html'; return false;">Save
+                        Duty Slip</button>
+                    &nbsp;&nbsp;
+                    <button class="btn-default" onclick="window.history.back();">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

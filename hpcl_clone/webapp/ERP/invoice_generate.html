@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Invoice - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Automated Billing</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Invoice Generator</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-info">
+                    Select an unbilled Duty Slip or Company to automatically generate pricing based on the configured
+                    rate cards.
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Select Unbilled Duty Slip</label>
+                        <select>
+                            <option value="">-- Select Completed & Logged Duty Slip --</option>
+                            <option value="DS-5012">DS-5012 - TCS - Amit Patel</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0; display:flex; align-items:flex-end;">
+                        <button class="btn-primary" style="margin-bottom:15px;"
+                            onclick="document.getElementById('billingPreview').style.display='block'; return false;">Calculate
+                            Bill</button>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div id="billingPreview" style="display:none;">
+                    <div class="section-title">Billing Preview & Calculation</div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>Company Auto-Matched</label>
+                            <input type="text" class="readonly" value="TCS" readonly>
+                        </div>
+                        <div class="col">
+                            <label>Trip Base Type</label>
+                            <input type="text" class="readonly" value="Local (8hrs x 80km)" readonly>
+                        </div>
+                        <div class="col">
+                            <label>Vehicle Type</label>
+                            <input type="text" class="readonly" value="Sedan (Dzire)" readonly>
+                        </div>
+                    </div>
+
+                    <table id="billTable">
+                        <thead>
+                            <tr>
+                                <th>Charge Description</th>
+                                <th>Quantity / Unit</th>
+                                <th>Rate (₹)</th>
+                                <th>Base Source</th>
+                                <th>Amount (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Base Package (8 Hrs / 80 KM)</td>
+                                <td>1 Package</td>
+                                <td>2,500.00</td>
+                                <td>TCS Rate Card</td>
+                                <td>2,500.00</td>
+                            </tr>
+                            <tr>
+                                <td>Extra KM Charge</td>
+                                <td>15 KM (Total 95 KM)</td>
+                                <td>12.00 / KM</td>
+                                <td>TCS Rate Card</td>
+                                <td>180.00</td>
+                            </tr>
+                            <tr>
+                                <td>Extra Hour Charge</td>
+                                <td>1 Hr (Total 9 Hrs)</td>
+                                <td>150.00 / Hr</td>
+                                <td>TCS Rate Card</td>
+                                <td>150.00</td>
+                            </tr>
+                            <tr>
+                                <td>Toll & Parking</td>
+                                <td>Actuals</td>
+                                <td>-</td>
+                                <td>Duty Slip</td>
+                                <td>80.00</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="4" class="text-right fw-bold">Subtotal (₹)</td>
+                                <td><input type="text" class="readonly" value="2,910.00" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-right fw-bold">GST (5%)</td>
+                                <td><input type="text" class="readonly" value="145.50" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" class="text-right fw-bold"
+                                    style="font-size:14px; color:var(--brand-blue);">Total Invoice Amount (₹)</td>
+                                <td><input type="text" class="readonly fw-bold" style="color:var(--brand-blue);"
+                                        value="3,055.50" readonly></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>Mark for Delivery Mode</label>
+                            <select>
+                                <option value="WhatsApp">WhatsApp (Primary)</option>
+                                <option value="Email">Email</option>
+                                <option value="GeM">GeM Portal</option>
+                                <option value="Physical">Physical Courier</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn-success"
+                            onclick="alert('Invoice INV-903 Generated and marked for WhatsApp Delivery!'); window.location.href='invoices.html'; return false;">Generate
+                            Invoice</button>
+                        &nbsp;&nbsp;
+                        <button class="btn-default">Save as Draft</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

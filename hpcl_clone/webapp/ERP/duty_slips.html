@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Duty Slips - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Duty Slips Tracker</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Submitted & Pending Duty Slips</h2>
+                <div class="actions">
+                    <a href="duty_slip_add.html" class="btn-success">+ Enter New Slip</a>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="filter-bar">
+                    <div class="col">
+                        <label>Filter by Company</label>
+                        <select>
+                            <option value="All">All Companies</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Reliance">Reliance Industries</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Billing Status</label>
+                        <select>
+                            <option value="All">All Status</option>
+                            <option value="Billed">Billed</option>
+                            <option value="Unbilled">Pending Billing</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0;">
+                        <button class="btn-primary" style="margin-bottom:0;">Search</button>
+                    </div>
+                </div>
+
+                <div class="section-title text-danger">⚠️ Missing Report - Trips Pending Slips</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trip ID</th>
+                            <th>Trip Date</th>
+                            <th>Driver</th>
+                            <th>Company</th>
+                            <th>Action Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TRP-1043</td>
+                            <td>28/02/2026</td>
+                            <td>Suresh Bhai</td>
+                            <td>Adani Group</td>
+                            <td>
+                                <a href="duty_slip_add.html" class="btn-danger btn-sm">Log Slip Extracted from
+                                    Driver</a>
+                                &nbsp;
+                                <button class="btn-default btn-sm">Send WhatsApp Reminder</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>TRP-1041</td>
+                            <td>26/02/2026</td>
+                            <td>Kishan Shah</td>
+                            <td>TCS</td>
+                            <td>
+                                <a href="duty_slip_add.html" class="btn-danger btn-sm">Log Slip Extracted from
+                                    Driver</a>
+                                &nbsp;
+                                <button class="btn-default btn-sm">Send WhatsApp Reminder</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr class="divider">
+
+                <div class="section-title">Submitted Duty Slips (Ready for Billing)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Slip ID</th>
+                            <th>Trip Ref</th>
+                            <th>Completion Date</th>
+                            <th>Driver</th>
+                            <th>Total KM</th>
+                            <th>Total Hrs</th>
+                            <th>Billing Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DS-5012</td>
+                            <td>TRP-1042</td>
+                            <td>27/02/2026</td>
+                            <td>Amit Patel</td>
+                            <td>95 KM</td>
+                            <td>9 Hrs</td>
+                            <td><span class="badge badge-warning">Unbilled</span></td>
+                            <td><a href="invoice_generate.html" class="btn-primary btn-sm">Generate Bill</a></td>
+                        </tr>
+                        <tr>
+                            <td>DS-5011</td>
+                            <td>TRP-1040</td>
+                            <td>25/02/2026</td>
+                            <td>Rajesh Kumar</td>
+                            <td>310 KM</td>
+                            <td>12 Hrs</td>
+                            <td><span class="badge badge-success">Billed (INV-902)</span></td>
+                            <td><a href="#" class="btn-default btn-sm">View Details</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <span>...</span>
+                    <a href="#">Next &raquo;</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

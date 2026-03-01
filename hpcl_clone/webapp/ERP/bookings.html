@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>All Bookings</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li class="active"><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Booking History & Tracker</h2>
+                <div class="actions">
+                    <a href="booking_add.html" class="btn-success">+ Log New Booking</a>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="filter-bar">
+                    <div class="col">
+                        <label>Filter by Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label>Filter by Status</label>
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Confirmed">Confirmed</option>
+                            <option value="Ongoing">Ongoing</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Filter by Company</label>
+                        <select>
+                            <option value="All">All Companies</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Reliance">Reliance Industries</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0;">
+                        <button class="btn-primary" style="margin-bottom:0;">Search</button>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Trip ID</th>
+                            <th>Date</th>
+                            <th>Client / Company</th>
+                            <th>Type</th>
+                            <th>Vehicle</th>
+                            <th>Driver</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>TRP-1045</td>
+                            <td>02/03/2026</td>
+                            <td>Reliance Industries</td>
+                            <td>Full Day (300km)</td>
+                            <td>GJ-01-AB-1234</td>
+                            <td>Rajesh Kumar</td>
+                            <td><span class="badge badge-success">Confirmed</span></td>
+                            <td><a href="#" class="btn-default btn-sm">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>TRP-1044</td>
+                            <td>01/03/2026</td>
+                            <td>TCS</td>
+                            <td>Local (8hrs x 80km)</td>
+                            <td>GJ-01-XY-9876</td>
+                            <td>Amit Patel</td>
+                            <td><span class="badge badge-info">Ongoing</span></td>
+                            <td><a href="#" class="btn-default btn-sm">Edit</a></td>
+                        </tr>
+                        <tr>
+                            <td>TRP-1043</td>
+                            <td>28/02/2026</td>
+                            <td>Adani Group</td>
+                            <td>Airport Drop</td>
+                            <td>GJ-01-CD-4567</td>
+                            <td>Suresh Bhai</td>
+                            <td><span class="badge badge-secondary">Completed</span></td>
+                            <td><a href="duty_slip_add.html" class="btn-primary btn-sm">Log Slip</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <span>...</span>
+                    <a href="#">Next &raquo;</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

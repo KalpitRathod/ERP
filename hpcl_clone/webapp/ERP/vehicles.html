@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Registry - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Vehicle Administration</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Fleet Registry & Availability</h2>
+                <div class="actions">
+                    <button class="btn-success">+ Register New Vehicle</button>
+                    <button class="btn-default">+ Add Driver Profile</button>
+                </div>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-info">
+                    Vehicles marked "Available" will dynamically appear in the Add Booking dropdown for the selected
+                    dates.
+                </div>
+
+                <div class="filter-bar">
+                    <div class="col">
+                        <label>Availability Checker (Date View)</label>
+                        <input type="date" value="2026-03-02">
+                    </div>
+                    <div class="col">
+                        <label>Filter by Vehicle Class</label>
+                        <select>
+                            <option value="All">All Classes</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Bus">Mini Bus / Tempo</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Status Filter</label>
+                        <select>
+                            <option value="All">All</option>
+                            <option value="Available">Available</option>
+                            <option value="Booked">Booked</option>
+                            <option value="Maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0;">
+                        <button class="btn-primary" style="margin-bottom:0;">Filter Roster</button>
+                    </div>
+                </div>
+
+                <div class="section-title">Schedule Visibility - Fleet Status (02/03/2026)</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Registration No.</th>
+                            <th>Class / Make</th>
+                            <th>Default Driver</th>
+                            <th>Status (Selected Date)</th>
+                            <th>Current Trip ID</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>GJ-01-AB-1234</td>
+                            <td>SUV (Innova Crysta)</td>
+                            <td>Rajesh Kumar <span class="text-muted">(9876543210)</span></td>
+                            <td><span class="badge badge-danger">Booked</span></td>
+                            <td>TRP-1045</td>
+                            <td><a href="#" class="btn-default btn-sm">Re-assign</a></td>
+                        </tr>
+                        <tr>
+                            <td>GJ-01-XY-9876</td>
+                            <td>Sedan (Maruti Dzire)</td>
+                            <td>Amit Patel <span class="text-muted">(8765432109)</span></td>
+                            <td><span class="badge badge-danger">Booked (Half Day)</span></td>
+                            <td>TRP-1046</td>
+                            <td><a href="#" class="btn-default btn-sm">Re-assign</a></td>
+                        </tr>
+                        <tr>
+                            <td>GJ-01-CD-4567</td>
+                            <td>SUV (Ertiga)</td>
+                            <td>-- Unassigned --</td>
+                            <td><span class="badge badge-success">Available</span></td>
+                            <td>--</td>
+                            <td><button class="btn-primary btn-sm">Assign Driver</button></td>
+                        </tr>
+                        <tr>
+                            <td>GJ-01-EF-1122</td>
+                            <td>Sedan (Hyundai Aura)</td>
+                            <td>Suresh Bhai <span class="text-muted">(7654321098)</span></td>
+                            <td><span class="badge badge-warning">Maintenance</span></td>
+                            <td>--</td>
+                            <td><button class="btn-default btn-sm">Mark Active</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

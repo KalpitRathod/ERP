@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Rate Cards - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Rate Cards Matrix</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Client Pricing Configuration</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    This database establishes the specific calculation numbers used during the <a
+                        href="invoice_generate.html">Auto-Billing</a> generator process.
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>Select Company Profile</label>
+                        <select id="companySelect">
+                            <option value="">-- Load Company Profile --</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Reliance">Reliance Industries</option>
+                            <option value="Adani">Adani Group</option>
+                        </select>
+                    </div>
+                    <div class="col auto" style="flex-grow:0; display:flex; align-items:flex-end;">
+                        <button class="btn-primary" style="margin-bottom:15px;"
+                            onclick="document.getElementById('rateConfig').style.display='block'; return false;">Load
+                            Tariffs</button>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div id="rateConfig" style="display:none;">
+                    <div class="section-title">Configure Tariff: TCS</div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Category / Class</th>
+                                <th>Package Type</th>
+                                <th>Base Fare (₹)</th>
+                                <th>Km Limit</th>
+                                <th>Hr Limit</th>
+                                <th>Extra Km (₹)</th>
+                                <th>Extra Hr (₹)</th>
+                                <th>Driver Allowance (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sedan</td>
+                                <td>Local Half-Day</td>
+                                <td><input type="number" style="width:90px;" value="1500" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="40" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="4" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="12" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="150" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="200" class="btn-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan</td>
+                                <td>Local Full-Day</td>
+                                <td><input type="number" style="width:90px;" value="2500" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="80" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="8" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="12" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="150" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="250" class="btn-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>SUV</td>
+                                <td>Local Full-Day</td>
+                                <td><input type="number" style="width:90px;" value="3500" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="80" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="8" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="15" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="200" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="300" class="btn-sm"></td>
+                            </tr>
+                            <tr>
+                                <td>Sedan/SUV</td>
+                                <td>Airport Drop</td>
+                                <td><input type="number" style="width:90px;" value="1200" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="30" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="3" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="12" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="150" class="btn-sm"></td>
+                                <td><input type="number" style="width:60px;" value="0" class="btn-sm"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-bottom:15px;">
+                        <button class="btn-default btn-sm" onclick="return false;">+ Add New Tariff Row</button>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>Default GST Config</label>
+                            <select>
+                                <option value="5">5% (Transport Category)</option>
+                                <option value="12">12%</option>
+                            </select>
+                        </div>
+                        <div class="col" style="flex:0 1 auto; display:flex; gap:10px; align-items:center;">
+                            <input type="checkbox" id="tollsInclude" checked>
+                            <label style="margin-bottom:0;" for="tollsInclude">Toll/Parking Extra on Actuals</label>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn-success"
+                            onclick="alert('Rates for TCS have been saved!'); return false;">Update
+                            Configuration</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Booking - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Add Booking</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li class="active"><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Log New Trip Booking</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="section-title">Client Details</div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Client / Company</label>
+                        <select>
+                            <option value="">-- Select Company --</option>
+                            <option value="TCS">TCS</option>
+                            <option value="Reliance">Reliance Industries</option>
+                            <option value="Adani">Adani Group</option>
+                            <option value="Wipro">Wipro</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Booking Channel</label>
+                        <select>
+                            <option value="Call">Phone Call</option>
+                            <option value="Email">Email</option>
+                            <option value="WhatsApp">WhatsApp</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Passenger Name</label>
+                        <input type="text" placeholder="e.g. John Doe">
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">Trip Planning & Categorization</div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Booking Type</label>
+                        <select>
+                            <option value="">-- Select Booking Type --</option>
+                            <option value="FullDay">Full Day (300 km)</option>
+                            <option value="Local">Local (8 hrs x 80 km)</option>
+                            <option value="Airport">Airport Pickup/Drop (3 hrs x 30 km)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>Start Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label>Pickup Time</label>
+                        <input type="time">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Pickup Location</label>
+                        <input type="text" placeholder="Enter Pickup Address">
+                    </div>
+                    <div class="col">
+                        <label>Drop Location</label>
+                        <input type="text" placeholder="Enter Drop Address">
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div class="section-title">Assignment & Notification</div>
+                <div class="alert alert-info">
+                    Select a vehicle to automatically notify the driver and send driver details to the client.
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Assign Vehicle (Check Availability)</label>
+                        <select>
+                            <option value="">-- View Available Vehicles --</option>
+                            <option value="v1">GJ-01-AB-1234 (Innova) - Available</option>
+                            <option value="v2">GJ-01-XY-9876 (Dzire) - Available</option>
+                            <option value="v3">GJ-01-CD-4567 (Ertiga) - Available</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Assign Driver</label>
+                        <input type="text" class="readonly" value="Auto-filled from Vehicle" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" style="flex:0 1 auto; display:flex; gap:10px; align-items:center;">
+                        <input type="checkbox" id="notifyDriver" checked>
+                        <label style="margin-bottom:0;" for="notifyDriver">Notify Driver automatically</label>
+                    </div>
+                    <div class="col" style="flex:0 1 auto; display:flex; gap:10px; align-items:center;">
+                        <input type="checkbox" id="notifyClient" checked>
+                        <label style="margin-bottom:0;" for="notifyClient">Send Driver Details to Client</label>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button class="btn-primary"
+                        onclick="alert('Booking Saved Successfully! Driver Notified.'); window.location.href='bookings.html'; return false;">Save
+                        Booking</button>
+                    &nbsp;&nbsp;
+                    <button class="btn-default" onclick="window.history.back();">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

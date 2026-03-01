@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports Dashboard - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Reports & Analytics</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Generate Business Reports</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="row">
+                    <div class="col">
+                        <label>Report Module</label>
+                        <select id="reportModule">
+                            <option value="sales">Sales Details</option>
+                            <option value="expenses">Expenses Details</option>
+                            <option value="payments">Payment Details</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Start Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col">
+                        <label>End Date</label>
+                        <input type="date">
+                    </div>
+                    <div class="col auto" style="flex-grow:0; display:flex; align-items:flex-end;">
+                        <button class="btn-primary" style="margin-bottom:15px;"
+                            onclick="document.getElementById('reportOutput').style.display='block'; return false;">Generate
+                            Report</button>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <div id="reportOutput" style="display:none;">
+                    <div class="section-title" style="display:flex; justify-content:space-between; align-items:center;">
+                        <span>Generated: Sales Details (March 2026)</span>
+                        <div class="actions">
+                            <button class="btn-default btn-sm">Export PDF</button>
+                            <button class="btn-default btn-sm">Export Excel</button>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid" style="margin-top:20px;">
+                        <div class="stat-card">
+                            <div class="stat-icon">📈</div>
+                            <div class="stat-value">₹8,50,000</div>
+                            <div class="stat-label">Total Billed Revenue</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-value text-success">₹6,20,000</div>
+                            <div class="stat-label">Total Collected</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-value text-danger">₹2,30,000</div>
+                            <div class="stat-label">Outstanding Receivables</div>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Client / Company</th>
+                                <th>Total Trips</th>
+                                <th>Billed Revenue</th>
+                                <th>Collected</th>
+                                <th>Pending</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Reliance Industries</td>
+                                <td>15</td>
+                                <td>₹2,50,000</td>
+                                <td>₹2,50,000</td>
+                                <td>₹0</td>
+                            </tr>
+                            <tr>
+                                <td>TCS</td>
+                                <td>12</td>
+                                <td>₹1,80,000</td>
+                                <td>₹1,00,000</td>
+                                <td>₹80,000</td>
+                            </tr>
+                            <tr>
+                                <td>Adani Group</td>
+                                <td>8</td>
+                                <td>₹4,20,000</td>
+                                <td>₹2,70,000</td>
+                                <td>₹1,50,000</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2" class="text-right fw-bold">Grand Totals:</td>
+                                <td class="fw-bold">₹8,50,000</td>
+                                <td class="fw-bold text-success">₹6,20,000</td>
+                                <td class="fw-bold text-danger">₹2,30,000</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>

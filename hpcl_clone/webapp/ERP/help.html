@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Manuals - Shree Ram Travels</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .manual-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: #fdfdfd;
+            border-left: 4px solid var(--brand-blue);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>Shree Ram Travels</span>
+                <span>Fleet & Booking Management System</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>Help & Training Manuals</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">Admin Portal</div>
+            <div class="badge-kyv" style="background-color: var(--success);">System Online</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="bookings.html">Booking ▾</a>
+                <ul class="dropdown">
+                    <li><a href="booking_add.html">Add Booking</a></li>
+                    <li><a href="bookings.html">All Bookings</a></li>
+                </ul>
+            </li>
+            <li><a href="duty_slips.html">Duty Slip ▾</a>
+                <ul class="dropdown">
+                    <li><a href="duty_slip_add.html">Enter Duty Slip</a></li>
+                    <li><a href="duty_slips.html">All Duty Slips</a></li>
+                </ul>
+            </li>
+            <li><a href="invoices.html">Invoice ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                    <li><a href="invoices.html">All Invoices</a></li>
+                </ul>
+            </li>
+            <li><a href="payments.html">Payment ▾</a>
+                <ul class="dropdown">
+                    <li><a href="payments.html">All Payments</a></li>
+                </ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Sales Details</a></li>
+                    <li><a href="reports.html">Expenses Details</a></li>
+                    <li><a href="reports.html">Payment Details</a></li>
+                    <li><a href="compliance.html">Compliance Forms</a></li>
+                    <li><a href="vehicles.html">Vehicle Registry</a></li>
+                    <li><a href="rate_cards.html">Rate Cards</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>System Operational Manuals</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="section-title">The "Brain" - Booking Workflow</div>
+                <div class="manual-card">
+                    <strong>1. How to Handle a New Request:</strong><br><br>
+                    - Navigate to <b>Booking > Add Booking</b>.<br>
+                    - If a call arrives, select the Client and log their request as Full Day, Local, or Airport.<br>
+                    - Immediately select a Vehicle from the dropdown to verify availability.<br>
+                    - Check the "Notify Driver" box—this sends an automatic SMS to the Driver and Client with details.
+                </div>
+
+                <div class="section-title">The "Hands" - Duty Slip Rules</div>
+                <div class="manual-card">
+                    <strong>2. Processing Completed Trips:</strong><br><br>
+                    - Review the <a href="duty_slips.html">Missing Report</a> on the Home Dashboard daily.<br>
+                    - Call drivers who have unsubmitted Duty Slips.<br>
+                    - Once received physically, go to <b>Duty Slip > Enter Duty Slip</b>.<br>
+                    - Enter exact Closing KM and Times—these numbers are required to power the automatic Billing engine.
+                </div>
+
+                <div class="section-title">The "Wallet" - Automated Invoicing</div>
+                <div class="manual-card">
+                    <strong>3. Generating Client Bills:</strong><br><br>
+                    - Go to <b>Invoice > Generate Invoice</b>.<br>
+                    - Every successfully completed Duty Slip sits in a pending-bill queue.<br>
+                    - Select the Duty Slip; the system automatically matches the assigned <a href="rate_cards.html">Rate
+                        Card</a> to calculate the amount.<br>
+                    - Process generation and designate if the bill must be sent via WhatsApp, Email, or the GeM Portal.
+                </div>
+
+                <div class="section-title">Nudge System - Payments</div>
+                <div class="manual-card">
+                    <strong>4. Ensuring Revenue Collection:</strong><br><br>
+                    - Visit <b>Payment > All Payments</b> to view Overdue Invoices.<br>
+                    - Use the <i>Nudge Client</i> buttons to prompt automatic follow-ups configured to company-specific
+                    delays (e.g. Every 7 days).<br>
+                    - When Bank updates reflect payment, post it immediately to mark the invoice as Paid in <a
+                        href="reports.html">Reports</a>.
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2026 Shree Ram Travels Agency. All rights reserved. | <a href="help.html">Support</a>
+    </footer>
+
+<script src="main.js"></script></body>
+
+</html>
