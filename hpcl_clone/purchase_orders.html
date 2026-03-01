@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - Purchase Orders & Contracts</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .po-detail-panel {
+            background: #f7f9fc;
+            border: 1px solid #dde0e7;
+            border-radius: 3px;
+            padding: 15px 18px;
+            margin-top: -10px;
+            margin-bottom: 15px;
+            font-size: 12px;
+            display: none;
+        }
+        .po-detail-panel .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .po-detail-panel .detail-item label { font-weight: bold; display: block; color: #555; margin-bottom: 2px; }
+        .expander { cursor: pointer; color: var(--hpcl-blue); font-weight: bold; user-select: none; }
+        .expander:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center"><h1>HPCL Vendor Self Service</h1></div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown"><li><a href="refund.html">Raise Refund Request</a></li></ul>
+            </li>
+            <li class="active"><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown">
+                    <li><a href="purchase_orders.html">View POs / Contracts</a></li>
+                </ul>
+            </li>
+            <li><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown"><li><a href="tds.html">TDS Certificates</a></li></ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown"><li><a href="emeasurement.html">Submit Measurement</a></li></ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown"><li><a href="reports.html">Generate Reports</a></li></ul>
+            </li>
+            <li><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown"><li><a href="my_profile.html">Profile &amp; KYV</a></li></ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown"><li><a href="other_links.html">External Portals</a></li></ul>
+            </li>
+            <li><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown"><li><a href="help.html">FAQ &amp; User Manuals</a></li></ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header"><h2>Purchase Orders / Contracts</h2></div>
+            <div class="card-body">
+
+                <!-- Filters -->
+                <div class="filter-bar">
+                    <div class="col">
+                        <label>PO Type</label>
+                        <select>
+                            <option>All</option>
+                            <option>Goods</option>
+                            <option>Services</option>
+                            <option>Works</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>From Date</label>
+                        <input type="date" value="2024-01-01">
+                    </div>
+                    <div class="col">
+                        <label>To Date</label>
+                        <input type="date" value="2025-03-01">
+                    </div>
+                    <div class="col">
+                        <label>Status</label>
+                        <select>
+                            <option>All</option>
+                            <option>Active</option>
+                            <option>Closed</option>
+                            <option>Expired</option>
+                            <option>Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>PO / GEM No.</label>
+                        <input type="text" placeholder="Search by PO or GEM No.">
+                    </div>
+                    <div class="col auto" style="padding-top:18px;">
+                        <button class="btn-primary">Search</button>
+                    </div>
+                </div>
+
+                <span class="text-muted" style="display:block; margin-bottom:10px;">Showing 5 records | Click PO No. to expand details</span>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>PO / Contract No.</th>
+                            <th>PO Date</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>PO Value (₹)</th>
+                            <th>Invoiced (₹)</th>
+                            <th>Pending (₹)</th>
+                            <th>Valid Upto</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="expander" onclick="toggleDetail('d1')">▶</td>
+                            <td>GEMC-511687726213281</td>
+                            <td>12/06/2024</td>
+                            <td>Services</td>
+                            <td>Transportation Services - Monthly</td>
+                            <td>18,00,000.00</td>
+                            <td>4,57,700.00</td>
+                            <td>13,42,300.00</td>
+                            <td>11/06/2027</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td>
+                                <a href="invoice_gem.html" class="btn-primary btn-sm">Submit Invoice</a>
+                            </td>
+                        </tr>
+                        <tr id="d1" class="po-detail-row" style="display:none;">
+                            <td colspan="11">
+                                <div class="po-detail-panel" style="display:block;">
+                                    <div class="detail-grid">
+                                        <div class="detail-item"><label>Company Code</label>H050</div>
+                                        <div class="detail-item"><label>Purchasing Org.</label>H050</div>
+                                        <div class="detail-item"><label>Purchasing Group</label>MT1</div>
+                                        <div class="detail-item"><label>Billing Cycle</label>Monthly</div>
+                                        <div class="detail-item"><label>Plant</label>Mumbai (MH01)</div>
+                                        <div class="detail-item"><label>Payment Terms</label>Net 30 Days</div>
+                                        <div class="detail-item"><label>Currency</label>INR</div>
+                                        <div class="detail-item"><label>GeM Contract ID</label>GEMC-511687726213281</div>
+                                    </div>
+                                    <div style="margin-top:10px;">
+                                        <a href="#" class="btn-default btn-sm">📄 Download PO PDF</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="expander" onclick="toggleDetail('d2')">▶</td>
+                            <td>GEMC-5116877262XXX</td>
+                            <td>10/03/2024</td>
+                            <td>Goods</td>
+                            <td>Office Supplies - Stationery</td>
+                            <td>2,50,000.00</td>
+                            <td>2,50,000.00</td>
+                            <td>0.00</td>
+                            <td>09/03/2025</td>
+                            <td><span class="badge badge-secondary">Closed</span></td>
+                            <td><a href="#" class="btn-default btn-sm">View</a></td>
+                        </tr>
+                        <tr id="d2" class="po-detail-row" style="display:none;">
+                            <td colspan="11">
+                                <div class="po-detail-panel" style="display:block;">
+                                    <div class="detail-grid">
+                                        <div class="detail-item"><label>Company Code</label>H050</div>
+                                        <div class="detail-item"><label>Plant</label>Delhi (DL01)</div>
+                                        <div class="detail-item"><label>Payment Terms</label>Advance (100%)</div>
+                                        <div class="detail-item"><label>Currency</label>INR</div>
+                                    </div>
+                                    <div style="margin-top:10px;">
+                                        <a href="#" class="btn-default btn-sm">📄 Download PO PDF</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="expander" onclick="toggleDetail('d3')">▶</td>
+                            <td>5400369100</td>
+                            <td>15/01/2024</td>
+                            <td>Services</td>
+                            <td>AMC – CCTV Maintenance</td>
+                            <td>1,80,000.00</td>
+                            <td>1,20,000.00</td>
+                            <td>60,000.00</td>
+                            <td>14/01/2026</td>
+                            <td><span class="badge badge-success">Active</span></td>
+                            <td><a href="#" class="btn-default btn-sm">View</a></td>
+                        </tr>
+                        <tr id="d3" class="po-detail-row" style="display:none;">
+                            <td colspan="11">
+                                <div class="po-detail-panel" style="display:block;">
+                                    <div class="detail-grid">
+                                        <div class="detail-item"><label>Company Code</label>H050</div>
+                                        <div class="detail-item"><label>Plant</label>Chennai (TN01)</div>
+                                        <div class="detail-item"><label>Payment Terms</label>Net 45 Days</div>
+                                        <div class="detail-item"><label>Currency</label>INR</div>
+                                    </div>
+                                    <div style="margin-top:10px;">
+                                        <a href="#" class="btn-default btn-sm">📄 Download PO PDF</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <span>«</span>
+                    <a href="#" class="active">1</a>
+                    <a href="#">2</a>
+                    <span>»</span>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+    <script>
+        function toggleDetail(id) {
+            var row = document.getElementById(id);
+            var expanders = document.querySelectorAll('.expander');
+            row.style.display = (row.style.display === 'none') ? 'table-row' : 'none';
+        }
+    </script>
+
+</body>
+</html>

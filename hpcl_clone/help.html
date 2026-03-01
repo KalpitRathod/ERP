@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - Help & Manuals</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .manual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .manual-card {
+            border: 1px solid #dde0e7;
+            border-radius: 4px;
+            padding: 18px 16px;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+        .manual-card .icon { font-size: 28px; }
+        .manual-card .title { font-weight: bold; font-size: 13px; color: var(--hpcl-blue); }
+        .manual-card .desc { font-size: 12px; color: #666; line-height: 1.5; }
+        .manual-card .size { font-size: 11px; color: #999; }
+        .search-bar { display: flex; gap: 10px; margin-bottom: 20px; }
+        .search-bar input { flex: 1; padding: 9px 14px; border: 1px solid #ccc; border-radius: 3px; font-size: 13px; }
+        .search-bar button { padding: 9px 18px; }
+        .helpdesk-box {
+            background: linear-gradient(135deg, #18488e, #2c6fba);
+            color: white;
+            padding: 24px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .helpdesk-box h3 { font-size: 16px; margin-bottom: 8px; }
+        .helpdesk-box p { font-size: 13px; opacity: 0.9; margin-bottom: 14px; }
+        .helpdesk-box .info-row { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        .helpdesk-box .info-item { font-size: 13px; }
+        .helpdesk-box .info-item strong { display: block; font-size: 15px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center"><h1>HPCL Vendor Self Service</h1></div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown"><li><a href="refund.html">Raise Refund Request</a></li></ul>
+            </li>
+            <li><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown"><li><a href="purchase_orders.html">View POs / Contracts</a></li></ul>
+            </li>
+            <li><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown"><li><a href="tds.html">TDS Certificates</a></li></ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown"><li><a href="emeasurement.html">Submit Measurement</a></li></ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown"><li><a href="reports.html">Generate Reports</a></li></ul>
+            </li>
+            <li><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown"><li><a href="my_profile.html">Profile &amp; KYV</a></li></ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown"><li><a href="other_links.html">External Portals</a></li></ul>
+            </li>
+            <li class="active"><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown"><li><a href="help.html">FAQ &amp; User Manuals</a></li></ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header"><h2>Help &amp; Manuals</h2></div>
+            <div class="card-body">
+
+                <!-- Search -->
+                <div class="search-bar">
+                    <input type="text" placeholder="Search FAQs, topics, or manuals...">
+                    <button class="btn-primary">Search</button>
+                </div>
+
+                <!-- User Manuals -->
+                <div class="section-title">📚 User Manuals &amp; Guides</div>
+                <div class="manual-grid">
+                    <div class="manual-card">
+                        <div class="icon">📄</div>
+                        <div class="title">Vendor Self Service – Complete Guide</div>
+                        <div class="desc">End-to-end guide for using the VSS portal including login, invoice, TDS, and profile.</div>
+                        <div class="size">PDF · 4.2 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                    <div class="manual-card">
+                        <div class="icon">🧾</div>
+                        <div class="title">GeM Invoice Submission Manual</div>
+                        <div class="desc">Step-by-step guide for submitting GeM invoices, including IRN and e-invoice requirements.</div>
+                        <div class="size">PDF · 1.8 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                    <div class="manual-card">
+                        <div class="icon">📊</div>
+                        <div class="title">TDS Certificate – How to Download</div>
+                        <div class="desc">Quick guide to locate, view, and download TDS certificates from the portal.</div>
+                        <div class="size">PDF · 0.9 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                    <div class="manual-card">
+                        <div class="icon">📏</div>
+                        <div class="title">e-Measurement Book User Guide</div>
+                        <div class="desc">How to submit MB entries for works contracts including item-wise measurement tables.</div>
+                        <div class="size">PDF · 1.1 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                    <div class="manual-card">
+                        <div class="icon">🔄</div>
+                        <div class="title">Refund Request Procedure</div>
+                        <div class="desc">How to raise refund requests, track status, and ensure proper documentation.</div>
+                        <div class="size">PDF · 0.7 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                    <div class="manual-card">
+                        <div class="icon">🏷️</div>
+                        <div class="title">KYV Verification – Document Checklist</div>
+                        <div class="desc">List of required KYV documents, formats, and submission instructions.</div>
+                        <div class="size">PDF · 0.5 MB</div>
+                        <a href="#" class="btn-success btn-sm">⬇ Download</a>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- FAQ -->
+                <div class="section-title">❓ Frequently Asked Questions</div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I submit a GeM invoice on HPCL VSS portal?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <ol style="padding-left:18px; line-height:1.8;">
+                            <li>Login to the VSS portal using your Vendor Code and password.</li>
+                            <li>Navigate to <strong>Invoices → GeM Invoice Submission</strong>.</li>
+                            <li>Enter your Purchase Order number in the search box and press Enter.</li>
+                            <li>Select the GeM Invoice from the dropdown (GEM-XXXXXXXX).</li>
+                            <li>Fill in the HPCL Location/Payment Details (Receiving Plant, Consignee, Bank Account).</li>
+                            <li>Select the Type of Invoice and upload the signed invoice PDF.</li>
+                            <li>Click <strong>Submit Invoice</strong>. You will receive a confirmation number.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Why is my invoice showing "Pending" status for a long time?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        Invoice processing typically takes 5–10 working days. Status may remain "Pending" due to:
+                        <ul style="padding-left:18px; margin-top:8px; line-height:1.8;">
+                            <li>Missing or incorrect supporting documents</li>
+                            <li>KYV verification incomplete (check My Profile)</li>
+                            <li>Bank account details not verified</li>
+                            <li>Discrepancy in GSTIN or invoice amount vs. GeM portal data</li>
+                            <li>Approval pending from the consignee / engineer-in-charge</li>
+                        </ul>
+                        Contact the HPCL Accounts Payable team at <strong>accounts.payable@hpcl.in</strong> if it has been more than 10 working days.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I complete my KYV (Know Your Vendor) verification?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <ol style="padding-left:18px; line-height:1.8;">
+                            <li>Go to <strong>My Profile → KYV Documents</strong> tab.</li>
+                            <li>Upload each required document (PAN Card, GST Certificate, Cancelled Cheque, Trade License).</li>
+                            <li>Documents should be in PDF or clear image format. Max size: 2 MB per file.</li>
+                            <li>Click <strong>Submit KYV Documents</strong> after uploading all documents.</li>
+                            <li>KYV verification is typically completed within 3 working days.</li>
+                            <li>You will receive an email notification once verified.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I download my TDS certificate (Form 16A)?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <p>TDS certificates are generated quarterly after TDS return filing by HPCL.</p>
+                        <ol style="padding-left:18px; margin-top:8px; line-height:1.8;">
+                            <li>Navigate to <strong>TDS → TDS Certificates</strong>.</li>
+                            <li>Select the Financial Year and Quarter from the filters.</li>
+                            <li>Click <strong>Search</strong> to view available certificates.</li>
+                            <li>Click the <strong>Download</strong> button next to the relevant certificate.</li>
+                        </ol>
+                        <p style="margin-top:8px;">Certificates are usually available by the 15th of the month following the quarter end. If unavailable, check the TRACES portal directly.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        What is the e-Measurement Book (MB) and when do I need to submit it?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        The e-Measurement Book (MB) is a digital record of the quantum of work or services measured at site. It is required for:
+                        <ul style="padding-left:18px; margin-top:8px; line-height:1.8;">
+                            <li>Works contracts (civil, electrical, mechanical services)</li>
+                            <li>Monthly running account (RA) bills</li>
+                            <li>Any PO where payment is linked to measured quantities</li>
+                        </ul>
+                        <p style="margin-top:8px;">MB entries must be submitted within <strong>7 days</strong> of the measurement date. The Engineer-in-Charge at HPCL must counter-sign the MB before invoicing.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Can I raise a refund request? What are the conditions?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        Refund requests can be raised under the following conditions:
+                        <ul style="padding-left:18px; margin-top:8px; line-height:1.8;">
+                            <li>Excess payment received compared to invoice value</li>
+                            <li>Duplicate payment by HPCL</li>
+                            <li>Services or goods not rendered / rejected</li>
+                            <li>Price discrepancy between PO and invoice</li>
+                        </ul>
+                        <p style="margin-top:8px;">Go to <strong>Refund → Raise Refund Request</strong>. Select the relevant invoice, enter the refund amount and reason, upload supporting documents, and submit. Refund processing typically takes 15–20 working days.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        How do I update or add a bank account for payment?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <ol style="padding-left:18px; line-height:1.8;">
+                            <li>Go to <strong>My Profile → Bank Accounts</strong> tab.</li>
+                            <li>Click <strong>+ Add Bank Account</strong> to add a new account.</li>
+                            <li>Fill in the Account No., IFSC code, and branch details.</li>
+                            <li>Upload a cancelled cheque (clear scan, PDF or image format).</li>
+                            <li>Click <strong>Update Bank Details</strong>.</li>
+                            <li>The new account will be verified by HPCL Finance within 2–3 working days before it can be used for payments.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        I forgot my password. How do I reset it?
+                        <span>▼</span>
+                    </div>
+                    <div class="accordion-body">
+                        <ol style="padding-left:18px; line-height:1.8;">
+                            <li>On the login page, click <strong>Forgot Password</strong>.</li>
+                            <li>Enter your Vendor Code (SAP Vendor No.) and registered email address.</li>
+                            <li>You will receive a one-time password (OTP) on your registered email/mobile.</li>
+                            <li>Use the OTP to reset your password.</li>
+                            <li>Alternatively, contact the HPCL Vendor Helpdesk at <strong>1800-22-4722</strong>.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Helpdesk Box -->
+                <div class="helpdesk-box">
+                    <h3>📞 Still Need Help? Contact Our Helpdesk</h3>
+                    <p>Our vendor support team is available Monday to Saturday, 9:00 AM – 6:00 PM (IST)</p>
+                    <div class="info-row">
+                        <div class="info-item">
+                            Helpdesk Number
+                            <strong>1800-22-4722 (Toll Free)</strong>
+                        </div>
+                        <div class="info-item">
+                            Email Support
+                            <strong>vendor.support@hpcl.in</strong>
+                        </div>
+                        <div class="info-item">
+                            Working Hours
+                            <strong>Mon–Sat, 9 AM – 6 PM</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+    <script>
+        function toggleAccordion(header) {
+            const body = header.nextElementSibling;
+            const arrow = header.querySelector('span');
+            body.classList.toggle('open');
+            arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+        }
+    </script>
+
+</body>
+</html>

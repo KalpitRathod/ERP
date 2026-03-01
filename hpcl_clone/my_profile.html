@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - My Profile & KYV</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .bank-item {
+            border: 1px solid #dde0e7;
+            border-radius: 3px;
+            padding: 14px 18px;
+            margin-bottom: 14px;
+            background: #f9fbff;
+            position: relative;
+        }
+        .bank-item .bank-title {
+            font-weight: bold;
+            color: var(--hpcl-blue);
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        .bank-item .primary-badge {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            background: var(--success);
+            color: white;
+            font-size: 11px;
+            padding: 2px 7px;
+            border-radius: 10px;
+        }
+
+        .tab-btns { display: flex; gap: 0; margin-bottom: -1px; }
+        .tab-btn {
+            padding: 8px 20px;
+            background: #e9ecef;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            cursor: pointer;
+            font-size: 13px;
+            border-radius: 3px 3px 0 0;
+        }
+        .tab-btn.active { background: white; border-bottom: 1px solid white; font-weight: bold; color: var(--hpcl-blue); }
+        .tab-content { display: none; border: 1px solid #ccc; border-radius: 0 3px 3px 3px; padding: 20px; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center"><h1>HPCL Vendor Self Service</h1></div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown"><li><a href="refund.html">Raise Refund Request</a></li></ul>
+            </li>
+            <li><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown"><li><a href="purchase_orders.html">View POs / Contracts</a></li></ul>
+            </li>
+            <li><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown"><li><a href="tds.html">TDS Certificates</a></li></ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown"><li><a href="emeasurement.html">Submit Measurement</a></li></ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown"><li><a href="reports.html">Generate Reports</a></li></ul>
+            </li>
+            <li class="active"><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown"><li><a href="my_profile.html">Profile &amp; KYV</a></li></ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown"><li><a href="other_links.html">External Portals</a></li></ul>
+            </li>
+            <li><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown"><li><a href="help.html">FAQ &amp; User Manuals</a></li></ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header"><h2>My Profile &amp; KYV Status</h2></div>
+            <div class="card-body">
+
+                <!-- KYV Status Bar -->
+                <div class="section-title">KYV (Know Your Vendor) Status</div>
+                <div class="alert alert-warning" style="margin-bottom:15px;">
+                    Your KYV verification is <strong>Pending</strong>. Please upload the required documents below and submit for approval.
+                    Invoice submission may be blocked until KYV is approved.
+                </div>
+                <div class="kyv-status-bar">
+                    <div class="kyv-doc-item"><span class="dot-green"></span> PAN Card – Uploaded &amp; Verified</div>
+                    <div class="kyv-doc-item"><span class="dot-red"></span> GST Certificate – Not Uploaded</div>
+                    <div class="kyv-doc-item"><span class="dot-orange"></span> MSME Certificate – Under Review</div>
+                    <div class="kyv-doc-item"><span class="dot-red"></span> Cancelled Cheque – Not Uploaded</div>
+                    <div class="kyv-doc-item"><span class="dot-green"></span> Trade License – Verified</div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tab-btns">
+                    <button class="tab-btn active" onclick="switchTab('vendor')">Vendor Details</button>
+                    <button class="tab-btn" onclick="switchTab('bank')">Bank Accounts</button>
+                    <button class="tab-btn" onclick="switchTab('kyv')">KYV Documents</button>
+                    <button class="tab-btn" onclick="switchTab('contact')">Contact &amp; Users</button>
+                </div>
+
+                <!-- Tab: Vendor Details -->
+                <div id="tab-vendor" class="tab-content active">
+                    <div class="row">
+                        <div class="col">
+                            <label>Vendor Name</label>
+                            <input type="text" class="readonly" value="SHREE RAM TRAVELS AGENCY" readonly>
+                        </div>
+                        <div class="col">
+                            <label>Vendor Code (SAP)</label>
+                            <input type="text" class="readonly" value="50021528" readonly>
+                        </div>
+                        <div class="col">
+                            <label>Vendor Type</label>
+                            <input type="text" class="readonly" value="Service Provider" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>PAN Number</label>
+                            <input type="text" class="readonly" value="AABCS1429B" readonly>
+                        </div>
+                        <div class="col">
+                            <label>GSTIN Number</label>
+                            <input type="text" value="27AABCS1429B1Z2">
+                        </div>
+                        <div class="col">
+                            <label>GeM Seller ID</label>
+                            <input type="text" class="readonly" value="GEM-2022-VN-12034921" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Registered Address</label>
+                            <textarea class="readonly" readonly>Shop No. 12, Laxmi Complex, MG Road, Mumbai - 400001, Maharashtra</textarea>
+                        </div>
+                        <div class="col">
+                            <label>Category</label>
+                            <input type="text" class="readonly" value="MSME – Micro Enterprise" readonly>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn-primary">Update Profile</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Bank Accounts -->
+                <div id="tab-bank" class="tab-content">
+                    <div class="bank-item">
+                        <div class="bank-title">State Bank of India</div>
+                        <span class="primary-badge">Primary</span>
+                        <div class="row">
+                            <div class="col">
+                                <label>Account No.</label>
+                                <input type="text" value="XXXX XXXX 4821">
+                            </div>
+                            <div class="col">
+                                <label>IFSC Code</label>
+                                <input type="text" value="SBIN0001234">
+                            </div>
+                            <div class="col">
+                                <label>Branch</label>
+                                <input type="text" value="MG Road, Mumbai">
+                            </div>
+                            <div class="col">
+                                <label>Account Type</label>
+                                <select>
+                                    <option selected>Current</option>
+                                    <option>Savings</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Upload Cancelled Cheque</label>
+                            <div class="file-upload-wrapper" style="margin-top:5px;"><input type="file" accept=".pdf,.jpg,.png"></div>
+                        </div>
+                    </div>
+
+                    <div class="bank-item">
+                        <div class="bank-title">HDFC Bank</div>
+                        <div class="row">
+                            <div class="col">
+                                <label>Account No.</label>
+                                <input type="text" value="XXXX XXXX 9032">
+                            </div>
+                            <div class="col">
+                                <label>IFSC Code</label>
+                                <input type="text" value="HDFC0004567">
+                            </div>
+                            <div class="col">
+                                <label>Branch</label>
+                                <input type="text" value="Fort, Mumbai">
+                            </div>
+                            <div class="col">
+                                <label>Account Type</label>
+                                <select>
+                                    <option selected>Current</option>
+                                    <option>Savings</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label>Upload Cancelled Cheque</label>
+                            <div class="file-upload-wrapper" style="margin-top:5px;"><input type="file" accept=".pdf,.jpg,.png"></div>
+                        </div>
+                    </div>
+
+                    <button class="btn-default">+ Add Bank Account</button>
+                    <div class="text-center">
+                        <button class="btn-primary">Update Bank Details</button>
+                    </div>
+                </div>
+
+                <!-- Tab: KYV Documents -->
+                <div id="tab-kyv" class="tab-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Document Type</th>
+                                <th>Required</th>
+                                <th>Uploaded On</th>
+                                <th>Status</th>
+                                <th>Upload / Re-upload</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PAN Card</td>
+                                <td>Yes</td>
+                                <td>10/01/2025</td>
+                                <td><span class="badge badge-success">Verified</span></td>
+                                <td><div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div></td>
+                                <td><a href="#" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>GST Registration Certificate</td>
+                                <td>Yes</td>
+                                <td>—</td>
+                                <td><span class="badge badge-danger">Not Uploaded</span></td>
+                                <td><div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div></td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>MSME / Udyam Certificate</td>
+                                <td>No</td>
+                                <td>15/02/2025</td>
+                                <td><span class="badge badge-warning">Under Review</span></td>
+                                <td><div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div></td>
+                                <td><a href="#" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>Cancelled Bank Cheque</td>
+                                <td>Yes</td>
+                                <td>—</td>
+                                <td><span class="badge badge-danger">Not Uploaded</span></td>
+                                <td><div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div></td>
+                                <td>—</td>
+                            </tr>
+                            <tr>
+                                <td>Trade License / Incorporation Cert.</td>
+                                <td>Yes</td>
+                                <td>10/01/2025</td>
+                                <td><span class="badge badge-success">Verified</span></td>
+                                <td><div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.png"></div></td>
+                                <td><a href="#" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center">
+                        <button class="btn-primary">Submit KYV Documents</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Contact & Users -->
+                <div id="tab-contact" class="tab-content">
+                    <div class="section-title">Primary Contact</div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Contact Person Name</label>
+                            <input type="text" value="Ramesh Agarwal">
+                        </div>
+                        <div class="col">
+                            <label>Designation</label>
+                            <input type="text" value="Proprietor">
+                        </div>
+                        <div class="col">
+                            <label>Mobile No.</label>
+                            <input type="tel" value="9876543210">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Email Address</label>
+                            <input type="email" value="ramesh@shreeram.co.in">
+                        </div>
+                        <div class="col">
+                            <label>Alternate Phone</label>
+                            <input type="tel" value="022-12345678">
+                        </div>
+                        <div class="col"></div>
+                    </div>
+                    <hr class="divider">
+                    <div class="section-title">Portal User</div>
+                    <div class="row">
+                        <div class="col">
+                            <label>Username / Login ID</label>
+                            <input type="text" class="readonly" value="50021528" readonly>
+                        </div>
+                        <div class="col">
+                            <label>Change Password</label>
+                            <input type="password" placeholder="Enter new password">
+                        </div>
+                        <div class="col">
+                            <label>Confirm Password</label>
+                            <input type="password" placeholder="Re-enter new password">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn-primary">Save Contact Details</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+    <script>
+        function switchTab(name) {
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('tab-' + name).classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

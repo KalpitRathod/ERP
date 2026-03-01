@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - Reports</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .report-preview { display: none; margin-top: 20px; }
+        .report-preview.visible { display: block; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center"><h1>HPCL Vendor Self Service</h1></div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown"><li><a href="refund.html">Raise Refund Request</a></li></ul>
+            </li>
+            <li><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown"><li><a href="purchase_orders.html">View POs / Contracts</a></li></ul>
+            </li>
+            <li><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown"><li><a href="tds.html">TDS Certificates</a></li></ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown"><li><a href="emeasurement.html">Submit Measurement</a></li></ul>
+            </li>
+            <li class="active"><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown"><li><a href="reports.html">Generate Reports</a></li></ul>
+            </li>
+            <li><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown"><li><a href="my_profile.html">Profile &amp; KYV</a></li></ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown"><li><a href="other_links.html">External Portals</a></li></ul>
+            </li>
+            <li><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown"><li><a href="help.html">FAQ &amp; User Manuals</a></li></ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header"><h2>Generate Reports</h2></div>
+            <div class="card-body">
+
+                <div class="section-title">Report Configuration</div>
+                <div class="row">
+                    <div class="col">
+                        <label><span class="required">*</span>Report Type</label>
+                        <select id="reportType">
+                            <option value="">-- Select Report --</option>
+                            <option value="invoice_status">Invoice Status Report</option>
+                            <option value="payment_status">Payment Status Report</option>
+                            <option value="tds_summary">TDS Summary Report</option>
+                            <option value="po_summary">PO / Contract Summary</option>
+                            <option value="refund_status">Refund Status Report</option>
+                            <option value="mb_entries">Measurement Book Entries</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>From Date</label>
+                        <input type="date" value="2025-01-01">
+                    </div>
+                    <div class="col">
+                        <label><span class="required">*</span>To Date</label>
+                        <input type="date" value="2025-03-01">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Plant / Location</label>
+                        <select>
+                            <option>All Plants</option>
+                            <option>Mumbai (MH01)</option>
+                            <option>Delhi (DL01)</option>
+                            <option>Chennai (TN01)</option>
+                            <option>Kolkata (WB01)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Status Filter</label>
+                        <select>
+                            <option>All</option>
+                            <option>Pending</option>
+                            <option>Approved</option>
+                            <option>Paid</option>
+                            <option>Rejected</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Financial Year</label>
+                        <select>
+                            <option>2024-25</option>
+                            <option>2023-24</option>
+                            <option>2022-23</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; margin-top:5px; margin-bottom:25px;">
+                    <button class="btn-primary" onclick="showReport()">Generate Report</button>
+                    <button class="btn-default">Reset Filters</button>
+                    <button class="btn-success" onclick="return false;">⬇ Export to Excel</button>
+                    <button class="btn-default" onclick="return false;">🖨 Print</button>
+                </div>
+
+                <!-- Report Preview -->
+                <div class="report-preview visible" id="reportPreviewSection">
+                    <hr class="divider">
+                    <div class="section-title">Report Preview: Invoice Status Report &nbsp; <span class="text-muted" style="font-weight:normal;">Period: 01/01/2025 – 01/03/2025 | Plant: All</span></div>
+
+                    <!-- Summary Row -->
+                    <div class="stat-grid" style="margin-bottom:20px;">
+                        <div class="stat-card">
+                            <div class="stat-icon">📄</div>
+                            <div class="stat-value">7</div>
+                            <div class="stat-label">Total Invoices</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">💰</div>
+                            <div class="stat-value">₹5,36,700</div>
+                            <div class="stat-label">Total Invoice Value</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <div class="stat-value">₹4,12,200</div>
+                            <div class="stat-label">Approved / Paid</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏳</div>
+                            <div class="stat-value">₹1,24,500</div>
+                            <div class="stat-label">Pending / Under Review</div>
+                        </div>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Invoice No.</th>
+                                <th>Invoice Date</th>
+                                <th>PO No.</th>
+                                <th>Plant</th>
+                                <th>Amount (₹)</th>
+                                <th>GST (₹)</th>
+                                <th>Total (₹)</th>
+                                <th>Payment Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>GEM-69912288</td>
+                                <td>01/03/2025</td>
+                                <td>GEMC-511687726213281</td>
+                                <td>Mumbai</td>
+                                <td>1,05,508.47</td>
+                                <td>18,991.53</td>
+                                <td>1,24,500.00</td>
+                                <td>—</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>GEM-64344132</td>
+                                <td>20/02/2025</td>
+                                <td>GEMC-511687726213281</td>
+                                <td>Mumbai</td>
+                                <td>83,220.34</td>
+                                <td>14,979.66</td>
+                                <td>98,200.00</td>
+                                <td>18/03/2025</td>
+                                <td><span class="badge badge-success">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>GEM-61122034</td>
+                                <td>15/01/2025</td>
+                                <td>GEMC-511687726213281</td>
+                                <td>Mumbai</td>
+                                <td>72,033.90</td>
+                                <td>12,966.10</td>
+                                <td>85,000.00</td>
+                                <td>14/02/2025</td>
+                                <td><span class="badge badge-success">Paid</span></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="5" class="text-right fw-bold">Total</td>
+                                <td class="fw-bold">2,60,762.71</td>
+                                <td class="fw-bold">46,937.29</td>
+                                <td class="fw-bold">3,07,700.00</td>
+                                <td colspan="2"></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+    <script>
+        function showReport() {
+            document.getElementById('reportPreviewSection').classList.add('visible');
+            document.getElementById('reportPreviewSection').scrollIntoView({behavior:'smooth'});
+        }
+    </script>
+
+</body>
+</html>

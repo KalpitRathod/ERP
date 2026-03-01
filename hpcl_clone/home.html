@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .welcome-bar {
+            background: linear-gradient(135deg, var(--hpcl-blue), #2c6fba);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 3px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .welcome-bar h3 { margin: 0; font-size: 16px; font-weight: bold; }
+        .welcome-bar p  { margin: 4px 0 0; font-size: 12px; opacity: 0.85; }
+        .welcome-bar .login-info { text-align: right; font-size: 12px; opacity: 0.85; }
+
+        .notice-board {
+            background: #fffbe6;
+            border: 1px solid #ffe58f;
+            border-left: 4px solid #faad14;
+            padding: 12px 16px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            font-size: 12px;
+        }
+        .notice-board strong { display: block; margin-bottom: 6px; font-size: 13px; color: #aa6600; }
+        .notice-board ul { padding-left: 18px; }
+        .notice-board li { margin-bottom: 4px; }
+
+        .activity-table-wrapper { overflow-x: auto; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center">
+            <h1>HPCL Vendor Self Service</h1>
+        </div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li class="active"><a href="home.html">Home</a></li>
+            <li>
+                <a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown">
+                    <li><a href="refund.html">Raise Refund Request</a></li>
+                </ul>
+            </li>
+            <li><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown">
+                    <li><a href="purchase_orders.html">View POs / Contracts</a></li>
+                </ul>
+            </li>
+            <li><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown">
+                    <li><a href="tds.html">TDS Certificates</a></li>
+                </ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown">
+                    <li><a href="emeasurement.html">Submit Measurement</a></li>
+                </ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown">
+                    <li><a href="reports.html">Generate Reports</a></li>
+                </ul>
+            </li>
+            <li><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown">
+                    <li><a href="my_profile.html">Profile &amp; KYV</a></li>
+                </ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown">
+                    <li><a href="other_links.html">External Portals</a></li>
+                </ul>
+            </li>
+            <li><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown">
+                    <li><a href="help.html">FAQ &amp; User Manuals</a></li>
+                </ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header">
+                <h2>Dashboard</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="welcome-bar">
+                    <div>
+                        <h3>Welcome, Shree Ram Travels Agency</h3>
+                        <p>Vendor Code: 50021528 &nbsp;|&nbsp; GSTIN: 27AABCS1429B1Z2</p>
+                    </div>
+                    <div class="login-info">
+                        <div>Last Login: 01/03/2025, 10:38 AM</div>
+                        <div>Session expires in 30 min</div>
+                    </div>
+                </div>
+
+                <div class="notice-board">
+                    <strong>📢 Important Notices</strong>
+                    <ul>
+                        <li>KYV (Know Your Vendor) verification is pending. Please complete your KYV process from <a href="my_profile.html">My Profile</a>.</li>
+                        <li>GeM Invoice GEM-69912288 for PO 5400369100 is due for submission before 05/03/2025.</li>
+                        <li>New circular: TDS certificates for Q3 FY2024-25 are now available for download.</li>
+                    </ul>
+                </div>
+
+                <!-- Summary Stats -->
+                <div class="section-title">Summary Overview</div>
+                <div class="stat-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📄</div>
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Total Invoices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Pending Invoices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Approved Invoices</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-value">₹4.2L</div>
+                        <div class="stat-label">Total Paid Amount</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🔄</div>
+                        <div class="stat-value">1</div>
+                        <div class="stat-label">Pending Refunds</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">📑</div>
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Active POs</div>
+                    </div>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Quick Actions -->
+                <div class="section-title">Quick Actions</div>
+                <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:24px;">
+                    <a href="invoice_gem.html" class="btn-primary">+ Submit GeM Invoice</a>
+                    <a href="refund.html" class="btn-default">Raise Refund</a>
+                    <a href="emeasurement.html" class="btn-default">Submit Measurement</a>
+                    <a href="tds.html" class="btn-default">Download TDS Certificate</a>
+                    <a href="reports.html" class="btn-default">Generate Report</a>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Recent Activity -->
+                <div class="section-title">Recent Activity</div>
+                <div class="activity-table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Type</th>
+                                <th>Reference No.</th>
+                                <th>Amount (₹)</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>01/03/2025</td>
+                                <td>GeM Invoice</td>
+                                <td>GEM-69912288</td>
+                                <td>1,24,500.00</td>
+                                <td><span class="badge badge-warning">Pending</span></td>
+                                <td><a href="invoice_gem.html" class="btn-primary btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>20/02/2025</td>
+                                <td>GeM Invoice</td>
+                                <td>GEM-64344132</td>
+                                <td>98,200.00</td>
+                                <td><span class="badge badge-success">Approved</span></td>
+                                <td><a href="invoices.html" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>15/02/2025</td>
+                                <td>Refund</td>
+                                <td>REF-2025-0042</td>
+                                <td>12,000.00</td>
+                                <td><span class="badge badge-info">Under Review</span></td>
+                                <td><a href="refund.html" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>05/02/2025</td>
+                                <td>TDS Certificate</td>
+                                <td>TDS-Q3-2024-25</td>
+                                <td>8,450.00</td>
+                                <td><span class="badge badge-success">Available</span></td>
+                                <td><a href="tds.html" class="btn-default btn-sm">Download</a></td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>01/02/2025</td>
+                                <td>e-Measurement Book</td>
+                                <td>MB-2025-0118</td>
+                                <td>—</td>
+                                <td><span class="badge badge-success">Submitted</span></td>
+                                <td><a href="emeasurement.html" class="btn-default btn-sm">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> |
+        <a href="#">Terms of Use</a> |
+        <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+</body>
+</html>

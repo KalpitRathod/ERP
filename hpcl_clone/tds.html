@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HPCL Vendor Self Service - TDS Certificates</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <div class="logo-placeholder"></div>
+            <div class="header-title-company">
+                <span>हिन्दुस्तान पेट्रोलियम कॉर्पोरेशन लिमिटेड</span>
+                <span>Hindustan Petroleum Corporation Limited</span>
+            </div>
+        </div>
+        <div class="header-center"><h1>HPCL Vendor Self Service</h1></div>
+        <div class="header-right">
+            <div class="vendor-name">SHREE RAM TRAVELS AGENCY (50021528)</div>
+            <div class="badge-kyv">Vendor KYV Pending</div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="invoices.html">Invoices ▾</a>
+                <ul class="dropdown">
+                    <li><a href="invoice_gem.html">GeM Invoice Submission</a></li>
+                    <li><a href="invoices.html">Invoice Status / List</a></li>
+                </ul>
+            </li>
+            <li><a href="refund.html">Refund ▾</a>
+                <ul class="dropdown"><li><a href="refund.html">Raise Refund Request</a></li></ul>
+            </li>
+            <li><a href="purchase_orders.html">Purchase Orders/Contracts ▾</a>
+                <ul class="dropdown"><li><a href="purchase_orders.html">View POs / Contracts</a></li></ul>
+            </li>
+            <li class="active"><a href="tds.html">TDS ▾</a>
+                <ul class="dropdown"><li><a href="tds.html">TDS Certificates</a></li></ul>
+            </li>
+            <li><a href="emeasurement.html">e-Measurement Book ▾</a>
+                <ul class="dropdown"><li><a href="emeasurement.html">Submit Measurement</a></li></ul>
+            </li>
+            <li><a href="reports.html">Reports ▾</a>
+                <ul class="dropdown"><li><a href="reports.html">Generate Reports</a></li></ul>
+            </li>
+            <li><a href="my_profile.html">My Profile ▾</a>
+                <ul class="dropdown"><li><a href="my_profile.html">Profile &amp; KYV</a></li></ul>
+            </li>
+            <li><a href="other_links.html">Other Links ▾</a>
+                <ul class="dropdown"><li><a href="other_links.html">External Portals</a></li></ul>
+            </li>
+            <li><a href="help.html">Help &amp; Manuals ▾</a>
+                <ul class="dropdown"><li><a href="help.html">FAQ &amp; User Manuals</a></li></ul>
+            </li>
+            <li><a href="home.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="card">
+            <div class="card-header"><h2>TDS Certificates</h2></div>
+            <div class="card-body">
+
+                <div class="alert alert-info">
+                    TDS certificates (Form 16A) are generated quarterly. You can download them here once they are made available by the deductor. For queries, contact <strong>tds.query@hpcl.in</strong>.
+                </div>
+
+                <!-- Filters -->
+                <div class="filter-bar">
+                    <div class="col">
+                        <label><span class="required">*</span>Financial Year</label>
+                        <select>
+                            <option>2024-25</option>
+                            <option>2023-24</option>
+                            <option>2022-23</option>
+                            <option>2021-22</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Quarter</label>
+                        <select>
+                            <option>All Quarters</option>
+                            <option>Q1 (Apr–Jun)</option>
+                            <option>Q2 (Jul–Sep)</option>
+                            <option>Q3 (Oct–Dec)</option>
+                            <option>Q4 (Jan–Mar)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>TAN of Deductor</label>
+                        <input type="text" placeholder="e.g. MUMB12345A">
+                    </div>
+                    <div class="col auto" style="padding-top:18px;">
+                        <button class="btn-primary">Search</button>
+                    </div>
+                </div>
+
+                <!-- Summary Cards -->
+                <div class="stat-grid" style="margin-bottom:20px;">
+                    <div class="stat-card">
+                        <div class="stat-icon">📋</div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Total Certificates</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💸</div>
+                        <div class="stat-value">₹31,840</div>
+                        <div class="stat-label">Total TDS Deducted (FY 2024-25)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">✅</div>
+                        <div class="stat-value">4</div>
+                        <div class="stat-label">Available for Download</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏳</div>
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Pending Generation</div>
+                    </div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Certificate No.</th>
+                            <th>Financial Year</th>
+                            <th>Quarter</th>
+                            <th>Deductor Name</th>
+                            <th>TAN No.</th>
+                            <th>PAN of Deductee</th>
+                            <th>Amount Paid (₹)</th>
+                            <th>TDS Deducted (₹)</th>
+                            <th>Date of Deduction</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>TDS-Q3-2024-25-001</td>
+                            <td>2024-25</td>
+                            <td>Q3 (Oct–Dec)</td>
+                            <td>HPCL – Mumbai Refinery</td>
+                            <td>MUMB12345A</td>
+                            <td>AABCS1429B</td>
+                            <td>75,000.00</td>
+                            <td>8,450.00</td>
+                            <td>31/12/2024</td>
+                            <td><span class="badge badge-success">Available</span></td>
+                            <td><a href="#" class="btn-success btn-sm">⬇ Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>TDS-Q2-2024-25-001</td>
+                            <td>2024-25</td>
+                            <td>Q2 (Jul–Sep)</td>
+                            <td>HPCL – Mumbai Refinery</td>
+                            <td>MUMB12345A</td>
+                            <td>AABCS1429B</td>
+                            <td>98,200.00</td>
+                            <td>9,820.00</td>
+                            <td>30/09/2024</td>
+                            <td><span class="badge badge-success">Available</span></td>
+                            <td><a href="#" class="btn-success btn-sm">⬇ Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>TDS-Q1-2024-25-001</td>
+                            <td>2024-25</td>
+                            <td>Q1 (Apr–Jun)</td>
+                            <td>HPCL – Mumbai Refinery</td>
+                            <td>MUMB12345A</td>
+                            <td>AABCS1429B</td>
+                            <td>85,000.00</td>
+                            <td>8,500.00</td>
+                            <td>30/06/2024</td>
+                            <td><span class="badge badge-success">Available</span></td>
+                            <td><a href="#" class="btn-success btn-sm">⬇ Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>TDS-Q4-2024-25-001</td>
+                            <td>2024-25</td>
+                            <td>Q4 (Jan–Mar)</td>
+                            <td>HPCL – Mumbai Refinery</td>
+                            <td>MUMB12345A</td>
+                            <td>AABCS1429B</td>
+                            <td>1,24,500.00</td>
+                            <td>5,070.00</td>
+                            <td>—</td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <td><span class="text-muted" style="font-size:12px;">Not available yet</span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>TDS-Q4-2023-24-001</td>
+                            <td>2023-24</td>
+                            <td>Q4 (Jan–Mar)</td>
+                            <td>HPCL – Delhi Terminal</td>
+                            <td>DELH98765Z</td>
+                            <td>AABCS1429B</td>
+                            <td>54,000.00</td>
+                            <td>5,400.00</td>
+                            <td>31/03/2024</td>
+                            <td><span class="badge badge-success">Available</span></td>
+                            <td><a href="#" class="btn-success btn-sm">⬇ Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="section-title" style="margin-top:20px;">TRACES / 26AS Reference</div>
+                <div class="alert alert-warning">
+                    To verify TDS crediting in your 26AS statement, visit the <a href="other_links.html">TRACES Portal</a> using your PAN credentials.
+                    If there is a mismatch, raise a query using the contact details above.
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> | <a href="#">Contact Us</a> |
+        &copy; 2025 Hindustan Petroleum Corporation Ltd. All rights reserved.
+    </footer>
+    <a class="fab" href="#" title="Back to top">&#9650;</a>
+
+</body>
+</html>
