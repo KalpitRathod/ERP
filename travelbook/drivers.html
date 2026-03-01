@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook - Drivers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .exp-warn  { color: #8b1a1a; font-weight: bold; }
+        .exp-ok    { color: #276221; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <div class="logo-box">SRT</div>
+        <div>
+            <div class="brand-name">TravelBook</div>
+            <div class="brand-sub">Shree Ram Travels - Management System</div>
+        </div>
+    </div>
+    <div class="header-center"><h1>Drivers</h1></div>
+    <div class="header-right">
+        <div class="user-name">Shree Ram Travels</div>
+        <div class="user-role">Admin | Owner</div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="home.html">Dashboard</a></li>
+        <li><a href="bookings.html">Booking &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="booking_add.html">Add Booking</a></li>
+                <li><a href="bookings.html">All Bookings</a></li>
+            </ul>
+        </li>
+        <li><a href="duty_slips.html">Duty Slip &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="duty_slip_add.html">Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">All Duty Slips</a></li>
+            </ul>
+        </li>
+        <li><a href="invoices.html">Invoice &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                <li><a href="invoices.html">All Invoices</a></li>
+            </ul>
+        </li>
+        <li><a href="payments.html">Payment &#9662;</a>
+            <ul class="dropdown"><li><a href="payments.html">All Payments</a></li></ul>
+        </li>
+        <li><a href="reports_sales.html">Reports &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="reports_sales.html">Sales Details</a></li>
+                <li><a href="reports_expenses.html">Expenses Details</a></li>
+                <li><a href="reports_payment.html">Payment Details</a></li>
+            </ul>
+        </li>
+        <li class="active"><a href="drivers.html">Masters &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="drivers.html">Drivers</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
+            </ul>
+        </li>
+        <li><a href="help.html">Help</a></li>
+    </ul>
+</nav>
+
+<main>
+
+<!-- Add / Edit Driver Form -->
+<div class="card" id="addDriverForm">
+    <div class="card-header">
+        <h2>Add New Driver</h2>
+        <button class="btn btn-default btn-sm" onclick="toggleForm()">Hide Form</button>
+    </div>
+    <div class="card-body" id="driverFormBody">
+        <form method="post" action="#">
+            <div class="section-title">Personal Details</div>
+            <div class="row">
+                <div class="col col-2">
+                    <label><span class="required">*</span> Full Name</label>
+                    <input type="text" name="name" placeholder="Driver's full name">
+                </div>
+                <div class="col">
+                    <label><span class="required">*</span> Mobile Number</label>
+                    <input type="tel" name="mobile" placeholder="10-digit number">
+                </div>
+                <div class="col">
+                    <label>Alternate Mobile</label>
+                    <input type="tel" name="alt_mobile" placeholder="Optional">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col col-2">
+                    <label>Home Address</label>
+                    <input type="text" name="address" placeholder="Full residential address">
+                </div>
+                <div class="col">
+                    <label>Date of Birth</label>
+                    <input type="date" name="dob">
+                </div>
+                <div class="col">
+                    <label>Date of Joining</label>
+                    <input type="date" name="doj">
+                </div>
+            </div>
+
+            <div class="section-title">Licence Details</div>
+            <div class="row">
+                <div class="col">
+                    <label><span class="required">*</span> Driving Licence Number</label>
+                    <input type="text" name="dl_no" placeholder="e.g. MH1220170123456">
+                </div>
+                <div class="col">
+                    <label><span class="required">*</span> Licence Expiry Date</label>
+                    <input type="date" name="dl_expiry">
+                </div>
+                <div class="col">
+                    <label>Licence Type</label>
+                    <select name="dl_type">
+                        <option>LMV (Light Motor Vehicle)</option>
+                        <option>LMV + Transport</option>
+                        <option>HMV (Heavy Motor Vehicle)</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>License Issuing RTO</label>
+                    <input type="text" name="rto" placeholder="e.g. Pune RTO">
+                </div>
+            </div>
+
+            <div class="section-title">Employment &amp; Vehicle</div>
+            <div class="row">
+                <div class="col">
+                    <label>Assigned Vehicle</label>
+                    <select name="vehicle">
+                        <option value="">-- None / Flexible --</option>
+                        <option>MH-12-AB-1234 - Innova Crysta</option>
+                        <option>MH-12-CD-5678 - Dzire</option>
+                        <option>MH-12-EF-9012 - Innova Crysta</option>
+                        <option>MH-12-GH-3456 - Dzire</option>
+                        <option>MH-12-IJ-7890 - Ertiga</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Monthly Salary (Rs.)</label>
+                    <input type="number" name="salary" placeholder="0" min="0">
+                </div>
+                <div class="col">
+                    <label>Status</label>
+                    <select name="status">
+                        <option>Active</option>
+                        <option>On Leave</option>
+                        <option>Inactive</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Remarks / Notes</label>
+                    <input type="text" name="remarks" placeholder="Any notes">
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top:14px;">
+                <input type="submit" value="Save Driver" class="btn btn-primary">
+                &nbsp;
+                <button type="button" class="btn btn-default" onclick="toggleForm()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Driver List -->
+<div class="card">
+    <div class="card-header">
+        <h2>All Drivers</h2>
+        <button class="btn btn-primary btn-sm" onclick="toggleForm()">+ Add Driver</button>
+    </div>
+    <div class="card-body">
+
+        <!-- Stats row -->
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Total Drivers</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">4</div>
+                <div class="stat-label">Active</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">On Leave</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">2</div>
+                <div class="stat-label">On Trip (Today)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value exp-warn">1</div>
+                <div class="stat-label">Licence Expiring in 30 days</div>
+            </div>
+        </div>
+
+        <!-- Filter -->
+        <div class="filter-bar">
+            <div class="col">
+                <label>Status</label>
+                <select name="status_filter">
+                    <option>All</option>
+                    <option>Active</option>
+                    <option>On Leave</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Search Name / Mobile</label>
+                <input type="text" placeholder="Type to search...">
+            </div>
+            <div class="col auto" style="padding-top:18px;">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+
+        <!-- Alert: Expiring Licences -->
+        <div class="alert alert-warning">
+            <strong>Licence Expiry Alert:</strong> Prakash Shinde's driving licence (MH1220120056789) expires on 15 Apr 2026. Please renew before that date.
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                    <th>Licence No.</th>
+                    <th>Licence Expiry</th>
+                    <th>Assigned Vehicle</th>
+                    <th>Joining Date</th>
+                    <th>Salary (Rs.)</th>
+                    <th>Status</th>
+                    <th>Today</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><strong>Ramesh Yadav</strong></td>
+                    <td>98765 43210</td>
+                    <td>MH1220150034567</td>
+                    <td class="exp-ok">31/12/2028</td>
+                    <td>MH-12-AB-1234<br><small>Innova Crysta</small></td>
+                    <td>01/06/2019</td>
+                    <td>18,000</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td><span class="badge badge-info">On Trip</span></td>
+                    <td>
+                        <div class="gap-10">
+                            <button class="btn btn-default btn-sm">Edit</button>
+                            <a href="duty_slips.html" class="btn btn-default btn-sm">History</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><strong>Mahesh Patil</strong></td>
+                    <td>91234 56789</td>
+                    <td>MH1220160078912</td>
+                    <td class="exp-ok">30/06/2027</td>
+                    <td>MH-12-EF-9012<br><small>Innova Crysta</small></td>
+                    <td>15/03/2020</td>
+                    <td>18,000</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td><span class="badge badge-info">On Trip</span></td>
+                    <td>
+                        <div class="gap-10">
+                            <button class="btn btn-default btn-sm">Edit</button>
+                            <a href="duty_slips.html" class="btn btn-default btn-sm">History</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><strong>Suresh Kumar</strong></td>
+                    <td>99887 76655</td>
+                    <td>MH1220180045678</td>
+                    <td class="exp-ok">28/02/2029</td>
+                    <td>MH-12-CD-5678<br><small>Dzire</small></td>
+                    <td>01/01/2021</td>
+                    <td>15,000</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td><span class="badge badge-secondary">Available</span></td>
+                    <td>
+                        <div class="gap-10">
+                            <button class="btn btn-default btn-sm">Edit</button>
+                            <a href="duty_slips.html" class="btn btn-default btn-sm">History</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><strong>Prakash Shinde</strong></td>
+                    <td>97654 32109</td>
+                    <td>MH1220120056789</td>
+                    <td class="exp-warn">15/04/2026 (!)</td>
+                    <td>MH-12-IJ-7890<br><small>Ertiga</small></td>
+                    <td>10/07/2022</td>
+                    <td>14,000</td>
+                    <td><span class="badge badge-success">Active</span></td>
+                    <td><span class="badge badge-secondary">Available</span></td>
+                    <td>
+                        <div class="gap-10">
+                            <button class="btn btn-default btn-sm">Edit</button>
+                            <a href="duty_slips.html" class="btn btn-default btn-sm">History</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td><strong>Ganesh More</strong></td>
+                    <td>96543 21098</td>
+                    <td>MH1220190089123</td>
+                    <td class="exp-ok">31/08/2027</td>
+                    <td>MH-12-GH-3456<br><small>Dzire</small></td>
+                    <td>05/02/2023</td>
+                    <td>14,000</td>
+                    <td><span class="badge badge-warning">On Leave</span></td>
+                    <td><span class="badge badge-secondary">On Leave</span></td>
+                    <td>
+                        <div class="gap-10">
+                            <button class="btn btn-default btn-sm">Edit</button>
+                            <a href="duty_slips.html" class="btn btn-default btn-sm">History</a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+</main>
+
+<footer>
+    &copy; 2025 TravelBook - Shree Ram Travels. All rights reserved.
+    | <a href="help.html">Help</a>
+</footer>
+
+<script>
+function toggleForm() {
+    var body = document.getElementById('driverFormBody');
+    body.style.display = (body.style.display === 'none') ? 'block' : 'none';
+}
+</script>
+</body>
+</html>

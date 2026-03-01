@@ -1,284 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelBook – Help &amp; Guide</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
-        .help-card { background: white; border: 1px solid #e0e4ea; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-        .help-card .hc-icon { font-size: 32px; margin-bottom: 10px; }
-        .help-card .hc-title { font-weight: 700; font-size: 14px; color: var(--tb-navy); margin-bottom: 6px; }
-        .help-card .hc-desc { font-size: 12px; color: #666; line-height: 1.6; }
-        .help-card .hc-link { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--tb-orange); text-decoration: none; }
-        .help-card .hc-link:hover { text-decoration: underline; }
-        .contact-box { background: linear-gradient(135deg, var(--tb-navy), #1e5a8e); color: white; border-radius: 8px; padding: 24px 28px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin-bottom: 24px; }
-        .contact-box .cb-item { text-align: center; }
-        .contact-box .cb-icon { font-size: 26px; margin-bottom: 6px; }
-        .contact-box .cb-label { font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
-        .contact-box .cb-val { font-size: 14px; font-weight: 700; }
-    </style>
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>TravelBook – Help &amp; Guide</title> <link rel="stylesheet" href="style.css"> <style> .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-bottom: 24px; }
+ .help-card { background: white; border: 1px solid #e0e4ea; border-radius: 8px; padding: 20px; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+ .help-card .hc-icon { font-size: 32px; margin-bottom: 10px; }
+ .help-card .hc-title { font-weight: 700; font-size: 14px; color: var(--tb-navy); margin-bottom: 6px; }
+ .help-card .hc-desc { font-size: 12px; color: #666; line-height: 1.6; }
+ .help-card .hc-link { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--tb-orange); text-decoration: none; }
+ .help-card .hc-link:hover { text-decoration: underline; }
+ .contact-box { background: linear-gradient(135deg, var(--tb-navy), #1e5a8e); color: white; border-radius: 8px; padding: 24px 28px; display: flex; gap: 28px; flex-wrap: wrap; align-items: center; margin-bottom: 24px; }
+ .contact-box .cb-item { text-align: center; }
+ .contact-box .cb-icon { font-size: 26px; margin-bottom: 6px; }
+ .contact-box .cb-label { font-size: 11px; opacity: 0.8; font-weight: 600; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px; }
+ .contact-box .cb-val { font-size: 14px; font-weight: 700; }
+ </style>
 </head>
 <body>
-<header>
-    <div class="header-left">
-        <div class="logo-box">🚗</div>
-        <div>
-            <div class="brand-name">TravelBook</div>
-            <div class="brand-sub">Shree Ram Travels – Management System</div>
-        </div>
-    </div>
-    <div class="header-center"><h1>Help &amp; Guide</h1></div>
-    <div class="header-right">
-        <div class="user-name">Shree Ram Travels</div>
-        <div class="user-role">Admin | Owner</div>
-    </div>
-</header>
-
-<nav>
-    <ul>
-        <li><a href="home.html">🏠 Dashboard</a></li>
-        <li><a href="bookings.html">📅 Booking ▾</a>
-            <ul class="dropdown">
-                <li><a href="booking_add.html">➕ Add Booking</a></li>
-                <li><a href="bookings.html">📋 All Bookings</a></li>
-            </ul>
-        </li>
-        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
-            <ul class="dropdown">
-                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
-                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
-            </ul>
-        </li>
-        <li><a href="invoices.html">🧾 Invoice ▾</a>
-            <ul class="dropdown">
-                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
-                <li><a href="invoices.html">📋 All Invoices</a></li>
-            </ul>
-        </li>
-        <li><a href="payments.html">💰 Payment ▾</a>
-            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
-        </li>
-        <li><a href="reports_sales.html">📊 Reports ▾</a>
-            <ul class="dropdown">
-                <li><a href="reports_sales.html">📈 Sales Details</a></li>
-                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
-                <li><a href="reports_payment.html">💳 Payment Details</a></li>
-            </ul>
-        </li>
-        <li class="active"><a href="help.html">❓ Help</a></li>
-    </ul>
-</nav>
-
-<main>
-<div class="card">
-    <div class="card-header">
-        <h2><span class="icon">❓</span> Help, Guide &amp; FAQ</h2>
-    </div>
-    <div class="card-body">
-
-        <!-- Quick Links -->
-        <div class="section-title">Quick-Start Guide</div>
-        <div class="help-grid">
-            <div class="help-card">
-                <div class="hc-icon">📅</div>
-                <div class="hc-title">1. Create a Booking</div>
-                <div class="hc-desc">
-                    When you receive a booking by phone, WhatsApp, or email, immediately add it in the system. Check vehicle availability on the pickup date, select a vehicle and driver, and confirm the booking. This prevents double-booking and missed trips.
-                </div>
-                <a class="hc-link" href="booking_add.html">→ Add Booking</a>
-            </div>
-            <div class="help-card">
-                <div class="hc-icon">🚗</div>
-                <div class="hc-title">2. Trip Planning</div>
-                <div class="hc-desc">
-                    After confirming a booking: check vehicle availability (shown on dashboard), assign the vehicle, call the driver, and use the system to send booking details. The driver will be notified for trips starting tomorrow.
-                </div>
-                <a class="hc-link" href="home.html">→ View Dashboard</a>
-            </div>
-            <div class="help-card">
-                <div class="hc-icon">📝</div>
-                <div class="hc-title">3. Add Duty Slip</div>
-                <div class="hc-desc">
-                    After every trip, the driver submits a duty slip (or you enter it on their behalf). Enter pickup/drop times, odometer readings, and locations. This creates the billing record. Missing slips are highlighted in red on the dashboard.
-                </div>
-                <a class="hc-link" href="duty_slip_add.html">→ Add Duty Slip</a>
-            </div>
-            <div class="help-card">
-                <div class="hc-icon">🧾</div>
-                <div class="hc-title">4. Generate Invoice</div>
-                <div class="hc-desc">
-                    Select a company, choose the billing period and trips with submitted slips. The system auto-calculates charges based on the company's rate card (base rate, extra KM, extra hours, tolls). Preview and generate the invoice.
-                </div>
-                <a class="hc-link" href="invoice_generate.html">→ Generate Invoice</a>
-            </div>
-            <div class="help-card">
-                <div class="hc-icon">📤</div>
-                <div class="hc-title">5. Send &amp; Track Bills</div>
-                <div class="hc-desc">
-                    Each company has a preferred billing mode (Email, WhatsApp, Post, GeM Portal, Vendor Site). Send the invoice accordingly and mark it as "Sent". Set a payment due date to get follow-up reminders.
-                </div>
-                <a class="hc-link" href="invoices.html">→ All Invoices</a>
-            </div>
-            <div class="help-card">
-                <div class="hc-icon">💰</div>
-                <div class="hc-title">6. Record Payment</div>
-                <div class="hc-desc">
-                    When a company pays, go to All Payments and click "Mark Paid". Enter the payment date, amount, mode (NEFT, Cheque, UPI, Cash), and UTR/reference number. Overdue invoices appear as alerts on the dashboard.
-                </div>
-                <a class="hc-link" href="payments.html">→ All Payments</a>
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <!-- Process Flow -->
-        <div class="section-title">Business Process Flow</div>
-        <ul class="timeline">
-            <li>
-                <div class="tl-title">📞 Booking Received (Call / Email / WhatsApp)</div>
-                <div class="tl-body">Immediately enter in TravelBook → Add Booking. Check vehicle availability on that date. Assign vehicle and driver. Confirm the booking. Status = Confirmed.</div>
-            </li>
-            <li>
-                <div class="tl-title">🚗 Trip Planning (Day before)</div>
-                <div class="tl-body">Review tomorrow's trips on the Dashboard. Call driver to confirm. Send driver details to client. The system highlights upcoming trips for next day.</div>
-            </li>
-            <li>
-                <div class="tl-title">🛣️ Trip in Progress</div>
-                <div class="tl-body">Dashboard shows "Ongoing" trips. Any issues → update booking status. Trip Start = record start odometer. Trip End = record end odometer.</div>
-            </li>
-            <li>
-                <div class="tl-title">📝 Duty Slip Collection (After Trip)</div>
-                <div class="tl-body">Driver submits duty slip (or gives it to owner). Enter in system: Add Duty Slip. Link to the booking. System alerts if slip not submitted within 24 hours of trip completion.</div>
-            </li>
-            <li>
-                <div class="tl-title">🧾 Invoice Generation (Weekly/Monthly)</div>
-                <div class="tl-body">Go to Generate Invoice. Select company + period. System lists all unbilled trips with submitted duty slips. Select trips, verify amounts (auto-calculated from rate card), and generate invoice. Review + print/PDF.</div>
-            </li>
-            <li>
-                <div class="tl-title">📤 Bill Submission to Client</div>
-                <div class="tl-body">Based on company's registered billing mode send the bill. Mark invoice as "Sent". System tracks due date for payment.</div>
-            </li>
-            <li>
-                <div class="tl-title">💬 Payment Follow-up</div>
-                <div class="tl-body">Dashboard alerts for overdue invoices. Follow up with company contact. Mark reminders sent. Escalate if overdue &gt;30 days.</div>
-            </li>
-            <li>
-                <div class="tl-title">✅ Payment Received</div>
-                <div class="tl-body">Mark invoice as Paid. Enter payment date, amount, mode (NEFT/Cheque/UPI/Cash), and reference number. Reports update automatically.</div>
-            </li>
-        </ul>
-
-        <hr class="divider">
-
-        <!-- FAQ Accordion -->
-        <div class="section-title">Frequently Asked Questions</div>
-
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">How do I check which vehicles are available on a date? <span>▼</span></div>
-            <div class="accordion-body">
-                On the <strong>Dashboard (Home page)</strong>, there is a Fleet Availability table at the bottom showing real-time status of all vehicles. When adding a booking, the system automatically shows available vehicles for the selected pickup date using color-coded chips (green = available, grey = booked).
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">What are the booking types and their inclusions? <span>▼</span></div>
-            <div class="accordion-body">
-                <ul style="padding-left:16px; line-height:2;">
-                    <li><strong>Full Day:</strong> 300 km / 10 hours included. Extra KM and extra hours billed at company rate.</li>
-                    <li><strong>Local:</strong> 80 km / 8 hours included.</li>
-                    <li><strong>Airport Pickup / Drop:</strong> 30 km / 3 hours included.</li>
-                    <li><strong>Outstation:</strong> Per km rate applies. Night halt charges extra.</li>
-                </ul>
-                Rates differ per company. Check the rate card shown when generating an invoice.
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">How does the Missing Duty Slip alert work? <span>▼</span></div>
-            <div class="accordion-body">
-                In <strong>All Duty Slips</strong>, bookings with "Completed" status that do not have a corresponding duty slip are highlighted in red and shown with a "Missing" badge. The Dashboard also shows a count of missing slips. Enter the duty slip as soon as you receive it from the driver to clear this alert.
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">How are invoice amounts calculated automatically? <span>▼</span></div>
-            <div class="accordion-body">
-                When generating an invoice, TravelBook reads the company's rate card (base rate for trip type, extra KM rate, extra hour rate, night halt rate). It compares the actual KM/hours from the duty slip against the included limits and calculates extra charges. Toll charges from the duty slip are added separately. GST is applied as set in the rate card (usually 5%).
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">How do I handle different billing modes per company? <span>▼</span></div>
-            <div class="accordion-body">
-                Each company has a registered preferred billing mode (shown in the "Bill Mode" column in All Invoices). Common modes in use:
-                <ul style="padding-left:16px; line-height:2;">
-                    <li><strong>Email:</strong> Download PDF and email to company accounts.</li>
-                    <li><strong>WhatsApp:</strong> Send PDF via WhatsApp to the company contact.</li>
-                    <li><strong>GeM Portal:</strong> Log in to GeM (gem.gov.in) and submit invoice there.</li>
-                    <li><strong>Vendor Site:</strong> Log in to the company's vendor portal and upload.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">What data do I need for GST compliance? <span>▼</span></div>
-            <div class="accordion-body">
-                TravelBook tracks GST collected per invoice (CGST 2.5% + SGST 2.5% = 5% for transportation). For your monthly GST return (GSTR-1), use the <strong>Sales Report</strong> filtered for the month to get: B2B invoice-wise data, GST amounts, company GSTINs. For input tax credit, check the <strong>Expenses Report</strong> for bills with GST from vendors.
-            </div>
-        </div>
-        <div class="accordion-item">
-            <div class="accordion-header" onclick="toggleAccordion(this)">How do I record and categorise business expenses for income tax? <span>▼</span></div>
-            <div class="accordion-body">
-                Go to <strong>Reports → Expenses Details</strong> and click "+ Add Expense". Categorize expenses under: Fuel, Driver Salary, Maintenance, Insurance, Toll/Parking, Office/Admin. Keep the receipt/bill and upload it. At year-end, the Expenses Report gives you a category-wise summary required for your income tax filing (business expenses under Chapter VI-A).
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <!-- Contact Box -->
-        <div class="section-title">Support &amp; Contact</div>
-        <div class="contact-box">
-            <div class="cb-item">
-                <div class="cb-icon">📱</div>
-                <div class="cb-label">WhatsApp / Call</div>
-                <div class="cb-val">+91 98765 43210</div>
-            </div>
-            <div class="cb-item">
-                <div class="cb-icon">✉️</div>
-                <div class="cb-label">Email</div>
-                <div class="cb-val">support@travelbook.in</div>
-            </div>
-            <div class="cb-item">
-                <div class="cb-icon">🕐</div>
-                <div class="cb-label">Support Hours</div>
-                <div class="cb-val">Mon–Sat, 9 AM – 7 PM</div>
-            </div>
-            <div class="cb-item">
-                <div class="cb-icon">📍</div>
-                <div class="cb-label">Office</div>
-                <div class="cb-val">Mumbai, Maharashtra</div>
-            </div>
-        </div>
-
-    </div>
+<header> <div class="header-left"> <div class="logo-box"></div> <div> <div class="brand-name">TravelBook</div> <div class="brand-sub">Shree Ram Travels – Management System</div> </div> </div> <div class="header-center"><h1>Help &amp; Guide</h1></div> <div class="header-right"> <div class="user-name">Shree Ram Travels</div> <div class="user-role">Admin | Owner</div> </div>
+</header> <nav> <ul> <li><a href="home.html"> Dashboard</a></li> <li><a href="bookings.html"> Booking ▾</a> <ul class="dropdown"> <li><a href="booking_add.html"> Add Booking</a></li> <li><a href="bookings.html"> All Bookings</a></li> </ul> </li> <li><a href="duty_slips.html"> Duty Slip ▾</a> <ul class="dropdown"> <li><a href="duty_slip_add.html"> Add Duty Slip</a></li> <li><a href="duty_slips.html"> All Duty Slips</a></li> </ul> </li> <li><a href="invoices.html"> Invoice ▾</a> <ul class="dropdown"> <li><a href="invoice_generate.html"> Generate Invoice</a></li> <li><a href="invoices.html"> All Invoices</a></li> </ul> </li> <li><a href="payments.html"> Payment ▾</a> <ul class="dropdown"><li><a href="payments.html"> All Payments</a></li></ul> </li> <li><a href="reports_sales.html"> Reports ▾</a> <ul class="dropdown"> <li><a href="reports_sales.html"> Sales Details</a></li> <li><a href="reports_expenses.html"> Expenses Details</a></li> <li><a href="reports_payment.html"> Payment Details</a></li> </ul> </li> <li><a href="drivers.html">Masters &#9662;</a><ul class="dropdown"><li><a href="drivers.html">Drivers</a></li><li><a href="vehicles.html">Vehicles</a></li></ul></li> <li class="active"><a href="help.html"> Help</a></li> </ul>
+</nav> <main>
+<div class="card"> <div class="card-header"> <h2><span class="icon"></span> Help, Guide &amp; FAQ</h2> </div> <div class="card-body"> <!-- Quick Links --> <div class="section-title">Quick-Start Guide</div> <div class="help-grid"> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">1. Create a Booking</div> <div class="hc-desc"> When you receive a booking by phone, WhatsApp, or email, immediately add it in the system. Check vehicle availability on the pickup date, select a vehicle and driver, and confirm the booking. This prevents double-booking and missed trips.
+ </div> <a class="hc-link" href="booking_add.html">→ Add Booking</a> </div> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">2. Trip Planning</div> <div class="hc-desc"> After confirming a booking: check vehicle availability (shown on dashboard), assign the vehicle, call the driver, and use the system to send booking details. The driver will be notified for trips starting tomorrow.
+ </div> <a class="hc-link" href="home.html">→ View Dashboard</a> </div> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">3. Add Duty Slip</div> <div class="hc-desc"> After every trip, the driver submits a duty slip (or you enter it on their behalf). Enter pickup/drop times, odometer readings, and locations. This creates the billing record. Missing slips are highlighted in red on the dashboard.
+ </div> <a class="hc-link" href="duty_slip_add.html">→ Add Duty Slip</a> </div> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">4. Generate Invoice</div> <div class="hc-desc"> Select a company, choose the billing period and trips with submitted slips. The system auto-calculates charges based on the company's rate card (base rate, extra KM, extra hours, tolls). Preview and generate the invoice.
+ </div> <a class="hc-link" href="invoice_generate.html">→ Generate Invoice</a> </div> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">5. Send &amp; Track Bills</div> <div class="hc-desc"> Each company has a preferred billing mode (Email, WhatsApp, Post, GeM Portal, Vendor Site). Send the invoice accordingly and mark it as "Sent". Set a payment due date to get follow-up reminders.
+ </div> <a class="hc-link" href="invoices.html">→ All Invoices</a> </div> <div class="help-card"> <div class="hc-icon"></div> <div class="hc-title">6. Record Payment</div> <div class="hc-desc"> When a company pays, go to All Payments and click "Mark Paid". Enter the payment date, amount, mode (NEFT, Cheque, UPI, Cash), and UTR/reference number. Overdue invoices appear as alerts on the dashboard.
+ </div> <a class="hc-link" href="payments.html">→ All Payments</a> </div> </div> <hr class="divider"> <!-- Process Flow --> <div class="section-title">Business Process Flow</div> <ul class="timeline"> <li> <div class="tl-title"> Booking Received (Call / Email / WhatsApp)</div> <div class="tl-body">Immediately enter in TravelBook → Add Booking. Check vehicle availability on that date. Assign vehicle and driver. Confirm the booking. Status = Confirmed.</div> </li> <li> <div class="tl-title"> Trip Planning (Day before)</div> <div class="tl-body">Review tomorrow's trips on the Dashboard. Call driver to confirm. Send driver details to client. The system highlights upcoming trips for next day.</div> </li> <li> <div class="tl-title"> Trip in Progress</div> <div class="tl-body">Dashboard shows "Ongoing" trips. Any issues → update booking status. Trip Start = record start odometer. Trip End = record end odometer.</div> </li> <li> <div class="tl-title"> Duty Slip Collection (After Trip)</div> <div class="tl-body">Driver submits duty slip (or gives it to owner). Enter in system: Add Duty Slip. Link to the booking. System alerts if slip not submitted within 24 hours of trip completion.</div> </li> <li> <div class="tl-title"> Invoice Generation (Weekly/Monthly)</div> <div class="tl-body">Go to Generate Invoice. Select company + period. System lists all unbilled trips with submitted duty slips. Select trips, verify amounts (auto-calculated from rate card), and generate invoice. Review + print/PDF.</div> </li> <li> <div class="tl-title"> Bill Submission to Client</div> <div class="tl-body">Based on company's registered billing mode send the bill. Mark invoice as "Sent". System tracks due date for payment.</div> </li> <li> <div class="tl-title"> Payment Follow-up</div> <div class="tl-body">Dashboard alerts for overdue invoices. Follow up with company contact. Mark reminders sent. Escalate if overdue &gt;30 days.</div> </li> <li> <div class="tl-title"> Payment Received</div> <div class="tl-body">Mark invoice as Paid. Enter payment date, amount, mode (NEFT/Cheque/UPI/Cash), and reference number. Reports update automatically.</div> </li> </ul> <hr class="divider"> <!-- FAQ Accordion --> <div class="section-title">Frequently Asked Questions</div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">How do I check which vehicles are available on a date? <span>▼</span></div> <div class="accordion-body"> On the <strong>Dashboard (Home page)</strong>, there is a Fleet Availability table at the bottom showing real-time status of all vehicles. When adding a booking, the system automatically shows available vehicles for the selected pickup date using color-coded chips (green = available, grey = booked).
+ </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">What are the booking types and their inclusions? <span>▼</span></div> <div class="accordion-body"> <ul style="padding-left:16px; line-height:2;"> <li><strong>Full Day:</strong> 300 km / 10 hours included. Extra KM and extra hours billed at company rate.</li> <li><strong>Local:</strong> 80 km / 8 hours included.</li> <li><strong>Airport Pickup / Drop:</strong> 30 km / 3 hours included.</li> <li><strong>Outstation:</strong> Per km rate applies. Night halt charges extra.</li> </ul> Rates differ per company. Check the rate card shown when generating an invoice.
+ </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">How does the Missing Duty Slip alert work? <span>▼</span></div> <div class="accordion-body"> In <strong>All Duty Slips</strong>, bookings with "Completed" status that do not have a corresponding duty slip are highlighted in red and shown with a "Missing" badge. The Dashboard also shows a count of missing slips. Enter the duty slip as soon as you receive it from the driver to clear this alert.
+ </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">How are invoice amounts calculated automatically? <span>▼</span></div> <div class="accordion-body"> When generating an invoice, TravelBook reads the company's rate card (base rate for trip type, extra KM rate, extra hour rate, night halt rate). It compares the actual KM/hours from the duty slip against the included limits and calculates extra charges. Toll charges from the duty slip are added separately. GST is applied as set in the rate card (usually 5%).
+ </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">How do I handle different billing modes per company? <span>▼</span></div> <div class="accordion-body"> Each company has a registered preferred billing mode (shown in the "Bill Mode" column in All Invoices). Common modes in use:
+ <ul style="padding-left:16px; line-height:2;"> <li><strong>Email:</strong> Download PDF and email to company accounts.</li> <li><strong>WhatsApp:</strong> Send PDF via WhatsApp to the company contact.</li> <li><strong>GeM Portal:</strong> Log in to GeM (gem.gov.in) and submit invoice there.</li> <li><strong>Vendor Site:</strong> Log in to the company's vendor portal and upload.</li> </ul> </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">What data do I need for GST compliance? <span>▼</span></div> <div class="accordion-body"> TravelBook tracks GST collected per invoice (CGST 2.5% + SGST 2.5% = 5% for transportation). For your monthly GST return (GSTR-1), use the <strong>Sales Report</strong> filtered for the month to get: B2B invoice-wise data, GST amounts, company GSTINs. For input tax credit, check the <strong>Expenses Report</strong> for bills with GST from vendors.
+ </div> </div> <div class="accordion-item"> <div class="accordion-header" onclick="toggleAccordion(this)">How do I record and categorise business expenses for income tax? <span>▼</span></div> <div class="accordion-body"> Go to <strong>Reports → Expenses Details</strong> and click "+ Add Expense". Categorize expenses under: Fuel, Driver Salary, Maintenance, Insurance, Toll/Parking, Office/Admin. Keep the receipt/bill and upload it. At year-end, the Expenses Report gives you a category-wise summary required for your income tax filing (business expenses under Chapter VI-A).
+ </div> </div> <hr class="divider"> <!-- Contact Box --> <div class="section-title">Support &amp; Contact</div> <div class="contact-box"> <div class="cb-item"> <div class="cb-icon"></div> <div class="cb-label">WhatsApp / Call</div> <div class="cb-val">+91 98765 43210</div> </div> <div class="cb-item"> <div class="cb-icon"></div> <div class="cb-label">Email</div> <div class="cb-val">support@travelbook.in</div> </div> <div class="cb-item"> <div class="cb-icon"></div> <div class="cb-label">Support Hours</div> <div class="cb-val">Mon–Sat, 9 AM – 7 PM</div> </div> <div class="cb-item"> <div class="cb-icon"></div> <div class="cb-label">Office</div> <div class="cb-val">Mumbai, Maharashtra</div> </div> </div> </div>
 </div>
-</main>
-
-<footer>
-    <a href="#">About</a> | <a href="#">Help</a> |
-    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</main> <footer> <a href="#">About</a> | <a href="#">Help</a> |
+ &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
 </footer>
-<a class="fab" href="#" title="Back to top">▲</a>
-
-<script>
+<a class="fab" href="#" title="Back to top">▲</a> <script>
 function toggleAccordion(header) {
-    const body = header.nextElementSibling;
-    const isOpen = body.classList.contains('open');
-    document.querySelectorAll('.accordion-body.open').forEach(b => {
-        b.classList.remove('open');
-        b.previousElementSibling.querySelector('span').textContent = '▼';
-    });
-    if (!isOpen) {
-        body.classList.add('open');
-        header.querySelector('span').textContent = '▲';
-    }
+ const body = header.nextElementSibling;
+ const isOpen = body.classList.contains('open');
+ document.querySelectorAll('.accordion-body.open').forEach(b => {
+ b.classList.remove('open');
+ b.previousElementSibling.querySelector('span').textContent = '▼';
+ });
+ if (!isOpen) {
+ body.classList.add('open');
+ header.querySelector('span').textContent = '▲';
+ }
 }
 </script>
 </body>

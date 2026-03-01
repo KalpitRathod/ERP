@@ -3,36 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelBook – Add Booking</title>
+    <title>TravelBook - Add Booking</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .booking-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 8px; }
-        .booking-type-card {
-            border: 2px solid #e0e4ea; border-radius: 6px; padding: 14px;
-            cursor: pointer; text-align: center; transition: all 0.15s;
-        }
-        .booking-type-card:hover { border-color: var(--tb-orange); background: #fff8f3; }
-        .booking-type-card.selected { border-color: var(--tb-navy); background: #eef2fa; }
-        .booking-type-card .bt-icon { font-size: 26px; margin-bottom: 6px; }
-        .booking-type-card .bt-name { font-weight: 700; font-size: 13px; color: var(--tb-navy); }
-        .booking-type-card .bt-desc { font-size: 11px; color: #888; margin-top: 3px; }
-        .vehicle-avail-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
-        .vehicle-chip {
-            padding: 6px 14px; border: 2px solid #ddd; border-radius: 20px;
-            cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
-        }
-        .vehicle-chip.avail { border-color: #28a745; color: #155724; background: #f0fff4; }
-        .vehicle-chip.selected { border-color: var(--tb-navy); background: var(--tb-navy); color: white; }
-        .vehicle-chip.booked { border-color: #ccc; color: #999; cursor: not-allowed; }
-    </style>
 </head>
 <body>
 <header>
     <div class="header-left">
-        <div class="logo-box">🚗</div>
+        <div class="logo-box">SRT</div>
         <div>
             <div class="brand-name">TravelBook</div>
-            <div class="brand-sub">Shree Ram Travels – Management System</div>
+            <div class="brand-sub">Shree Ram Travels - Management System</div>
         </div>
     </div>
     <div class="header-center"><h1>Add New Booking</h1></div>
@@ -44,102 +24,92 @@
 
 <nav>
     <ul>
-        <li><a href="home.html">🏠 Dashboard</a></li>
-        <li class="active"><a href="bookings.html">📅 Booking ▾</a>
+        <li><a href="home.html">Dashboard</a></li>
+        <li class="active"><a href="bookings.html">Booking &#9662;</a>
             <ul class="dropdown">
-                <li><a href="booking_add.html">➕ Add Booking</a></li>
-                <li><a href="bookings.html">📋 All Bookings</a></li>
+                <li><a href="booking_add.html">Add Booking</a></li>
+                <li><a href="bookings.html">All Bookings</a></li>
             </ul>
         </li>
-        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
+        <li><a href="duty_slips.html">Duty Slip &#9662;</a>
             <ul class="dropdown">
-                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
-                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
+                <li><a href="duty_slip_add.html">Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">All Duty Slips</a></li>
             </ul>
         </li>
-        <li><a href="invoices.html">🧾 Invoice ▾</a>
+        <li><a href="invoices.html">Invoice &#9662;</a>
             <ul class="dropdown">
-                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
-                <li><a href="invoices.html">📋 All Invoices</a></li>
+                <li><a href="invoice_generate.html">Generate Invoice</a></li>
+                <li><a href="invoices.html">All Invoices</a></li>
             </ul>
         </li>
-        <li><a href="payments.html">💰 Payment ▾</a>
-            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
+        <li><a href="payments.html">Payment &#9662;</a>
+            <ul class="dropdown"><li><a href="payments.html">All Payments</a></li></ul>
         </li>
-        <li><a href="reports_sales.html">📊 Reports ▾</a>
+        <li><a href="reports_sales.html">Reports &#9662;</a>
             <ul class="dropdown">
-                <li><a href="reports_sales.html">📈 Sales Details</a></li>
-                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
-                <li><a href="reports_payment.html">💳 Payment Details</a></li>
+                <li><a href="reports_sales.html">Sales Details</a></li>
+                <li><a href="reports_expenses.html">Expenses Details</a></li>
+                <li><a href="reports_payment.html">Payment Details</a></li>
+            </ul>
+        </li>        <li><a href="drivers.html">Masters &#9662;</a>
+            <ul class="dropdown">
+                <li><a href="drivers.html">Drivers</a></li>
+                <li><a href="vehicles.html">Vehicles</a></li>
             </ul>
         </li>
-        <li><a href="help.html">❓ Help</a></li>
+        
+        <li><a href="help.html">Help</a></li>
     </ul>
 </nav>
 
 <main>
-<div class="card">
-    <div class="card-header">
-        <h2><span class="icon">📅</span> New Booking</h2>
-        <a href="bookings.html" class="btn btn-default btn-sm">← All Bookings</a>
+<div class="page-box">
+    <div class="page-box-header">
+        <h2>New Booking</h2>
+        <a href="bookings.html" class="btn btn-default btn-sm">&larr; All Bookings</a>
     </div>
-    <div class="card-body">
+    <div class="page-box-body">
+    <form method="post" action="#">
 
-        <!-- Booking Type Selection -->
+        <!-- 1. Booking Type -->
         <div class="section-title">1. Booking Type</div>
-        <div class="booking-type-grid">
-            <div class="booking-type-card selected" onclick="selectType(this)">
-                <div class="bt-icon">📅</div>
-                <div class="bt-name">Full Day</div>
-                <div class="bt-desc">300 km / 10 hrs</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span> Booking Type</label>
+                <select name="booking_type" size="5">
+                    <option value="fullday" selected>Full Day &mdash; 300 km / 10 hrs included</option>
+                    <option value="local">Local &mdash; 80 km / 8 hrs included</option>
+                    <option value="airport_pickup">Airport Pickup &mdash; 30 km / 3 hrs included</option>
+                    <option value="airport_drop">Airport Drop &mdash; 30 km / 3 hrs included</option>
+                    <option value="outstation">Outstation &mdash; Multi-day / per km rate applies</option>
+                </select>
+                <small>Click to select the trip type</small>
             </div>
-            <div class="booking-type-card" onclick="selectType(this)">
-                <div class="bt-icon">🏙️</div>
-                <div class="bt-name">Local</div>
-                <div class="bt-desc">80 km / 8 hrs</div>
-            </div>
-            <div class="booking-type-card" onclick="selectType(this)">
-                <div class="bt-icon">✈️</div>
-                <div class="bt-name">Airport Pickup</div>
-                <div class="bt-desc">30 km / 3 hrs</div>
-            </div>
-            <div class="booking-type-card" onclick="selectType(this)">
-                <div class="bt-icon">🛬</div>
-                <div class="bt-name">Airport Drop</div>
-                <div class="bt-desc">30 km / 3 hrs</div>
-            </div>
-            <div class="booking-type-card" onclick="selectType(this)">
-                <div class="bt-icon">🛣️</div>
-                <div class="bt-name">Outstation</div>
-                <div class="bt-desc">Multi-day / Per km</div>
-            </div>
-        </div>
-        <div class="alert alert-info" style="margin-top:10px;">
-            <strong>Full Day:</strong> Customer gets 300 km and 10 hours. Extra km and extra hours billed at company rate card.
         </div>
 
         <hr class="divider">
 
-        <!-- Customer & Company -->
-        <div class="section-title">2. Customer & Company Details</div>
+        <!-- 2. Customer & Company Details -->
+        <div class="section-title">2. Customer &amp; Company Details</div>
         <div class="row">
             <div class="col col-2">
-                <label><span class="required">*</span>Customer / Passenger Name</label>
-                <input type="text" placeholder="Full name of the passenger">
+                <label><span class="required">*</span> Customer / Passenger Name</label>
+                <input type="text" name="customer_name" placeholder="Full name of the passenger">
             </div>
             <div class="col">
-                <label><span class="required">*</span>Mobile Number</label>
-                <input type="tel" placeholder="10-digit mobile number">
+                <label><span class="required">*</span> Mobile Number</label>
+                <input type="tel" name="mobile" placeholder="10-digit mobile number">
             </div>
             <div class="col">
                 <label>Alternate Mobile</label>
-                <input type="tel" placeholder="Optional">
+                <input type="tel" name="alt_mobile" placeholder="Optional">
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label><span class="required">*</span>Company / Organisation</label>
-                <select>
+                <label><span class="required">*</span> Company / Organisation</label>
+                <select name="company">
                     <option value="">-- Select Company --</option>
                     <option>ONGC</option>
                     <option>HPCL</option>
@@ -153,11 +123,11 @@
             </div>
             <div class="col">
                 <label>Company Contact Person</label>
-                <input type="text" placeholder="Name of the contact / coordinator">
+                <input type="text" name="contact_person" placeholder="Name of the contact / coordinator">
             </div>
             <div class="col">
                 <label>Booking Channel</label>
-                <select>
+                <select name="channel">
                     <option>Phone Call</option>
                     <option>WhatsApp</option>
                     <option>Email</option>
@@ -169,63 +139,61 @@
 
         <hr class="divider">
 
-        <!-- Trip Details -->
+        <!-- 3. Trip Details -->
         <div class="section-title">3. Trip Details</div>
         <div class="row">
             <div class="col">
-                <label><span class="required">*</span>Pickup Date</label>
-                <input type="date">
+                <label><span class="required">*</span> Pickup Date</label>
+                <input type="date" name="pickup_date">
             </div>
             <div class="col">
-                <label><span class="required">*</span>Pickup Time</label>
-                <input type="time">
+                <label><span class="required">*</span> Pickup Time</label>
+                <input type="time" name="pickup_time">
             </div>
             <div class="col">
-                <label>Return Date (for outstation)</label>
-                <input type="date">
+                <label>Return Date (outstation)</label>
+                <input type="date" name="return_date">
             </div>
             <div class="col">
                 <label>Return Time</label>
-                <input type="time">
+                <input type="time" name="return_time">
             </div>
         </div>
         <div class="row">
             <div class="col col-2">
-                <label><span class="required">*</span>Pickup Location</label>
-                <input type="text" placeholder="Full pickup address / landmark">
+                <label><span class="required">*</span> Pickup Location</label>
+                <input type="text" name="pickup_location" placeholder="Full pickup address / landmark">
             </div>
             <div class="col col-2">
-                <label><span class="required">*</span>Drop Location</label>
-                <input type="text" placeholder="Destination address / landmark">
+                <label><span class="required">*</span> Drop Location</label>
+                <input type="text" name="drop_location" placeholder="Destination address / landmark">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label>Estimated Distance (km)</label>
-                <input type="number" placeholder="Approx. km" min="0">
+                <input type="number" name="est_km" placeholder="Approx. km" min="0">
             </div>
             <div class="col">
                 <label>Purpose of Travel</label>
-                <input type="text" placeholder="e.g. Official visit, Airport, Meeting">
+                <input type="text" name="purpose" placeholder="e.g. Official visit, Airport, Meeting">
             </div>
             <div class="col">
                 <label>Number of Passengers</label>
-                <input type="number" value="1" min="1" max="7">
+                <input type="number" name="pax" value="1" min="1" max="12">
             </div>
         </div>
 
         <hr class="divider">
 
-        <!-- Vehicle & Driver Assignment -->
-        <div class="section-title">4. Vehicle & Driver Assignment</div>
-        <div class="alert alert-info">
-            Vehicles shown below are checked for availability on the selected pickup date. Green = Available.
-        </div>
+        <!-- 4. Vehicle & Driver Assignment -->
+        <div class="section-title">4. Vehicle &amp; Driver Assignment</div>
+        <div class="alert alert-info">Vehicles marked (Booked) are not available on the selected pickup date.</div>
         <div class="row">
             <div class="col">
-                <label><span class="required">*</span>Vehicle Type Required</label>
-                <select>
-                    <option>Any Available</option>
+                <label><span class="required">*</span> Vehicle Type Required</label>
+                <select name="vehicle_type">
+                    <option value="">Any Available</option>
                     <option>Innova Crysta (7 Seater)</option>
                     <option>Dzire / Etios (4 Seater)</option>
                     <option>Ertiga (7 Seater)</option>
@@ -233,63 +201,64 @@
                 </select>
             </div>
             <div class="col col-2">
-                <label><span class="required">*</span>Select Vehicle (Available on Pickup Date)</label>
-                <div class="vehicle-avail-list">
-                    <div class="vehicle-chip avail selected">MH-12-AB-1234<br><small>Innova</small></div>
-                    <div class="vehicle-chip avail">MH-12-GH-3456<br><small>Dzire</small></div>
-                    <div class="vehicle-chip avail">MH-12-IJ-7890<br><small>Ertiga</small></div>
-                    <div class="vehicle-chip booked">MH-12-CD-5678<br><small>Booked</small></div>
-                    <div class="vehicle-chip booked">MH-12-EF-9012<br><small>Booked</small></div>
-                </div>
+                <label><span class="required">*</span> Select Vehicle</label>
+                <select name="vehicle" size="5">
+                    <option value="MH-12-AB-1234">MH-12-AB-1234 &mdash; Innova Crysta [Available]</option>
+                    <option value="MH-12-GH-3456">MH-12-GH-3456 &mdash; Dzire [Available]</option>
+                    <option value="MH-12-IJ-7890">MH-12-IJ-7890 &mdash; Ertiga [Available]</option>
+                    <option value="" disabled>MH-12-CD-5678 &mdash; Dzire [Booked on this date]</option>
+                    <option value="" disabled>MH-12-EF-9012 &mdash; Innova Crysta [Booked on this date]</option>
+                </select>
+                <small>Click to select. Booked vehicles are disabled.</small>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label><span class="required">*</span>Driver</label>
-                <select>
+                <label><span class="required">*</span> Driver</label>
+                <select name="driver">
                     <option value="">-- Select Driver --</option>
-                    <option>Ramesh Yadav – MH-12-AB-1234</option>
-                    <option>Ganesh More – MH-12-GH-3456</option>
-                    <option>Prakash Shinde – MH-12-IJ-7890</option>
+                    <option>Ramesh Yadav &mdash; MH-12-AB-1234</option>
+                    <option>Ganesh More &mdash; MH-12-GH-3456</option>
+                    <option>Prakash Shinde &mdash; MH-12-IJ-7890</option>
                 </select>
             </div>
             <div class="col">
                 <label>Driver Mobile</label>
-                <input type="text" class="readonly" placeholder="Auto-filled from driver selection" readonly>
+                <input type="text" name="driver_mobile" class="readonly" placeholder="Auto-filled on selection" readonly>
             </div>
             <div class="col"></div>
         </div>
 
         <hr class="divider">
 
-        <!-- Rate & Billing -->
-        <div class="section-title">5. Rate & Billing</div>
+        <!-- 5. Rate & Billing -->
+        <div class="section-title">5. Rate &amp; Billing (from Company Rate Card)</div>
         <div class="row">
             <div class="col">
-                <label>Base Rate (as per company rate card)</label>
-                <input type="text" class="readonly" value="₹3,200 (Full Day / 300 km)" readonly>
+                <label>Base Rate</label>
+                <input type="text" name="base_rate" class="readonly" value="Rs. 3,200 (Full Day / 300 km)" readonly>
             </div>
             <div class="col">
                 <label>Extra KM Rate</label>
-                <input type="text" class="readonly" value="₹14/km" readonly>
+                <input type="text" name="extra_km" class="readonly" value="Rs. 14 / km" readonly>
             </div>
             <div class="col">
                 <label>Extra Hour Rate</label>
-                <input type="text" class="readonly" value="₹150/hr" readonly>
+                <input type="text" name="extra_hr" class="readonly" value="Rs. 150 / hr" readonly>
             </div>
             <div class="col">
                 <label>Night Halt Charges</label>
-                <input type="text" class="readonly" value="₹500/night (outstation)" readonly>
+                <input type="text" name="night_halt" class="readonly" value="Rs. 500 / night" readonly>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <label>Toll / Parking (estimated)</label>
-                <input type="number" placeholder="₹ Estimated amount" min="0">
+                <label>Toll / Parking (estimated, Rs.)</label>
+                <input type="number" name="toll_est" placeholder="0" min="0">
             </div>
             <div class="col">
                 <label>GST Applicable</label>
-                <select>
+                <select name="gst">
                     <option>5% (Transportation)</option>
                     <option>12%</option>
                     <option>18%</option>
@@ -301,68 +270,55 @@
 
         <hr class="divider">
 
-        <!-- Status & Notes -->
-        <div class="section-title">6. Status & Notes</div>
+        <!-- 6. Status & Notifications -->
+        <div class="section-title">6. Status &amp; Notifications</div>
         <div class="row">
             <div class="col">
-                <label><span class="required">*</span>Booking Status</label>
-                <select>
-                    <option>Confirmed</option>
-                    <option>Tentative</option>
-                    <option>Waitlisted</option>
+                <label><span class="required">*</span> Booking Status</label>
+                <select name="status">
+                    <option value="confirmed">Confirmed</option>
+                    <option value="tentative">Tentative</option>
+                    <option value="waitlisted">Waitlisted</option>
                 </select>
             </div>
             <div class="col">
-                <label>Notify Driver?</label>
-                <select>
-                    <option>Yes – Send WhatsApp to Driver</option>
-                    <option>No – Manual notification</option>
+                <label>Notify Driver</label>
+                <select name="notify_driver">
+                    <option value="yes">Yes - Send WhatsApp to driver</option>
+                    <option value="no">No - Manual notification</option>
                 </select>
             </div>
             <div class="col">
-                <label>Notify Client?</label>
-                <select>
-                    <option>Yes – Send WhatsApp confirmation</option>
-                    <option>No</option>
+                <label>Notify Client</label>
+                <select name="notify_client">
+                    <option value="no">No</option>
+                    <option value="yes">Yes - Send WhatsApp confirmation</option>
                 </select>
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label>Special Instructions / Remarks</label>
-                <textarea placeholder="e.g. Meet at terminal 2 arrivals, passenger has wheelchair, carry warm water..."></textarea>
+                <textarea name="remarks" placeholder="e.g. Meet at terminal 2 arrivals, passenger has wheelchair..."></textarea>
             </div>
         </div>
 
-        <div class="text-center" style="margin-top:20px;">
-            <button class="btn btn-accent btn-lg">✅ Confirm Booking</button>
+        <div class="text-center" style="margin-top: 20px;">
+            <input type="submit" value="Confirm Booking" class="btn btn-primary">
             &nbsp;&nbsp;
-            <button class="btn btn-default">Save as Tentative</button>
+            <input type="submit" name="save_tentative" value="Save as Tentative" class="btn btn-default">
             &nbsp;&nbsp;
             <a href="bookings.html" class="btn btn-default">Cancel</a>
         </div>
 
+    </form>
     </div>
 </div>
 </main>
 
 <footer>
-    <a href="#">About</a> | <a href="#">Help</a> |
-    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+    &copy; 2025 TravelBook - Shree Ram Travels. All rights reserved.
+    | <a href="#">Help</a>
 </footer>
-<a class="fab" href="#" title="Back to top">▲</a>
-
-<script>
-    function selectType(card) {
-        document.querySelectorAll('.booking-type-card').forEach(c => c.classList.remove('selected'));
-        card.classList.add('selected');
-    }
-    document.querySelectorAll('.vehicle-chip.avail').forEach(chip => {
-        chip.addEventListener('click', function() {
-            document.querySelectorAll('.vehicle-chip.avail').forEach(c => c.classList.remove('selected'));
-            this.classList.add('selected');
-        });
-    });
-</script>
 </body>
 </html>

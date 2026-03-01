@@ -1,336 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelBook – Generate Invoice</title>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .invoice-preview {
-            border: 2px solid var(--tb-navy); border-radius: 6px; padding: 28px 32px;
-            background: white; max-width: 760px; margin: 0 auto;
-            font-size: 13px;
-        }
-        .inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
-        .inv-header .inv-from strong { font-size: 16px; color: var(--tb-navy); display: block; }
-        .inv-header .inv-to { text-align: right; }
-        .inv-header .inv-badge { font-size: 20px; font-weight: 800; color: var(--tb-orange); letter-spacing: 1px; }
-        .inv-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; background: #f5f9ff; padding: 12px 16px; border-radius: 4px; }
-        .inv-meta .im-item label { display: block; font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
-        .inv-meta .im-item span  { font-size: 13px; font-weight: 600; }
-        .inv-totals { background: #f5f9ff; padding: 14px 16px; border-radius: 4px; }
-        .inv-totals table { margin: 0; }
-        .inv-totals table td { border: none; padding: 5px 10px; }
-        .inv-totals table tr.grand td { font-size: 15px; font-weight: 800; color: var(--tb-navy); border-top: 2px solid var(--tb-navy); }
-        .trip-select-table input[type="checkbox"] { cursor: pointer; transform: scale(1.2); }
-    </style>
+<head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>TravelBook – Generate Invoice</title> <link rel="stylesheet" href="style.css"> <style> .invoice-preview {
+ border: 2px solid var(--tb-navy); border-radius: 6px; padding: 28px 32px;
+ background: white; max-width: 760px; margin: 0 auto;
+ font-size: 13px;
+ }
+ .inv-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
+ .inv-header .inv-from strong { font-size: 16px; color: var(--tb-navy); display: block; }
+ .inv-header .inv-to { text-align: right; }
+ .inv-header .inv-badge { font-size: 20px; font-weight: 800; color: var(--tb-orange); letter-spacing: 1px; }
+ .inv-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; background: #f5f9ff; padding: 12px 16px; border-radius: 4px; }
+ .inv-meta .im-item label { display: block; font-size: 11px; color: #888; font-weight: 600; text-transform: uppercase; margin-bottom: 2px; }
+ .inv-meta .im-item span { font-size: 13px; font-weight: 600; }
+ .inv-totals { background: #f5f9ff; padding: 14px 16px; border-radius: 4px; }
+ .inv-totals table { margin: 0; }
+ .inv-totals table td { border: none; padding: 5px 10px; }
+ .inv-totals table tr.grand td { font-size: 15px; font-weight: 800; color: var(--tb-navy); border-top: 2px solid var(--tb-navy); }
+ .trip-select-table input[type="checkbox"] { cursor: pointer; transform: scale(1.2); }
+ </style>
 </head>
 <body>
-<header>
-    <div class="header-left">
-        <div class="logo-box">🚗</div>
-        <div>
-            <div class="brand-name">TravelBook</div>
-            <div class="brand-sub">Shree Ram Travels – Management System</div>
-        </div>
-    </div>
-    <div class="header-center"><h1>Generate Invoice</h1></div>
-    <div class="header-right">
-        <div class="user-name">Shree Ram Travels</div>
-        <div class="user-role">Admin | Owner</div>
-    </div>
-</header>
-
-<nav>
-    <ul>
-        <li><a href="home.html">🏠 Dashboard</a></li>
-        <li><a href="bookings.html">📅 Booking ▾</a>
-            <ul class="dropdown">
-                <li><a href="booking_add.html">➕ Add Booking</a></li>
-                <li><a href="bookings.html">📋 All Bookings</a></li>
-            </ul>
-        </li>
-        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
-            <ul class="dropdown">
-                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
-                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
-            </ul>
-        </li>
-        <li class="active"><a href="invoices.html">🧾 Invoice ▾</a>
-            <ul class="dropdown">
-                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
-                <li><a href="invoices.html">📋 All Invoices</a></li>
-            </ul>
-        </li>
-        <li><a href="payments.html">💰 Payment ▾</a>
-            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
-        </li>
-        <li><a href="reports_sales.html">📊 Reports ▾</a>
-            <ul class="dropdown">
-                <li><a href="reports_sales.html">📈 Sales Details</a></li>
-                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
-                <li><a href="reports_payment.html">💳 Payment Details</a></li>
-            </ul>
-        </li>
-        <li><a href="help.html">❓ Help</a></li>
-    </ul>
-</nav>
-
-<main>
-<div class="card">
-    <div class="card-header">
-        <h2><span class="icon">⚡</span> Generate Invoice</h2>
-        <a href="invoices.html" class="btn btn-default btn-sm">← All Invoices</a>
-    </div>
-    <div class="card-body">
-
-        <!-- Step 1: Select Company -->
-        <div class="section-title">Step 1: Select Company &amp; Billing Period</div>
-        <div class="row">
-            <div class="col">
-                <label><span class="required">*</span>Company</label>
-                <select>
-                    <option value="">-- Select Company --</option>
-                    <option selected>ONGC</option>
-                    <option>HPCL</option>
-                    <option>BPCL</option>
-                    <option>Adani Enterprises</option>
-                    <option>Reliance Industries</option>
-                    <option>Tata Chemicals</option>
-                </select>
-            </div>
-            <div class="col">
-                <label>Billing Period From</label>
-                <input type="date" value="2025-03-01">
-            </div>
-            <div class="col">
-                <label>Billing Period To</label>
-                <input type="date" value="2025-03-31">
-            </div>
-            <div class="col">
-                <label>Invoice Date</label>
-                <input type="date" value="2025-03-31">
-            </div>
-            <div class="col auto" style="padding-top:18px;">
-                <button class="btn btn-primary" onclick="return false;">Load Trips</button>
-            </div>
-        </div>
-
-        <!-- Company Rate Card Summary -->
-        <div class="info-grid" style="margin-bottom:20px;">
-            <div class="info-item">
-                <label>Company</label>
-                <span>ONGC – Northern Region</span>
-            </div>
-            <div class="info-item">
-                <label>Full Day Rate</label>
-                <span>₹3,500 / 300 km / 10 hrs</span>
-            </div>
-            <div class="info-item">
-                <label>Local Rate</label>
-                <span>₹2,200 / 80 km / 8 hrs</span>
-            </div>
-            <div class="info-item">
-                <label>Airport Rate</label>
-                <span>₹1,200 / 30 km / 3 hrs</span>
-            </div>
-            <div class="info-item">
-                <label>Extra KM</label>
-                <span>₹16/km</span>
-            </div>
-            <div class="info-item">
-                <label>Extra Hour</label>
-                <span>₹175/hr</span>
-            </div>
-            <div class="info-item">
-                <label>Night Halt</label>
-                <span>₹600/night</span>
-            </div>
-            <div class="info-item">
-                <label>GST</label>
-                <span>5% (Transportation)</span>
-            </div>
-            <div class="info-item">
-                <label>Bill Mode</label>
-                <span>Email + GeM Portal</span>
-            </div>
-        </div>
-
-        <hr class="divider">
-
-        <!-- Step 2: Select Trips -->
-        <div class="section-title">Step 2: Select Trips to Include</div>
-        <div class="alert alert-info">
-            Showing 6 trips for <strong>ONGC</strong> in March 2025 with submitted duty slips and pending billing. Select the trips to include in this invoice.
-        </div>
-
-        <table class="trip-select-table">
-            <thead>
-                <tr>
-                    <th><input type="checkbox" id="selectAll" onchange="toggleAll(this)"></th>
-                    <th>Slip No.</th>
-                    <th>Date</th>
-                    <th>Customer</th>
-                    <th>Trip Type</th>
-                    <th>KM</th>
-                    <th>Hrs</th>
-                    <th>Extra KM</th>
-                    <th>Extra Hrs</th>
-                    <th>Toll</th>
-                    <th>Base Amt (₹)</th>
-                    <th>Extra Amt (₹)</th>
-                    <th>Total (₹)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="checkbox" class="trip-cb" checked></td>
-                    <td>DS-2025-0088</td>
-                    <td>01/03/2025</td>
-                    <td>Rajesh Sharma</td>
-                    <td><span class="chip chip-airport">Airport</span></td>
-                    <td>32</td><td>2.5</td>
-                    <td>2 km</td><td>—</td><td>0</td>
-                    <td>1,200.00</td><td>32.00</td><td><strong>1,232.00</strong></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="trip-cb" checked></td>
-                    <td>DS-2025-0086</td>
-                    <td>27/02/2025</td>
-                    <td>Deepak Verma</td>
-                    <td><span class="chip chip-fullday">Full Day</span></td>
-                    <td>310</td><td>11</td>
-                    <td>10 km</td><td>1 hr</td><td>150</td>
-                    <td>3,500.00</td><td>335.00</td><td><strong>3,985.00</strong></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="trip-cb" checked></td>
-                    <td>DS-2025-0082</td>
-                    <td>25/02/2025</td>
-                    <td>Ravi Shah</td>
-                    <td><span class="chip chip-fullday">Full Day</span></td>
-                    <td>295</td><td>9.5</td>
-                    <td>—</td><td>—</td><td>0</td>
-                    <td>3,500.00</td><td>0</td><td><strong>3,500.00</strong></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="trip-cb" checked></td>
-                    <td>DS-2025-0079</td>
-                    <td>22/02/2025</td>
-                    <td>Anil Gupta</td>
-                    <td><span class="chip chip-local">Local</span></td>
-                    <td>72</td><td>7</td>
-                    <td>—</td><td>—</td><td>0</td>
-                    <td>2,200.00</td><td>0</td><td><strong>2,200.00</strong></td>
-                </tr>
-                <tr>
-                    <td><input type="checkbox" class="trip-cb"></td>
-                    <td>DS-2025-0075</td>
-                    <td>19/02/2025</td>
-                    <td>Sunil Rawat</td>
-                    <td><span class="chip chip-airport">Airport</span></td>
-                    <td>35</td><td>3</td>
-                    <td>5 km</td><td>—</td><td>0</td>
-                    <td>1,200.00</td><td>80.00</td><td><strong>1,280.00</strong></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="10" class="text-right fw-bold">Sub-total (4 trips selected)</td>
-                    <td class="fw-bold">10,400.00</td>
-                    <td class="fw-bold">367.00</td>
-                    <td class="fw-bold">10,767.00</td>
-                </tr>
-            </tfoot>
-        </table>
-
-        <hr class="divider">
-
-        <!-- Step 3: Invoice Preview -->
-        <div class="section-title">Step 3: Invoice Preview</div>
-
-        <div class="invoice-preview">
-            <div class="inv-header">
-                <div class="inv-from">
-                    <strong>Shree Ram Travels Agency</strong>
-                    Shop No. 12, Laxmi Complex, MG Road<br>
-                    Mumbai – 400001, Maharashtra<br>
-                    GSTIN: 27AABCS1429B1Z2 | PAN: AABCS1429B<br>
-                    Phone: +91 98765 43210
-                </div>
-                <div class="inv-to">
-                    <div class="inv-badge">TAX INVOICE</div>
-                    <div style="margin-top:10px; font-size:12px;">
-                        <strong>Bill To:</strong><br>
-                        ONGC – Northern Region<br>
-                        GSTIN: 27AAACO1234A1ZX<br>
-                        Nariman Point, Mumbai – 400 021
-                    </div>
-                </div>
-            </div>
-
-            <div class="inv-meta">
-                <div class="im-item"><label>Invoice No.</label><span>INV-2025-0047</span></div>
-                <div class="im-item"><label>Invoice Date</label><span>31/03/2025</span></div>
-                <div class="im-item"><label>Billing Period</label><span>01/03/2025 – 31/03/2025</span></div>
-                <div class="im-item"><label>Payment Due</label><span>30/04/2025 (30 days)</span></div>
-            </div>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Date</th>
-                        <th>Passenger</th>
-                        <th>Trip Type</th>
-                        <th>KM</th>
-                        <th>Base Amt (₹)</th>
-                        <th>Extra Charges (₹)</th>
-                        <th>Amount (₹)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>1</td><td>01/03/2025</td><td>Rajesh Sharma</td><td>Airport Pickup</td><td>32</td><td>1,200.00</td><td>32.00</td><td>1,232.00</td></tr>
-                    <tr><td>2</td><td>27/02/2025</td><td>Deepak Verma</td><td>Full Day</td><td>310</td><td>3,500.00</td><td>335.00 (+Toll ₹150)</td><td>3,985.00</td></tr>
-                    <tr><td>3</td><td>25/02/2025</td><td>Ravi Shah</td><td>Full Day</td><td>295</td><td>3,500.00</td><td>—</td><td>3,500.00</td></tr>
-                    <tr><td>4</td><td>22/02/2025</td><td>Anil Gupta</td><td>Local</td><td>72</td><td>2,200.00</td><td>—</td><td>2,200.00</td></tr>
-                </tbody>
-            </table>
-
-            <div class="inv-totals" style="margin-top:16px;">
-                <table style="max-width:350px; margin-left:auto;">
-                    <tr><td>Sub-total</td><td class="text-right">₹ 10,767.00</td></tr>
-                    <tr><td>GST @5% (CGST 2.5% + SGST 2.5%)</td><td class="text-right">₹ 538.35</td></tr>
-                    <tr><td>Round-off</td><td class="text-right">₹ 0.65</td></tr>
-                    <tr class="grand"><td>Grand Total</td><td class="text-right">₹ 11,306.00</td></tr>
-                </table>
-            </div>
-
-            <div style="margin-top:20px; font-size:12px; color:#555;">
-                <strong>Amount in words:</strong> Eleven Thousand Three Hundred and Six Rupees Only.<br><br>
-                <strong>Bank Details:</strong> State Bank of India | A/c No: XXXX XXXX 4821 | IFSC: SBIN0001234 | Branch: MG Road, Mumbai
-            </div>
-        </div>
-
-        <div class="text-center" style="margin-top:24px;">
-            <button class="btn btn-accent btn-lg">✅ Generate &amp; Save Invoice</button>
-            &nbsp;&nbsp;
-            <button class="btn btn-default">🖨 Print Invoice</button>
-            &nbsp;&nbsp;
-            <button class="btn btn-default">⬇ Download PDF</button>
-        </div>
-
-    </div>
+<header> <div class="header-left"> <div class="logo-box"></div> <div> <div class="brand-name">TravelBook</div> <div class="brand-sub">Shree Ram Travels – Management System</div> </div> </div> <div class="header-center"><h1>Generate Invoice</h1></div> <div class="header-right"> <div class="user-name">Shree Ram Travels</div> <div class="user-role">Admin | Owner</div> </div>
+</header> <nav> <ul> <li><a href="home.html"> Dashboard</a></li> <li><a href="bookings.html"> Booking ▾</a> <ul class="dropdown"> <li><a href="booking_add.html"> Add Booking</a></li> <li><a href="bookings.html"> All Bookings</a></li> </ul> </li> <li><a href="duty_slips.html"> Duty Slip ▾</a> <ul class="dropdown"> <li><a href="duty_slip_add.html"> Add Duty Slip</a></li> <li><a href="duty_slips.html"> All Duty Slips</a></li> </ul> </li> <li class="active"><a href="invoices.html"> Invoice ▾</a> <ul class="dropdown"> <li><a href="invoice_generate.html"> Generate Invoice</a></li> <li><a href="invoices.html"> All Invoices</a></li> </ul> </li> <li><a href="payments.html"> Payment ▾</a> <ul class="dropdown"><li><a href="payments.html"> All Payments</a></li></ul> </li> <li><a href="reports_sales.html"> Reports ▾</a> <ul class="dropdown"> <li><a href="reports_sales.html"> Sales Details</a></li> <li><a href="reports_expenses.html"> Expenses Details</a></li> <li><a href="reports_payment.html"> Payment Details</a></li> </ul> </li> <li><a href="drivers.html">Masters &#9662;</a><ul class="dropdown"><li><a href="drivers.html">Drivers</a></li><li><a href="vehicles.html">Vehicles</a></li></ul></li> <li><a href="help.html"> Help</a></li> </ul>
+</nav> <main>
+<div class="card"> <div class="card-header"> <h2><span class="icon"></span> Generate Invoice</h2> <a href="invoices.html" class="btn btn-default btn-sm">← All Invoices</a> </div> <div class="card-body"> <!-- Step 1: Select Company --> <div class="section-title">Step 1: Select Company &amp; Billing Period</div> <div class="row"> <div class="col"> <label><span class="required">*</span>Company</label> <select> <option value="">-- Select Company --</option> <option selected>ONGC</option> <option>HPCL</option> <option>BPCL</option> <option>Adani Enterprises</option> <option>Reliance Industries</option> <option>Tata Chemicals</option> </select> </div> <div class="col"> <label>Billing Period From</label> <input type="date" value="2025-03-01"> </div> <div class="col"> <label>Billing Period To</label> <input type="date" value="2025-03-31"> </div> <div class="col"> <label>Invoice Date</label> <input type="date" value="2025-03-31"> </div> <div class="col auto" style="padding-top:18px;"> <button class="btn btn-primary" onclick="return false;">Load Trips</button> </div> </div> <!-- Company Rate Card Summary --> <div class="info-grid" style="margin-bottom:20px;"> <div class="info-item"> <label>Company</label> <span>ONGC – Northern Region</span> </div> <div class="info-item"> <label>Full Day Rate</label> <span>₹3,500 / 300 km / 10 hrs</span> </div> <div class="info-item"> <label>Local Rate</label> <span>₹2,200 / 80 km / 8 hrs</span> </div> <div class="info-item"> <label>Airport Rate</label> <span>₹1,200 / 30 km / 3 hrs</span> </div> <div class="info-item"> <label>Extra KM</label> <span>₹16/km</span> </div> <div class="info-item"> <label>Extra Hour</label> <span>₹175/hr</span> </div> <div class="info-item"> <label>Night Halt</label> <span>₹600/night</span> </div> <div class="info-item"> <label>GST</label> <span>5% (Transportation)</span> </div> <div class="info-item"> <label>Bill Mode</label> <span>Email + GeM Portal</span> </div> </div> <hr class="divider"> <!-- Step 2: Select Trips --> <div class="section-title">Step 2: Select Trips to Include</div> <div class="alert alert-info"> Showing 6 trips for <strong>ONGC</strong> in March 2025 with submitted duty slips and pending billing. Select the trips to include in this invoice.
+ </div> <table class="trip-select-table"> <thead> <tr> <th><input type="checkbox" id="selectAll" onchange="toggleAll(this)"></th> <th>Slip No.</th> <th>Date</th> <th>Customer</th> <th>Trip Type</th> <th>KM</th> <th>Hrs</th> <th>Extra KM</th> <th>Extra Hrs</th> <th>Toll</th> <th>Base Amt (₹)</th> <th>Extra Amt (₹)</th> <th>Total (₹)</th> </tr> </thead> <tbody> <tr> <td><input type="checkbox" class="trip-cb" checked></td> <td>DS-2025-0088</td> <td>01/03/2025</td> <td>Rajesh Sharma</td> <td><span class="chip chip-airport">Airport</span></td> <td>32</td><td>2.5</td> <td>2 km</td><td>—</td><td>0</td> <td>1,200.00</td><td>32.00</td><td><strong>1,232.00</strong></td> </tr> <tr> <td><input type="checkbox" class="trip-cb" checked></td> <td>DS-2025-0086</td> <td>27/02/2025</td> <td>Deepak Verma</td> <td><span class="chip chip-fullday">Full Day</span></td> <td>310</td><td>11</td> <td>10 km</td><td>1 hr</td><td>150</td> <td>3,500.00</td><td>335.00</td><td><strong>3,985.00</strong></td> </tr> <tr> <td><input type="checkbox" class="trip-cb" checked></td> <td>DS-2025-0082</td> <td>25/02/2025</td> <td>Ravi Shah</td> <td><span class="chip chip-fullday">Full Day</span></td> <td>295</td><td>9.5</td> <td>—</td><td>—</td><td>0</td> <td>3,500.00</td><td>0</td><td><strong>3,500.00</strong></td> </tr> <tr> <td><input type="checkbox" class="trip-cb" checked></td> <td>DS-2025-0079</td> <td>22/02/2025</td> <td>Anil Gupta</td> <td><span class="chip chip-local">Local</span></td> <td>72</td><td>7</td> <td>—</td><td>—</td><td>0</td> <td>2,200.00</td><td>0</td><td><strong>2,200.00</strong></td> </tr> <tr> <td><input type="checkbox" class="trip-cb"></td> <td>DS-2025-0075</td> <td>19/02/2025</td> <td>Sunil Rawat</td> <td><span class="chip chip-airport">Airport</span></td> <td>35</td><td>3</td> <td>5 km</td><td>—</td><td>0</td> <td>1,200.00</td><td>80.00</td><td><strong>1,280.00</strong></td> </tr> </tbody> <tfoot> <tr> <td colspan="10" class="text-right fw-bold">Sub-total (4 trips selected)</td> <td class="fw-bold">10,400.00</td> <td class="fw-bold">367.00</td> <td class="fw-bold">10,767.00</td> </tr> </tfoot> </table> <hr class="divider"> <!-- Step 3: Invoice Preview --> <div class="section-title">Step 3: Invoice Preview</div> <div class="invoice-preview"> <div class="inv-header"> <div class="inv-from"> <strong>Shree Ram Travels Agency</strong> Shop No. 12, Laxmi Complex, MG Road<br> Mumbai – 400001, Maharashtra<br> GSTIN: 27AABCS1429B1Z2 | PAN: AABCS1429B<br> Phone: +91 98765 43210
+ </div> <div class="inv-to"> <div class="inv-badge">TAX INVOICE</div> <div style="margin-top:10px; font-size:12px;"> <strong>Bill To:</strong><br> ONGC – Northern Region<br> GSTIN: 27AAACO1234A1ZX<br> Nariman Point, Mumbai – 400 021
+ </div> </div> </div> <div class="inv-meta"> <div class="im-item"><label>Invoice No.</label><span>INV-2025-0047</span></div> <div class="im-item"><label>Invoice Date</label><span>31/03/2025</span></div> <div class="im-item"><label>Billing Period</label><span>01/03/2025 – 31/03/2025</span></div> <div class="im-item"><label>Payment Due</label><span>30/04/2025 (30 days)</span></div> </div> <table> <thead> <tr> <th>#</th> <th>Date</th> <th>Passenger</th> <th>Trip Type</th> <th>KM</th> <th>Base Amt (₹)</th> <th>Extra Charges (₹)</th> <th>Amount (₹)</th> </tr> </thead> <tbody> <tr><td>1</td><td>01/03/2025</td><td>Rajesh Sharma</td><td>Airport Pickup</td><td>32</td><td>1,200.00</td><td>32.00</td><td>1,232.00</td></tr> <tr><td>2</td><td>27/02/2025</td><td>Deepak Verma</td><td>Full Day</td><td>310</td><td>3,500.00</td><td>335.00 (+Toll ₹150)</td><td>3,985.00</td></tr> <tr><td>3</td><td>25/02/2025</td><td>Ravi Shah</td><td>Full Day</td><td>295</td><td>3,500.00</td><td>—</td><td>3,500.00</td></tr> <tr><td>4</td><td>22/02/2025</td><td>Anil Gupta</td><td>Local</td><td>72</td><td>2,200.00</td><td>—</td><td>2,200.00</td></tr> </tbody> </table> <div class="inv-totals" style="margin-top:16px;"> <table style="max-width:350px; margin-left:auto;"> <tr><td>Sub-total</td><td class="text-right">₹ 10,767.00</td></tr> <tr><td>GST @5% (CGST 2.5% + SGST 2.5%)</td><td class="text-right">₹ 538.35</td></tr> <tr><td>Round-off</td><td class="text-right">₹ 0.65</td></tr> <tr class="grand"><td>Grand Total</td><td class="text-right">₹ 11,306.00</td></tr> </table> </div> <div style="margin-top:20px; font-size:12px; color:#555;"> <strong>Amount in words:</strong> Eleven Thousand Three Hundred and Six Rupees Only.<br><br> <strong>Bank Details:</strong> State Bank of India | A/c No: XXXX XXXX 4821 | IFSC: SBIN0001234 | Branch: MG Road, Mumbai
+ </div> </div> <div class="text-center" style="margin-top:24px;"> <button class="btn btn-accent btn-lg"> Generate &amp; Save Invoice</button> &nbsp;&nbsp;
+ <button class="btn btn-default"> Print Invoice</button> &nbsp;&nbsp;
+ <button class="btn btn-default"> Download PDF</button> </div> </div>
 </div>
-</main>
-
-<footer>
-    <a href="#">About</a> | <a href="#">Help</a> |
-    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</main> <footer> <a href="#">About</a> | <a href="#">Help</a> |
+ &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
 </footer>
-<a class="fab" href="#" title="Back to top">▲</a>
-
-<script>
+<a class="fab" href="#" title="Back to top">▲</a> <script>
 function toggleAll(cb) { document.querySelectorAll('.trip-cb').forEach(c => c.checked = cb.checked); }
 </script>
 </body>
