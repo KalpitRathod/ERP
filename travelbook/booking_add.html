@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook – Add Booking</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .booking-type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-bottom: 8px; }
+        .booking-type-card {
+            border: 2px solid #e0e4ea; border-radius: 6px; padding: 14px;
+            cursor: pointer; text-align: center; transition: all 0.15s;
+        }
+        .booking-type-card:hover { border-color: var(--tb-orange); background: #fff8f3; }
+        .booking-type-card.selected { border-color: var(--tb-navy); background: #eef2fa; }
+        .booking-type-card .bt-icon { font-size: 26px; margin-bottom: 6px; }
+        .booking-type-card .bt-name { font-weight: 700; font-size: 13px; color: var(--tb-navy); }
+        .booking-type-card .bt-desc { font-size: 11px; color: #888; margin-top: 3px; }
+        .vehicle-avail-list { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+        .vehicle-chip {
+            padding: 6px 14px; border: 2px solid #ddd; border-radius: 20px;
+            cursor: pointer; font-size: 12px; font-weight: 600; transition: all 0.15s;
+        }
+        .vehicle-chip.avail { border-color: #28a745; color: #155724; background: #f0fff4; }
+        .vehicle-chip.selected { border-color: var(--tb-navy); background: var(--tb-navy); color: white; }
+        .vehicle-chip.booked { border-color: #ccc; color: #999; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <div class="logo-box">🚗</div>
+        <div>
+            <div class="brand-name">TravelBook</div>
+            <div class="brand-sub">Shree Ram Travels – Management System</div>
+        </div>
+    </div>
+    <div class="header-center"><h1>Add New Booking</h1></div>
+    <div class="header-right">
+        <div class="user-name">Shree Ram Travels</div>
+        <div class="user-role">Admin | Owner</div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="home.html">🏠 Dashboard</a></li>
+        <li class="active"><a href="bookings.html">📅 Booking ▾</a>
+            <ul class="dropdown">
+                <li><a href="booking_add.html">➕ Add Booking</a></li>
+                <li><a href="bookings.html">📋 All Bookings</a></li>
+            </ul>
+        </li>
+        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
+            <ul class="dropdown">
+                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
+            </ul>
+        </li>
+        <li><a href="invoices.html">🧾 Invoice ▾</a>
+            <ul class="dropdown">
+                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
+                <li><a href="invoices.html">📋 All Invoices</a></li>
+            </ul>
+        </li>
+        <li><a href="payments.html">💰 Payment ▾</a>
+            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
+        </li>
+        <li><a href="reports_sales.html">📊 Reports ▾</a>
+            <ul class="dropdown">
+                <li><a href="reports_sales.html">📈 Sales Details</a></li>
+                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
+                <li><a href="reports_payment.html">💳 Payment Details</a></li>
+            </ul>
+        </li>
+        <li><a href="help.html">❓ Help</a></li>
+    </ul>
+</nav>
+
+<main>
+<div class="card">
+    <div class="card-header">
+        <h2><span class="icon">📅</span> New Booking</h2>
+        <a href="bookings.html" class="btn btn-default btn-sm">← All Bookings</a>
+    </div>
+    <div class="card-body">
+
+        <!-- Booking Type Selection -->
+        <div class="section-title">1. Booking Type</div>
+        <div class="booking-type-grid">
+            <div class="booking-type-card selected" onclick="selectType(this)">
+                <div class="bt-icon">📅</div>
+                <div class="bt-name">Full Day</div>
+                <div class="bt-desc">300 km / 10 hrs</div>
+            </div>
+            <div class="booking-type-card" onclick="selectType(this)">
+                <div class="bt-icon">🏙️</div>
+                <div class="bt-name">Local</div>
+                <div class="bt-desc">80 km / 8 hrs</div>
+            </div>
+            <div class="booking-type-card" onclick="selectType(this)">
+                <div class="bt-icon">✈️</div>
+                <div class="bt-name">Airport Pickup</div>
+                <div class="bt-desc">30 km / 3 hrs</div>
+            </div>
+            <div class="booking-type-card" onclick="selectType(this)">
+                <div class="bt-icon">🛬</div>
+                <div class="bt-name">Airport Drop</div>
+                <div class="bt-desc">30 km / 3 hrs</div>
+            </div>
+            <div class="booking-type-card" onclick="selectType(this)">
+                <div class="bt-icon">🛣️</div>
+                <div class="bt-name">Outstation</div>
+                <div class="bt-desc">Multi-day / Per km</div>
+            </div>
+        </div>
+        <div class="alert alert-info" style="margin-top:10px;">
+            <strong>Full Day:</strong> Customer gets 300 km and 10 hours. Extra km and extra hours billed at company rate card.
+        </div>
+
+        <hr class="divider">
+
+        <!-- Customer & Company -->
+        <div class="section-title">2. Customer & Company Details</div>
+        <div class="row">
+            <div class="col col-2">
+                <label><span class="required">*</span>Customer / Passenger Name</label>
+                <input type="text" placeholder="Full name of the passenger">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Mobile Number</label>
+                <input type="tel" placeholder="10-digit mobile number">
+            </div>
+            <div class="col">
+                <label>Alternate Mobile</label>
+                <input type="tel" placeholder="Optional">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Company / Organisation</label>
+                <select>
+                    <option value="">-- Select Company --</option>
+                    <option>ONGC</option>
+                    <option>HPCL</option>
+                    <option>BPCL</option>
+                    <option>Adani Enterprises</option>
+                    <option>Reliance Industries</option>
+                    <option>Tata Chemicals</option>
+                    <option>Individual / Private</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Company Contact Person</label>
+                <input type="text" placeholder="Name of the contact / coordinator">
+            </div>
+            <div class="col">
+                <label>Booking Channel</label>
+                <select>
+                    <option>Phone Call</option>
+                    <option>WhatsApp</option>
+                    <option>Email</option>
+                    <option>Walk-in</option>
+                    <option>App / Portal</option>
+                </select>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Trip Details -->
+        <div class="section-title">3. Trip Details</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Pickup Date</label>
+                <input type="date">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Pickup Time</label>
+                <input type="time">
+            </div>
+            <div class="col">
+                <label>Return Date (for outstation)</label>
+                <input type="date">
+            </div>
+            <div class="col">
+                <label>Return Time</label>
+                <input type="time">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-2">
+                <label><span class="required">*</span>Pickup Location</label>
+                <input type="text" placeholder="Full pickup address / landmark">
+            </div>
+            <div class="col col-2">
+                <label><span class="required">*</span>Drop Location</label>
+                <input type="text" placeholder="Destination address / landmark">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Estimated Distance (km)</label>
+                <input type="number" placeholder="Approx. km" min="0">
+            </div>
+            <div class="col">
+                <label>Purpose of Travel</label>
+                <input type="text" placeholder="e.g. Official visit, Airport, Meeting">
+            </div>
+            <div class="col">
+                <label>Number of Passengers</label>
+                <input type="number" value="1" min="1" max="7">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Vehicle & Driver Assignment -->
+        <div class="section-title">4. Vehicle & Driver Assignment</div>
+        <div class="alert alert-info">
+            Vehicles shown below are checked for availability on the selected pickup date. Green = Available.
+        </div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Vehicle Type Required</label>
+                <select>
+                    <option>Any Available</option>
+                    <option>Innova Crysta (7 Seater)</option>
+                    <option>Dzire / Etios (4 Seater)</option>
+                    <option>Ertiga (7 Seater)</option>
+                    <option>Tempo Traveller (12+ Seater)</option>
+                </select>
+            </div>
+            <div class="col col-2">
+                <label><span class="required">*</span>Select Vehicle (Available on Pickup Date)</label>
+                <div class="vehicle-avail-list">
+                    <div class="vehicle-chip avail selected">MH-12-AB-1234<br><small>Innova</small></div>
+                    <div class="vehicle-chip avail">MH-12-GH-3456<br><small>Dzire</small></div>
+                    <div class="vehicle-chip avail">MH-12-IJ-7890<br><small>Ertiga</small></div>
+                    <div class="vehicle-chip booked">MH-12-CD-5678<br><small>Booked</small></div>
+                    <div class="vehicle-chip booked">MH-12-EF-9012<br><small>Booked</small></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Driver</label>
+                <select>
+                    <option value="">-- Select Driver --</option>
+                    <option>Ramesh Yadav – MH-12-AB-1234</option>
+                    <option>Ganesh More – MH-12-GH-3456</option>
+                    <option>Prakash Shinde – MH-12-IJ-7890</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Driver Mobile</label>
+                <input type="text" class="readonly" placeholder="Auto-filled from driver selection" readonly>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Rate & Billing -->
+        <div class="section-title">5. Rate & Billing</div>
+        <div class="row">
+            <div class="col">
+                <label>Base Rate (as per company rate card)</label>
+                <input type="text" class="readonly" value="₹3,200 (Full Day / 300 km)" readonly>
+            </div>
+            <div class="col">
+                <label>Extra KM Rate</label>
+                <input type="text" class="readonly" value="₹14/km" readonly>
+            </div>
+            <div class="col">
+                <label>Extra Hour Rate</label>
+                <input type="text" class="readonly" value="₹150/hr" readonly>
+            </div>
+            <div class="col">
+                <label>Night Halt Charges</label>
+                <input type="text" class="readonly" value="₹500/night (outstation)" readonly>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Toll / Parking (estimated)</label>
+                <input type="number" placeholder="₹ Estimated amount" min="0">
+            </div>
+            <div class="col">
+                <label>GST Applicable</label>
+                <select>
+                    <option>5% (Transportation)</option>
+                    <option>12%</option>
+                    <option>18%</option>
+                    <option>Exempt / NIL</option>
+                </select>
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Status & Notes -->
+        <div class="section-title">6. Status & Notes</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Booking Status</label>
+                <select>
+                    <option>Confirmed</option>
+                    <option>Tentative</option>
+                    <option>Waitlisted</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Notify Driver?</label>
+                <select>
+                    <option>Yes – Send WhatsApp to Driver</option>
+                    <option>No – Manual notification</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Notify Client?</label>
+                <select>
+                    <option>Yes – Send WhatsApp confirmation</option>
+                    <option>No</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Special Instructions / Remarks</label>
+                <textarea placeholder="e.g. Meet at terminal 2 arrivals, passenger has wheelchair, carry warm water..."></textarea>
+            </div>
+        </div>
+
+        <div class="text-center" style="margin-top:20px;">
+            <button class="btn btn-accent btn-lg">✅ Confirm Booking</button>
+            &nbsp;&nbsp;
+            <button class="btn btn-default">Save as Tentative</button>
+            &nbsp;&nbsp;
+            <a href="bookings.html" class="btn btn-default">Cancel</a>
+        </div>
+
+    </div>
+</div>
+</main>
+
+<footer>
+    <a href="#">About</a> | <a href="#">Help</a> |
+    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</footer>
+<a class="fab" href="#" title="Back to top">▲</a>
+
+<script>
+    function selectType(card) {
+        document.querySelectorAll('.booking-type-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+    }
+    document.querySelectorAll('.vehicle-chip.avail').forEach(chip => {
+        chip.addEventListener('click', function() {
+            document.querySelectorAll('.vehicle-chip.avail').forEach(c => c.classList.remove('selected'));
+            this.classList.add('selected');
+        });
+    });
+</script>
+</body>
+</html>

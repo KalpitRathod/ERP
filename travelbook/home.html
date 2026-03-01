@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook – Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .day-section { margin-bottom: 22px; }
+        .day-label { font-weight: 700; font-size: 13px; color: var(--tb-navy); margin-bottom: 10px; padding: 6px 12px; background: #eef2fa; border-left: 4px solid var(--tb-orange); border-radius: 0 3px 3px 0; }
+        .trip-cards { display: flex; flex-direction: column; gap: 8px; }
+        .trip-card {
+            display: flex; align-items: center; gap: 14px; padding: 12px 16px;
+            border: 1px solid #e0e4ea; border-radius: 5px; background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .trip-card .tc-time { min-width: 70px; font-weight: 700; font-size: 13px; color: var(--tb-navy); }
+        .trip-card .tc-vehicle { min-width: 90px; font-size: 12px; background: #eef2fa; padding: 3px 8px; border-radius: 12px; color: var(--tb-navy); font-weight: 600; }
+        .trip-card .tc-customer { flex: 1; font-size: 13px; }
+        .trip-card .tc-customer strong { display: block; }
+        .trip-card .tc-customer span { font-size: 11px; color: #888; }
+        .trip-card .tc-route { flex: 2; font-size: 12px; color: #666; }
+        .trip-card .tc-route strong { display: block; color: var(--text-main); }
+        .notice-row { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 20px; }
+        .notice-card {
+            flex: 1; min-width: 200px; border-radius: 6px; padding: 14px 18px;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .notice-card.warn { background: #fff8e6; border: 1px solid #ffe0a0; }
+        .notice-card.danger { background: #fff2f2; border: 1px solid #ffc0c0; }
+        .notice-card.info  { background: #eef6ff; border: 1px solid #b8d8ff; }
+        .notice-card .nc-icon { font-size: 24px; }
+        .notice-card .nc-title { font-weight: 700; font-size: 13px; margin-bottom: 3px; }
+        .notice-card .nc-msg { font-size: 12px; color: #555; line-height: 1.5; }
+    </style>
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <div class="logo-box">🚗</div>
+        <div>
+            <div class="brand-name">TravelBook</div>
+            <div class="brand-sub">Shree Ram Travels – Management System</div>
+        </div>
+    </div>
+    <div class="header-center"><h1>Operations Dashboard</h1></div>
+    <div class="header-right">
+        <div class="user-name">Shree Ram Travels</div>
+        <div class="user-role">Admin | Owner</div>
+        <span class="badge-tag">March 2025</span>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li class="active"><a href="home.html">🏠 Dashboard</a></li>
+        <li><a href="bookings.html">📅 Booking ▾</a>
+            <ul class="dropdown">
+                <li><a href="booking_add.html">➕ Add Booking</a></li>
+                <li><a href="bookings.html">📋 All Bookings</a></li>
+            </ul>
+        </li>
+        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
+            <ul class="dropdown">
+                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
+            </ul>
+        </li>
+        <li><a href="invoices.html">🧾 Invoice ▾</a>
+            <ul class="dropdown">
+                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
+                <li><a href="invoices.html">📋 All Invoices</a></li>
+            </ul>
+        </li>
+        <li><a href="payments.html">💰 Payment ▾</a>
+            <ul class="dropdown">
+                <li><a href="payments.html">📋 All Payments</a></li>
+            </ul>
+        </li>
+        <li><a href="reports_sales.html">📊 Reports ▾</a>
+            <ul class="dropdown">
+                <li><a href="reports_sales.html">📈 Sales Details</a></li>
+                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
+                <li><a href="reports_payment.html">💳 Payment Details</a></li>
+            </ul>
+        </li>
+        <li><a href="help.html">❓ Help</a></li>
+    </ul>
+</nav>
+
+<main>
+<div class="card">
+    <div class="card-header">
+        <h2><span class="icon">🏠</span> Operations Dashboard – Sunday, 01 March 2025</h2>
+        <div class="gap-10">
+            <a href="booking_add.html" class="btn btn-accent">+ Add Booking</a>
+            <a href="duty_slip_add.html" class="btn btn-default">+ Duty Slip</a>
+        </div>
+    </div>
+    <div class="card-body">
+
+        <!-- Stat Cards -->
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📅</div>
+                <div class="stat-value">5</div>
+                <div class="stat-label">Trips Today</div>
+                <div class="stat-sub">3 completed · 2 ongoing</div>
+            </div>
+            <div class="stat-card blue">
+                <div class="stat-icon">🚀</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Trips Tomorrow</div>
+                <div class="stat-sub">All scheduled</div>
+            </div>
+            <div class="stat-card" style="border-left-color:var(--warning);">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-value">4</div>
+                <div class="stat-label">Missing Duty Slips</div>
+                <div class="stat-sub">Action required</div>
+            </div>
+            <div class="stat-card" style="border-left-color:var(--purple);">
+                <div class="stat-icon">🧾</div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">Pending Invoices</div>
+                <div class="stat-sub">₹1,84,500 to bill</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-icon">💸</div>
+                <div class="stat-value">₹2.8L</div>
+                <div class="stat-label">Outstanding Payments</div>
+                <div class="stat-sub">6 invoices unpaid</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">₹4.1L</div>
+                <div class="stat-label">Collected This Month</div>
+                <div class="stat-sub">As of today</div>
+            </div>
+        </div>
+
+        <!-- Notice Row -->
+        <div class="notice-row">
+            <div class="notice-card warn">
+                <div class="nc-icon">⏰</div>
+                <div>
+                    <div class="nc-title">Duty Slips Pending</div>
+                    <div class="nc-msg">4 drivers have completed trips but haven't submitted duty slips yet. <a href="duty_slips.html">View Missing →</a></div>
+                </div>
+            </div>
+            <div class="notice-card danger">
+                <div class="nc-icon">🧾</div>
+                <div>
+                    <div class="nc-title">Invoice Due</div>
+                    <div class="nc-msg">ONGC – Mar billing cycle closes in 2 days. 8 duty slips ready for billing. <a href="invoice_generate.html">Generate →</a></div>
+                </div>
+            </div>
+            <div class="notice-card info">
+                <div class="nc-icon">💰</div>
+                <div>
+                    <div class="nc-title">Payment Follow-up</div>
+                    <div class="nc-msg">Adani Enterprises payment of ₹82,000 is 15 days overdue. <a href="payments.html">View →</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Today's Schedule -->
+        <div class="section-title">Today's Trips – 01 Mar 2025</div>
+        <div class="day-section">
+            <div class="trip-cards">
+                <div class="trip-card">
+                    <div class="tc-time">06:00 AM</div>
+                    <div class="tc-vehicle">MH-12-AB-1234</div>
+                    <div class="tc-customer"><strong>Rajesh Sharma</strong><span>ONGC</span></div>
+                    <div class="tc-route"><strong>Airport Pickup (3hr/30km)</strong>Mumbai Airport → BKC Office</div>
+                    <span class="badge badge-success">Completed</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">09:00 AM</div>
+                    <div class="tc-vehicle">MH-12-CD-5678</div>
+                    <div class="tc-customer"><strong>Priya Menon</strong><span>Adani Enterprises</span></div>
+                    <div class="tc-route"><strong>Local (8hr/80km)</strong>Nariman Point, Mumbai</div>
+                    <span class="badge badge-warning">Ongoing</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">10:30 AM</div>
+                    <div class="tc-vehicle">MH-12-EF-9012</div>
+                    <div class="tc-customer"><strong>Sandeep Joshi</strong><span>HPCL</span></div>
+                    <div class="tc-route"><strong>Full Day (300km)</strong>Mumbai → Pune</div>
+                    <span class="badge badge-warning">Ongoing</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">02:00 PM</div>
+                    <div class="tc-vehicle">MH-12-GH-3456</div>
+                    <div class="tc-customer"><strong>Kavita Nair</strong><span>BPCL</span></div>
+                    <div class="tc-route"><strong>Airport Drop (3hr/30km)</strong>Andheri → Mumbai Airport</div>
+                    <span class="badge badge-success">Completed</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">05:00 PM</div>
+                    <div class="tc-vehicle">MH-12-IJ-7890</div>
+                    <div class="tc-customer"><strong>Amit Kulkarni</strong><span>Tata Chemicals</span></div>
+                    <div class="tc-route"><strong>Local (8hr/80km)</strong>Bandra-Kurla Complex</div>
+                    <span class="badge badge-secondary">Scheduled</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Tomorrow's Schedule -->
+        <div class="section-title">Tomorrow's Trips – 02 Mar 2025</div>
+        <div class="day-section">
+            <div class="trip-cards">
+                <div class="trip-card">
+                    <div class="tc-time">07:00 AM</div>
+                    <div class="tc-vehicle">MH-12-AB-1234</div>
+                    <div class="tc-customer"><strong>Deepak Verma</strong><span>ONGC</span></div>
+                    <div class="tc-route"><strong>Full Day (300km)</strong>Mumbai → Nashik</div>
+                    <span class="badge badge-navy">Confirmed</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">09:00 AM</div>
+                    <div class="tc-vehicle">MH-12-CD-5678</div>
+                    <div class="tc-customer"><strong>Meena Pillai</strong><span>Reliance</span></div>
+                    <div class="tc-route"><strong>Airport Pickup (3hr/30km)</strong>Airport → Nariman Point</div>
+                    <span class="badge badge-navy">Confirmed</span>
+                </div>
+                <div class="trip-card">
+                    <div class="tc-time">11:00 AM</div>
+                    <div class="tc-vehicle">MH-12-EF-9012</div>
+                    <div class="tc-customer"><strong>Ravi Desai</strong><span>Adani Enterprises</span></div>
+                    <div class="tc-route"><strong>Outstation</strong>Mumbai → Surat (1 day)</div>
+                    <span class="badge badge-navy">Confirmed</span>
+                </div>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Vehicle Availability -->
+        <div class="section-title">Fleet Availability – Today</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Vehicle No.</th>
+                    <th>Type</th>
+                    <th>Driver</th>
+                    <th>Current Status</th>
+                    <th>Booked Till</th>
+                    <th>Next Booking</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>MH-12-AB-1234</strong></td>
+                    <td>Innova Crysta</td>
+                    <td>Ramesh Yadav</td>
+                    <td><span class="badge badge-success">Available</span></td>
+                    <td>—</td>
+                    <td>02/03/2025, 07:00 AM</td>
+                </tr>
+                <tr>
+                    <td><strong>MH-12-CD-5678</strong></td>
+                    <td>Dzire</td>
+                    <td>Suresh Kumar</td>
+                    <td><span class="badge badge-warning">On Trip</span></td>
+                    <td>05:00 PM</td>
+                    <td>02/03/2025, 09:00 AM</td>
+                </tr>
+                <tr>
+                    <td><strong>MH-12-EF-9012</strong></td>
+                    <td>Innova Crysta</td>
+                    <td>Mahesh Patil</td>
+                    <td><span class="badge badge-warning">On Trip</span></td>
+                    <td>08:00 PM</td>
+                    <td>02/03/2025, 11:00 AM</td>
+                </tr>
+                <tr>
+                    <td><strong>MH-12-GH-3456</strong></td>
+                    <td>Dzire</td>
+                    <td>Ganesh More</td>
+                    <td><span class="badge badge-success">Available</span></td>
+                    <td>—</td>
+                    <td>03/03/2025, 09:00 AM</td>
+                </tr>
+                <tr>
+                    <td><strong>MH-12-IJ-7890</strong></td>
+                    <td>Ertiga</td>
+                    <td>Prakash Shinde</td>
+                    <td><span class="badge badge-secondary">Scheduled 5PM</span></td>
+                    <td>11:59 PM</td>
+                    <td>—</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</main>
+
+<footer>
+    <a href="#">About</a> | <a href="#">Help</a> |
+    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</footer>
+<a class="fab" href="#" title="Back to top">▲</a>
+</body>
+</html>

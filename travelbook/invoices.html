@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook – All Invoices</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <div class="logo-box">🚗</div>
+        <div>
+            <div class="brand-name">TravelBook</div>
+            <div class="brand-sub">Shree Ram Travels – Management System</div>
+        </div>
+    </div>
+    <div class="header-center"><h1>All Invoices</h1></div>
+    <div class="header-right">
+        <div class="user-name">Shree Ram Travels</div>
+        <div class="user-role">Admin | Owner</div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="home.html">🏠 Dashboard</a></li>
+        <li><a href="bookings.html">📅 Booking ▾</a>
+            <ul class="dropdown">
+                <li><a href="booking_add.html">➕ Add Booking</a></li>
+                <li><a href="bookings.html">📋 All Bookings</a></li>
+            </ul>
+        </li>
+        <li><a href="duty_slips.html">📝 Duty Slip ▾</a>
+            <ul class="dropdown">
+                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
+            </ul>
+        </li>
+        <li class="active"><a href="invoices.html">🧾 Invoice ▾</a>
+            <ul class="dropdown">
+                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
+                <li><a href="invoices.html">📋 All Invoices</a></li>
+            </ul>
+        </li>
+        <li><a href="payments.html">💰 Payment ▾</a>
+            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
+        </li>
+        <li><a href="reports_sales.html">📊 Reports ▾</a>
+            <ul class="dropdown">
+                <li><a href="reports_sales.html">📈 Sales Details</a></li>
+                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
+                <li><a href="reports_payment.html">💳 Payment Details</a></li>
+            </ul>
+        </li>
+        <li><a href="help.html">❓ Help</a></li>
+    </ul>
+</nav>
+
+<main>
+<div class="card">
+    <div class="card-header">
+        <h2><span class="icon">🧾</span> All Invoices</h2>
+        <a href="invoice_generate.html" class="btn btn-accent">⚡ Generate Invoice</a>
+    </div>
+    <div class="card-body">
+
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🧾</div>
+                <div class="stat-value">24</div>
+                <div class="stat-label">Total Invoices (Mar)</div>
+            </div>
+            <div class="stat-card" style="border-left-color:var(--purple);">
+                <div class="stat-icon">📝</div>
+                <div class="stat-value">3</div>
+                <div class="stat-label">Draft</div>
+                <div class="stat-sub">Not yet sent</div>
+            </div>
+            <div class="stat-card" style="border-left-color:var(--info);">
+                <div class="stat-icon">📤</div>
+                <div class="stat-value">8</div>
+                <div class="stat-label">Sent / Submitted</div>
+            </div>
+            <div class="stat-card red">
+                <div class="stat-icon">⏳</div>
+                <div class="stat-value">6</div>
+                <div class="stat-label">Overdue</div>
+                <div class="stat-sub">₹2.8L pending</div>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-icon">✅</div>
+                <div class="stat-value">7</div>
+                <div class="stat-label">Paid</div>
+                <div class="stat-sub">₹4.1L collected</div>
+            </div>
+            <div class="stat-card blue">
+                <div class="stat-icon">💰</div>
+                <div class="stat-value">₹6.9L</div>
+                <div class="stat-label">Total Billed (Mar)</div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <div class="col">
+                <label>From Date</label>
+                <input type="date" value="2025-03-01">
+            </div>
+            <div class="col">
+                <label>To Date</label>
+                <input type="date" value="2025-03-31">
+            </div>
+            <div class="col">
+                <label>Company</label>
+                <select>
+                    <option>All Companies</option>
+                    <option>ONGC</option>
+                    <option>HPCL</option>
+                    <option>BPCL</option>
+                    <option>Adani Enterprises</option>
+                    <option>Reliance Industries</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Status</label>
+                <select>
+                    <option>All</option>
+                    <option>Draft</option>
+                    <option>Generated</option>
+                    <option>Sent</option>
+                    <option>Overdue</option>
+                    <option>Paid</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Invoice No.</label>
+                <input type="text" placeholder="Search invoice no.">
+            </div>
+            <div class="col auto" style="padding-top:18px;">
+                <button class="btn btn-primary">Search</button>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <span class="text-muted">24 invoices</span>
+            <div class="gap-10">
+                <button class="btn btn-default btn-sm">⬇ Export</button>
+                <button class="btn btn-default btn-sm">🖨 Print All</button>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Invoice No.</th>
+                    <th>Invoice Date</th>
+                    <th>Company</th>
+                    <th>Period</th>
+                    <th>Trips</th>
+                    <th>Amount (₹)</th>
+                    <th>GST (₹)</th>
+                    <th>Total (₹)</th>
+                    <th>Due Date</th>
+                    <th>Bill Mode</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>INV-2025-0047</strong></td>
+                    <td>31/03/2025</td>
+                    <td>ONGC</td>
+                    <td>Mar 2025</td>
+                    <td>4</td>
+                    <td>10,767.00</td>
+                    <td>538.35</td>
+                    <td><strong>11,306.00</strong></td>
+                    <td>30/04/2025</td>
+                    <td>Email + GeM</td>
+                    <td><span class="badge badge-purple">Draft</span></td>
+                    <td><div class="gap-10"><a href="invoice_generate.html" class="btn btn-default btn-sm">View</a><button class="btn btn-accent btn-sm">Send</button></div></td>
+                </tr>
+                <tr>
+                    <td><strong>INV-2025-0046</strong></td>
+                    <td>28/02/2025</td>
+                    <td>HPCL</td>
+                    <td>Feb 2025</td>
+                    <td>6</td>
+                    <td>24,800.00</td>
+                    <td>1,240.00</td>
+                    <td><strong>26,040.00</strong></td>
+                    <td>30/03/2025</td>
+                    <td>GeM Portal</td>
+                    <td><span class="badge badge-danger">Overdue</span></td>
+                    <td><div class="gap-10"><button class="btn btn-default btn-sm">View</button><button class="btn btn-primary btn-sm">Follow Up</button></div></td>
+                </tr>
+                <tr>
+                    <td><strong>INV-2025-0045</strong></td>
+                    <td>28/02/2025</td>
+                    <td>Adani Enterprises</td>
+                    <td>Feb 2025</td>
+                    <td>8</td>
+                    <td>39,200.00</td>
+                    <td>1,960.00</td>
+                    <td><strong>41,160.00</strong></td>
+                    <td>30/03/2025</td>
+                    <td>Email</td>
+                    <td><span class="badge badge-danger">Overdue</span></td>
+                    <td><div class="gap-10"><button class="btn btn-default btn-sm">View</button><button class="btn btn-primary btn-sm">Follow Up</button></div></td>
+                </tr>
+                <tr>
+                    <td><strong>INV-2025-0044</strong></td>
+                    <td>31/01/2025</td>
+                    <td>ONGC</td>
+                    <td>Jan 2025</td>
+                    <td>10</td>
+                    <td>42,100.00</td>
+                    <td>2,105.00</td>
+                    <td><strong>44,205.00</strong></td>
+                    <td>28/02/2025</td>
+                    <td>Email + GeM</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><div class="gap-10"><button class="btn btn-default btn-sm">View</button><a href="payments.html" class="btn btn-success btn-sm">Receipt</a></div></td>
+                </tr>
+                <tr>
+                    <td><strong>INV-2025-0043</strong></td>
+                    <td>31/01/2025</td>
+                    <td>BPCL</td>
+                    <td>Jan 2025</td>
+                    <td>5</td>
+                    <td>18,500.00</td>
+                    <td>925.00</td>
+                    <td><strong>19,425.00</strong></td>
+                    <td>28/02/2025</td>
+                    <td>Vendor Portal</td>
+                    <td><span class="badge badge-info">Sent</span></td>
+                    <td><div class="gap-10"><button class="btn btn-default btn-sm">View</button><button class="btn btn-success btn-sm">Mark Paid</button></div></td>
+                </tr>
+                <tr>
+                    <td><strong>INV-2025-0042</strong></td>
+                    <td>31/12/2024</td>
+                    <td>Reliance Industries</td>
+                    <td>Dec 2024</td>
+                    <td>7</td>
+                    <td>28,700.00</td>
+                    <td>1,435.00</td>
+                    <td><strong>30,135.00</strong></td>
+                    <td>30/01/2025</td>
+                    <td>Email</td>
+                    <td><span class="badge badge-success">Paid</span></td>
+                    <td><div class="gap-10"><button class="btn btn-default btn-sm">View</button><a href="payments.html" class="btn btn-success btn-sm">Receipt</a></div></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="pagination">
+            <a href="#">«</a>
+            <a href="#" class="active">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">»</a>
+        </div>
+
+    </div>
+</div>
+</main>
+
+<footer>
+    <a href="#">About</a> | <a href="#">Help</a> |
+    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</footer>
+<a class="fab" href="#" title="Back to top">▲</a>
+</body>
+</html>

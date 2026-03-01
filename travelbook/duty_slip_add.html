@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TravelBook – Add Duty Slip</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <div class="header-left">
+        <div class="logo-box">🚗</div>
+        <div>
+            <div class="brand-name">TravelBook</div>
+            <div class="brand-sub">Shree Ram Travels – Management System</div>
+        </div>
+    </div>
+    <div class="header-center"><h1>Add Duty Slip</h1></div>
+    <div class="header-right">
+        <div class="user-name">Shree Ram Travels</div>
+        <div class="user-role">Admin | Owner</div>
+    </div>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="home.html">🏠 Dashboard</a></li>
+        <li><a href="bookings.html">📅 Booking ▾</a>
+            <ul class="dropdown">
+                <li><a href="booking_add.html">➕ Add Booking</a></li>
+                <li><a href="bookings.html">📋 All Bookings</a></li>
+            </ul>
+        </li>
+        <li class="active"><a href="duty_slips.html">📝 Duty Slip ▾</a>
+            <ul class="dropdown">
+                <li><a href="duty_slip_add.html">➕ Add Duty Slip</a></li>
+                <li><a href="duty_slips.html">📋 All Duty Slips</a></li>
+            </ul>
+        </li>
+        <li><a href="invoices.html">🧾 Invoice ▾</a>
+            <ul class="dropdown">
+                <li><a href="invoice_generate.html">⚡ Generate Invoice</a></li>
+                <li><a href="invoices.html">📋 All Invoices</a></li>
+            </ul>
+        </li>
+        <li><a href="payments.html">💰 Payment ▾</a>
+            <ul class="dropdown"><li><a href="payments.html">📋 All Payments</a></li></ul>
+        </li>
+        <li><a href="reports_sales.html">📊 Reports ▾</a>
+            <ul class="dropdown">
+                <li><a href="reports_sales.html">📈 Sales Details</a></li>
+                <li><a href="reports_expenses.html">📉 Expenses Details</a></li>
+                <li><a href="reports_payment.html">💳 Payment Details</a></li>
+            </ul>
+        </li>
+        <li><a href="help.html">❓ Help</a></li>
+    </ul>
+</nav>
+
+<main>
+<div class="card">
+    <div class="card-header">
+        <h2><span class="icon">📝</span> Add Duty Slip</h2>
+        <a href="duty_slips.html" class="btn btn-default btn-sm">← All Duty Slips</a>
+    </div>
+    <div class="card-body">
+
+        <div class="alert alert-info">
+            Duty slips capture trip details as reported by the driver. Link a duty slip to an existing booking for automatic billing.
+        </div>
+
+        <!-- Link to Booking -->
+        <div class="section-title">1. Link to Booking</div>
+        <div class="row">
+            <div class="col col-2">
+                <label><span class="required">*</span>Select Booking (or enter manually below)</label>
+                <select id="bookingSelect" onchange="fillFromBooking(this)">
+                    <option value="">-- Search / Select Booking --</option>
+                    <option value="BK-2025-0141">#BK-2025-0141 – Priya Menon – Adani – 01/03/2025</option>
+                    <option value="BK-2025-0140">#BK-2025-0140 – Sandeep Joshi – HPCL – 01/03/2025</option>
+                    <option value="BK-2025-0139">#BK-2025-0139 – Kavita Nair – BPCL – 28/02/2025</option>
+                    <option value="MANUAL">Manual Entry (no booking linked)</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Booking Status</label>
+                <input type="text" id="bookingStatus" class="readonly" placeholder="Auto-filled" readonly>
+            </div>
+            <div class="col">
+                <label>Trip Type</label>
+                <input type="text" id="tripType" class="readonly" placeholder="Auto-filled" readonly>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Driver & Vehicle -->
+        <div class="section-title">2. Driver & Vehicle</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Driver Name</label>
+                <select>
+                    <option value="">-- Select Driver --</option>
+                    <option>Ramesh Yadav</option>
+                    <option>Suresh Kumar</option>
+                    <option>Mahesh Patil</option>
+                    <option>Ganesh More</option>
+                    <option>Prakash Shinde</option>
+                </select>
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Vehicle Number</label>
+                <select>
+                    <option value="">-- Select Vehicle --</option>
+                    <option>MH-12-AB-1234 (Innova Crysta)</option>
+                    <option>MH-12-CD-5678 (Dzire)</option>
+                    <option>MH-12-EF-9012 (Innova Crysta)</option>
+                    <option>MH-12-GH-3456 (Dzire)</option>
+                    <option>MH-12-IJ-7890 (Ertiga)</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Driver Mobile</label>
+                <input type="tel" placeholder="Driver's contact number">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Customer & Company -->
+        <div class="section-title">3. Customer & Company</div>
+        <div class="row">
+            <div class="col col-2">
+                <label><span class="required">*</span>Customer / Passenger Name</label>
+                <input type="text" id="custName" placeholder="Name of the passenger">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Company</label>
+                <select>
+                    <option>ONGC</option>
+                    <option>HPCL</option>
+                    <option>BPCL</option>
+                    <option>Adani Enterprises</option>
+                    <option>Reliance Industries</option>
+                    <option>Tata Chemicals</option>
+                    <option>Individual / Private</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="col">
+                <label>Employee / Ref. Code</label>
+                <input type="text" placeholder="Company employee code (if any)">
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Trip Timings -->
+        <div class="section-title">4. Trip Timings</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Pickup Date</label>
+                <input type="date">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Pickup Time</label>
+                <input type="time">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Drop Date</label>
+                <input type="date">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>Drop Time</label>
+                <input type="time">
+            </div>
+            <div class="col">
+                <label>Total Hours</label>
+                <input type="text" class="readonly" placeholder="Auto-calculated" readonly>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Odometer / KM -->
+        <div class="section-title">5. Odometer Reading & KM</div>
+        <div class="row">
+            <div class="col">
+                <label><span class="required">*</span>Start KM (Odometer)</label>
+                <input type="number" placeholder="e.g. 42350" min="0">
+            </div>
+            <div class="col">
+                <label><span class="required">*</span>End KM (Odometer)</label>
+                <input type="number" placeholder="e.g. 42650" min="0">
+            </div>
+            <div class="col">
+                <label>Total KM Driven</label>
+                <input type="number" class="readonly" placeholder="Auto-calculated" readonly>
+            </div>
+            <div class="col">
+                <label>Permitted KM (from booking type)</label>
+                <input type="text" class="readonly" placeholder="Auto-filled" readonly>
+            </div>
+            <div class="col" id="extraKmCol">
+                <label>Extra KM (billable)</label>
+                <input type="number" class="readonly" placeholder="Auto-calculated" readonly>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Pickup & Drop Locations -->
+        <div class="section-title">6. Locations</div>
+        <div class="row">
+            <div class="col col-2">
+                <label><span class="required">*</span>Actual Pickup Location</label>
+                <input type="text" placeholder="Where did you pick up the passenger?">
+            </div>
+            <div class="col col-2">
+                <label><span class="required">*</span>Actual Drop Location</label>
+                <input type="text" placeholder="Where did you drop the passenger?">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Night Halt Location (outstation)</label>
+                <input type="text" placeholder="Hotel / place of halt (if applicable)">
+            </div>
+            <div class="col">
+                <label>Number of Night Halts</label>
+                <input type="number" value="0" min="0">
+            </div>
+            <div class="col"></div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Extras -->
+        <div class="section-title">7. Extras & Charges</div>
+        <div class="row">
+            <div class="col">
+                <label>Toll Charges Paid (₹)</label>
+                <input type="number" placeholder="0" min="0">
+            </div>
+            <div class="col">
+                <label>Parking Charges (₹)</label>
+                <input type="number" placeholder="0" min="0">
+            </div>
+            <div class="col">
+                <label>Any Other Charges (₹)</label>
+                <input type="number" placeholder="0" min="0">
+            </div>
+            <div class="col col-2">
+                <label>Other Charges Description</label>
+                <input type="text" placeholder="Describe any extra charges">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Driver Remarks</label>
+                <textarea placeholder="Any notes from the driver (delays, issues, route changes, etc.)"></textarea>
+            </div>
+        </div>
+
+        <hr class="divider">
+
+        <!-- Upload -->
+        <div class="section-title">8. Duty Slip Document</div>
+        <div class="row">
+            <div class="col">
+                <label>Upload Physical Duty Slip Scan / Photo</label>
+                <div class="file-upload-wrapper"><input type="file" accept=".pdf,.jpg,.jpeg,.png"></div>
+                <small class="text-muted">Max 5 MB. JPG, PNG or PDF accepted.</small>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+
+        <div class="text-center" style="margin-top:20px;">
+            <button class="btn btn-accent btn-lg">✅ Save Duty Slip</button>
+            &nbsp;&nbsp;
+            <a href="duty_slips.html" class="btn btn-default">Cancel</a>
+        </div>
+
+    </div>
+</div>
+</main>
+
+<footer>
+    <a href="#">About</a> | <a href="#">Help</a> |
+    &copy; 2025 TravelBook – Shree Ram Travels. All rights reserved.
+</footer>
+<a class="fab" href="#" title="Back to top">▲</a>
+
+<script>
+function fillFromBooking(sel) {
+    const val = sel.value;
+    const status = document.getElementById('bookingStatus');
+    const type   = document.getElementById('tripType');
+    if (val === 'BK-2025-0141') { status.value = 'Ongoing'; type.value = 'Local (8hr/80km)'; }
+    else if (val === 'BK-2025-0140') { status.value = 'Ongoing'; type.value = 'Full Day (300km)'; }
+    else if (val === 'BK-2025-0139') { status.value = 'Completed'; type.value = 'Local (8hr/80km)'; }
+    else { status.value = ''; type.value = ''; }
+}
+</script>
+</body>
+</html>
